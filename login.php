@@ -11,30 +11,30 @@
     <div class="container">
         <div class="wrapper"> 
             <div class="wrap-login">
-                <img src="./Imagens/logoUnimed.png" alt="UNIMED SJC">
-                <h3 class="login-title">CAPTIVE PORTAL</h3>
-                <form action="" method="POST">
-                    <div class="wrap-input" data-validate="Username is required">
-                        <input class="input" type="text" name="username" placeholder="Username">
+                <div class="login-header">
+                    <img src="./Imagens/logoUnimed.png" alt="UNIMED SJC" >
+                    <p>CAPTIVE PORTAL</p>
+                </div>
+                <form class="login-form" action="" method="POST">
+                    <div class="wrap-input" data-validate="E-mail é obrigatório">
+                        <input class="input" type="text" name="email" placeholder="E-mail">
                     </div>
-                    <div class="wrap-input" data-validate="Password is required">
-                        <input class="input" type="password" name="pass" placeholder="Password">
+                    <div class="wrap-input" data-validate="Senha é obrigatória">
+                        <input class="input" type="password" name="password" placeholder="Senha">
                     </div>
                     <div class="login-btn">
-                        <button type="submit" class="login-form-btn">Login</button>
+                        <button type="submit" class="login-form-btn">Entrar</button>
                     </div>
                 </form>
-                <div class="forgot-password">
+                <div class="login-resources">
                     <a href="#" class="btn">Esqueci minha senha</a>
-                </div>
-                <div class="forgot-password">
                     <a href="#" class="btn">Cadastre-se</a>
                 </div>
             </div>
         </div>
         <div class="footer">
-            <div><a href="#" style="font-size:9px">Caso deseja remover o cadastro, clique aqui.</a></div>
-            <div><b>&copy; Todos os direitos reservados a Unimed São José dos Campos - Coorporativa de Trabalho Médico. 2023</b></div>
+            <div><a href="#" style="font-size:13px">Caso deseja remover o cadastro, clique aqui.</a></div>
+            <div><b style="font-size:15px">&copy; Todos os direitos reservados a Unimed São José dos Campos - Coorporativa de Trabalho Médico. 2023</b></div>
         </div>
     </div>
 </body>
