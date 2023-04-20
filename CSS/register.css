@@ -1,0 +1,253 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: "Calibri";
+}
+
+.container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(230, 230, 179)
+}
+
+.wrapper{
+    width: 30%;
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 4px rgba(0,0,0,.08), 0 4px 8px rgba(0,0,0,.12), 0 4px 16px rgba(0,0,0,.24);
+}
+
+.wrap-register{
+    width: 80%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* CABEÇALHO */
+
+.register-header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.register-header > p{
+    font-size: 20px;
+    color: #333;
+    font-family: arial;
+    font-weight: bold;
+}
+
+/* CONTEUDO */
+
+.wrap-input{
+    margin: 8px 0;
+}
+
+.input {
+    width: 100%;
+    padding: 12px 20px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.wrap-checkbox{
+    margin: 8px 0;
+}
+
+
+.label-checkbox {
+    display: block;
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 12px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+.label-checkbox input {
+position: absolute;
+opacity: 0;
+cursor: pointer;
+height: 0;
+width: 0;
+}
+
+.checkmark {
+position: absolute;
+top: 0;
+left: 0;
+height: 16px;
+width: 16px;
+background-color: #eee;
+border-radius: 3px;
+}
+
+.label-checkbox:hover input ~ .checkmark {
+background-color: #ccc;
+}
+
+.label-checkbox input:checked ~ .checkmark {
+background-color: #2196F3;
+}
+
+.checkmark:after {
+content: "";
+position: absolute;
+display: none;
+}
+
+.label-checkbox input:checked ~ .checkmark:after {
+display: block;
+}
+
+.label-checkbox .checkmark:after {
+left: 4.5px;
+top: 3px;
+width: 2.5px;
+height: 5px;
+border: solid white;
+border-width: 0 3px 3px 0;
+-webkit-transform: rotate(45deg);
+-ms-transform: rotate(45deg);
+transform: rotate(45deg);
+}
+
+.register-btn{
+    display: flex;
+    justify-content: space-between;
+}
+
+.register-btn > button{
+    width: 100%;
+    padding: 14px 20px;
+    margin: 8px 0 0 10px;
+    background-color: rgb(67, 119, 67);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.register-btn > a{
+    width: 100%;
+    padding: 14px 15px;
+    margin: 8px 10px 0 0;
+    background-color: rgb(190, 15, 15);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+}
+
+.register-btn > a:active{
+    text-decoration: none;
+    color: white;
+}
+
+.popup {
+    cursor: pointer;
+  }
+  
+  /* The actual popup (appears on top) */
+  .popup .popuptext {
+    visibility: hidden;
+    width: 350px;
+    max-height: 300px;
+    background-color: #555555;
+    color: #fff;
+    border-radius: 6px;
+    padding: 8px;
+    z-index: 1;
+    position: absolute;
+    bottom: 125%;
+    right: 0;
+    left: 0;
+    text-align: justify;
+    line-height: 150%;
+    font-size: 14px;
+    overflow-y: scroll;
+  }
+  
+  /* Popup arrow */
+  .popup .popuptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+  }
+  
+  /* Toggle this class when clicking on the popup container (hide and show the popup) */
+  .popup .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s
+  }
+  
+  /* Add animation (fade in the popup) */
+  @-webkit-keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+  
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+  }
+
+/* RECURSOS OPCIONAIS (CADASTRAR, ESQUECI MINHA SEHA) */
+
+.register-resources{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+}
+
+/* RODAPÉ */
+
+.footer{
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer > a{
+    text-decoration: none;
+    color: black;
+    font-size: 15px;
+}
+
+.footer > a:hover{
+    text-decoration: underline;
+}
+
+.footer > a:active{
+    color: black;
+}

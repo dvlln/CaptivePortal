@@ -13,14 +13,14 @@
             <div class="wrap-login">
                 <div class="login-header">
                     <img src="./Imagens/logoUnimed.png" alt="UNIMED SJC" >
-                    <p>CAPTIVE PORTAL</p>
+                    <p>Captive Portal</p>
                 </div>
                 <form class="login-form" action="" method="POST">
                     <div class="wrap-input" data-validate="E-mail é obrigatório">
-                        <input class="input" type="text" name="email" placeholder="E-mail">
+                        <input class="input" type="text" name="email" placeholder="E-mail" required>
                     </div>
                     <div class="wrap-input" data-validate="Senha é obrigatória">
-                        <input class="input" type="password" name="password" placeholder="Senha">
+                        <input class="input" type="password" name="password" placeholder="Senha" required>
                     </div>
                     <div class="login-btn">
                         <button type="submit" class="login-form-btn">Entrar</button>
@@ -28,13 +28,13 @@
                 </form>
                 <div class="login-resources">
                     <a href="#" class="btn">Esqueci minha senha</a>
-                    <a href="#" class="btn">Cadastre-se</a>
+                    <a href="register.php" class="btn">Criar uma conta</a>
                 </div>
             </div>
         </div>
         <div class="footer">
-            <div><a href="#" style="font-size:13px">Caso deseja remover o cadastro, clique aqui.</a></div>
-            <div><b style="font-size:15px">&copy; Todos os direitos reservados a Unimed São José dos Campos - Coorporativa de Trabalho Médico. 2023</b></div>
+            <a href="#" style="font-size:13px">Caso deseja remover o cadastro, clique aqui.</a>
+            <b style="font-size:15px">&copy; Todos os direitos reservados a Unimed São José dos Campos - Coorporativa de Trabalho Médico. 2023</b>
         </div>
     </div>
 </body>
