@@ -8,25 +8,37 @@
     <title>Captive Portal - UNIMED SJC</title>
 </head>
 <body>
-    <div class="container"> 
-        <div class="wrap-login">
-            <form action="" method="POST">
-                <h3 class="login-title">Esqueci minha senha</h3>
-                <div class="wrap-input" data-validate="E-mail é obrigatório">
-                    <input class="input" type="text" name="email" placeholder="E-mail">
+    <div class="container">
+        <div class="wrapper"> 
+            <div class="wrap-forgotPwd">
+                <div class="forgotPwd-header">
+                    <p>Esqueci minha senha</p>
                 </div>
-                <div class="login-btn">
-                    <button type="submit" class="login-form-btn">Enviar</button>
-                </div>
-                <div>
-                    <a href="login.php" class="btn">Voltar</a>
-                </div>
-            </form>
+                <form class="forgotPwd-form" action="" method="POST">
+                    <div class="wrap-input" data-validate="E-mail é obrigatório">
+                        <input class="input" type="text" name="email" placeholder="E-mail" required>
+                    </div>
+                    <div class="forgotPwd-btn">
+                        <a href="login.php" class="btn">Voltar</a>
+                        <button type="submit" class="forgotPwd-form-btn">Enviar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="footer">
+            <a href="#" style="font-size:13px">Caso deseja remover o cadastro, clique aqui.</a>
+            <b style="font-size:15px">&copy; Todos os direitos reservados a Unimed São José dos Campos - Coorporativa de Trabalho Médico. 2023</b>
         </div>
     </div>
-    <div class="footer">
-        <div>&copy; Todos os direitos reservados a Unimed São José dos Campos - Coorporativa de Trabalho Médico. 2023</div>
-        <div><a href="#">Caso deseja remover o cadastro, clique aqui.</a></div>
-    </div>
+
+
+
+
+    <script>
+        function myFunction() {
+            var popup = document.getElementById("myPopup");
+            popup.classList.toggle("show");
+        }
+    </script>
 </body>
 </html>

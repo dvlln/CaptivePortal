@@ -24,15 +24,10 @@
                     <div class="wrap-input" data-validate="Senha é obrigatória">
                         <input class="input" type="password" name="password" placeholder="Senha" required>
                     </div>
-                    <div class="wrap-checkbox" data-validate="Termo de uso é obrigatório">
-                        
-                    
+                    <div class="wrap-checkbox" data-validate="Termo de uso é obrigatório">                    
                         <label for="user_term" class="label-checkbox">Li e concordo com os <a href="#" class="popup" onclick="myFunction()">termos de uso e do usuário
-                            <span class="popuptext" id="myPopup">Comi o cu de quem ta lendo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in justo massa. Vestibulum justo nisi, commodo eu tempus vel, pretium eget orci. Cras in nisl odio. Nam viverra volutpat metus eget commodo. Donec quis nisl pellentesque, sodales nisi ac, blandit massa. Nunc tincidunt tortor quis arcu viverra imperdiet. Donec ac metus est. Maecenas euismod sapien elementum bibendum tincidunt. Pellentesque pellentesque nisl et est accumsan, rutrum scelerisque metus hendrerit. Fusce sed purus sed elit laoreet blandit faucibus facilisis est. Fusce commodo vel purus vel sollicitudin. Suspendisse dui ligula, porttitor non bibendum eu, pellentesque id magna. Donec ullamcorper purus dolor, nec vehicula ex tempus sit amet. Nunc luctus, enim et auctor consequat, urna turpis bibendum purus, non tincidunt ipsum nisi id turpis. Mauris imperdiet lorem velit, vitae vulputate odio dictum ac.</span>
+                            <span class="popuptext" id="myPopup">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in justo massa. Vestibulum justo nisi, commodo eu tempus vel, pretium eget orci. Cras in nisl odio. Nam viverra volutpat metus eget commodo. Donec quis nisl pellentesque, sodales nisi ac, blandit massa. Nunc tincidunt tortor quis arcu viverra imperdiet. Donec ac metus est. Maecenas euismod sapien elementum bibendum tincidunt. Pellentesque pellentesque nisl et est accumsan, rutrum scelerisque metus hendrerit. Fusce sed purus sed elit laoreet blandit faucibus facilisis est. Fusce commodo vel purus vel sollicitudin. Suspendisse dui ligula, porttitor non bibendum eu, pellentesque id magna. Donec ullamcorper purus dolor, nec vehicula ex tempus sit amet. Nunc luctus, enim et auctor consequat, urna turpis bibendum purus, non tincidunt ipsum nisi id turpis. Mauris imperdiet lorem velit, vitae vulputate odio dictum ac.</span>
                         </a>
-
-
-
                         <input type="checkbox" name="user_term" id="user_term">
                             <span class="checkmark"></span>
                         </label>

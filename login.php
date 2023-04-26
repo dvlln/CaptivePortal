@@ -27,7 +27,7 @@
                     </div>
                 </form>
                 <div class="login-resources">
-                    <a href="#" class="btn">Esqueci minha senha</a>
+                    <a href="forgotPassword.php" class="btn">Esqueci minha senha</a>
                     <a href="register.php" class="btn">Criar uma conta</a>
                 </div>
             </div>

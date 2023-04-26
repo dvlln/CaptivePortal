@@ -36,10 +36,7 @@ body{
 /* CABEÇALHO */
 
 .register-header{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    text-align: center;
 }
 
 .register-header > p{
@@ -49,7 +46,7 @@ body{
     font-weight: bold;
 }
 
-/* CONTEUDO */
+/* CONTEUDO: INPUTS */
 
 .wrap-input{
     margin: 8px 0;
@@ -64,10 +61,11 @@ body{
     box-sizing: border-box;
 }
 
+/* CONTEUDO: CHECKBOX */
+
 .wrap-checkbox{
     margin: 8px 0;
 }
-
 
 .label-checkbox {
     display: block;
@@ -83,52 +81,54 @@ body{
   }
   
 .label-checkbox input {
-position: absolute;
-opacity: 0;
-cursor: pointer;
-height: 0;
-width: 0;
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
 }
 
 .checkmark {
-position: absolute;
-top: 0;
-left: 0;
-height: 16px;
-width: 16px;
-background-color: #eee;
-border-radius: 3px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 16px;
+    width: 16px;
+    background-color: #eee;
+    border-radius: 3px;
 }
 
 .label-checkbox:hover input ~ .checkmark {
-background-color: #ccc;
+    background-color: #ccc;
 }
 
 .label-checkbox input:checked ~ .checkmark {
-background-color: #2196F3;
+    background-color: #2196F3;
 }
 
 .checkmark:after {
-content: "";
-position: absolute;
-display: none;
+    content: "";
+    position: absolute;
+    display: none;
 }
 
 .label-checkbox input:checked ~ .checkmark:after {
-display: block;
+    display: block;
 }
 
 .label-checkbox .checkmark:after {
-left: 4.5px;
-top: 3px;
-width: 2.5px;
-height: 5px;
-border: solid white;
-border-width: 0 3px 3px 0;
--webkit-transform: rotate(45deg);
--ms-transform: rotate(45deg);
-transform: rotate(45deg);
+    left: 4.5px;
+    top: 3px;
+    width: 2.5px;
+    height: 5px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
 }
+
+/* BOTÕES DE VOLTAR E CRIAR */
 
 .register-btn{
     display: flex;
@@ -151,7 +151,8 @@ transform: rotate(45deg);
     width: 100%;
     padding: 14px 15px;
     margin: 8px 10px 0 0;
-    background-color: rgb(190, 15, 15);
+    /* background-color: rgb(190, 15, 15); */
+    background-color: rgb(165, 13, 13);
     color: white;
     border: none;
     border-radius: 4px;
@@ -165,12 +166,13 @@ transform: rotate(45deg);
     color: white;
 }
 
+/* MODAL TERMO DE USO E DO USUARIO */
+
 .popup {
     cursor: pointer;
   }
-  
-  /* The actual popup (appears on top) */
-  .popup .popuptext {
+
+.popup .popuptext {
     visibility: hidden;
     width: 350px;
     max-height: 300px;
@@ -187,10 +189,9 @@ transform: rotate(45deg);
     line-height: 150%;
     font-size: 14px;
     overflow-y: scroll;
-  }
-  
-  /* Popup arrow */
-  .popup .popuptext::after {
+}
+
+.popup .popuptext::after {
     content: "";
     position: absolute;
     top: 100%;
@@ -199,33 +200,22 @@ transform: rotate(45deg);
     border-width: 5px;
     border-style: solid;
     border-color: #555 transparent transparent transparent;
-  }
-  
-  /* Toggle this class when clicking on the popup container (hide and show the popup) */
-  .popup .show {
+}
+
+.popup .show {
     visibility: visible;
     -webkit-animation: fadeIn 1s;
     animation: fadeIn 1s
-  }
-  
-  /* Add animation (fade in the popup) */
-  @-webkit-keyframes fadeIn {
+}
+
+@-webkit-keyframes fadeIn {
     from {opacity: 0;}
     to {opacity: 1;}
-  }
-  
-  @keyframes fadeIn {
+}
+
+@keyframes fadeIn {
     from {opacity: 0;}
     to {opacity:1 ;}
-  }
-
-/* RECURSOS OPCIONAIS (CADASTRAR, ESQUECI MINHA SEHA) */
-
-.register-resources{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 100%;
 }
 
 /* RODAPÉ */
