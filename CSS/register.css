@@ -84,8 +84,7 @@ body{
     position: absolute;
     opacity: 0;
     cursor: pointer;
-    height: 0;
-    width: 0;
+    left: 0;
 }
 
 .checkmark {
@@ -126,44 +125,6 @@ body{
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
-}
-
-/* BOTÕES DE VOLTAR E CRIAR */
-
-.register-btn{
-    display: flex;
-    justify-content: space-between;
-}
-
-.register-btn > button{
-    width: 100%;
-    padding: 14px 20px;
-    margin: 8px 0 0 10px;
-    background-color: rgb(67, 119, 67);
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    text-align: center;
-}
-
-.register-btn > a{
-    width: 100%;
-    padding: 14px 15px;
-    margin: 8px 10px 0 0;
-    /* background-color: rgb(190, 15, 15); */
-    background-color: rgb(165, 13, 13);
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    text-align: center;
-    text-decoration: none;
-}
-
-.register-btn > a:active{
-    text-decoration: none;
-    color: white;
 }
 
 /* MODAL TERMO DE USO E DO USUARIO */
@@ -216,6 +177,44 @@ body{
 @keyframes fadeIn {
     from {opacity: 0;}
     to {opacity:1 ;}
+}
+
+/* BOTÕES DE VOLTAR E CRIAR */
+
+.register-btn{
+    display: flex;
+    justify-content: space-between;
+}
+
+.register-btn > button{
+    width: 100%;
+    padding: 14px 20px;
+    margin: 8px 0 0 10px;
+    background-color: rgb(67, 119, 67);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.register-btn > a{
+    width: 100%;
+    padding: 14px 15px;
+    margin: 8px 10px 0 0;
+    /* background-color: rgb(190, 15, 15); */
+    background-color: rgb(165, 13, 13);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+}
+
+.register-btn > a:active{
+    text-decoration: none;
+    color: white;
 }
 
 /* RODAPÉ */

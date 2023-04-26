@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="CSS/forgotPassword.css" rel="stylesheet">
+    <link href="CSS/unsubscribe.css" rel="stylesheet">
     <title>Captive Portal - UNIMED SJC</title>
 </head>
 <body>
@@ -12,7 +12,7 @@
         <div class="wrapper"> 
             <div class="wrap-forgotPwd">
                 <div class="forgotPwd-header">
-                    <p>Esqueci minha senha</p>
+                    <p>Remover conta</p>
                 </div>
                 <form class="forgotPwd-form" action="" method="POST">
                     <div class="wrap-input" data-validate="E-mail é obrigatório">

@@ -33,7 +33,7 @@
             </div>
         </div>
         <div class="footer">
-            <a href="#" style="font-size:13px">Caso deseja remover o cadastro, clique aqui.</a>
+            <a href="unsubscribe.php" style="font-size:13px">Caso deseja remover o cadastro, clique aqui.</a>
             <b style="font-size:15px">&copy; Todos os direitos reservados a Unimed São José dos Campos - Coorporativa de Trabalho Médico. 2023</b>
         </div>
     </div>
