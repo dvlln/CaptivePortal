@@ -46,6 +46,11 @@ body{
     font-weight: bold;
 }
 
+.register-header > img{
+    width: auto;
+    height: 120px;
+}
+
 /* CONTEUDO: INPUTS */
 
 .wrap-input{
@@ -136,7 +141,7 @@ body{
 .popup .popuptext {
     visibility: hidden;
     width: 350px;
-    max-height: 300px;
+    max-height: 600px;
     background-color: #555555;
     color: #fff;
     border-radius: 6px;

@@ -12,6 +12,7 @@
         <div class="wrapper"> 
             <div class="wrap-forgotPwd">
                 <div class="forgotPwd-header">
+                    <img src="./Imagens/logoUnimed.png" alt="UNIMED SJC" >
                     <p>Esqueci minha senha</p>
                 </div>
                 <form class="forgotPwd-form" action="" method="POST">

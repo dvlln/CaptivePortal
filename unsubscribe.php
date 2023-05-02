@@ -10,17 +10,18 @@
 <body>
     <div class="container">
         <div class="wrapper"> 
-            <div class="wrap-forgotPwd">
-                <div class="forgotPwd-header">
+            <div class="wrap-unsub">
+                <div class="unsub-header">
+                    <img src="./Imagens/logoUnimed.png" alt="UNIMED SJC" >
                     <p>Remover conta</p>
                 </div>
-                <form class="forgotPwd-form" action="" method="POST">
+                <form class="unsub-form" action="" method="POST">
                     <div class="wrap-input" data-validate="E-mail é obrigatório">
                         <input class="input" type="text" name="email" placeholder="E-mail" required>
                     </div>
-                    <div class="forgotPwd-btn">
+                    <div class="unsub-btn">
                         <a href="login.php" class="btn">Voltar</a>
-                        <button type="submit" class="forgotPwd-form-btn">Enviar</button>
+                        <button type="submit" class="unsub-form-btn">Enviar</button>
                     </div>
                 </form>
             </div>

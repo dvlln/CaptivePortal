@@ -16,7 +16,7 @@ body{
 
 .wrapper{
     width: 30%;
-    height: 70vh;
+    height: 65vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -46,6 +46,11 @@ body{
     color: #333;
     font-family: arial;
     font-weight: bold;
+}
+
+.login-header > img{
+    width: auto;
+    height: 120px;
 }
 
 .login-resources{
