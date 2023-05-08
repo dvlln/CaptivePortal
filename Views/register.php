@@ -1,38 +1,22 @@
-<?php
-
-
-
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="../../CSS/register.css" rel="stylesheet">
+    <link href="CSS/register.css" rel="stylesheet">
     <title>Captive Portal - UNIMED SJC</title>
 </head>
 <body>
-    <?php 
-		require_once "../../vendor/autoload.php";
-	?>
     <div class="container">
         <div class="wrapper"> 
             <div class="wrap-register">
                 <div class="register-header">
-                    <img src="../../Imagens/logoUnimed.png" alt="UNIMED SJC" >
+                    <img src="Imagens/logoUnimed.png" alt="UNIMED SJC" >
                     <p>Registrar-se</p>
                 </div>
 
-                <?php
-                    $controller = new \SRC\Controller\userController();
-                    if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['cpf']) && isset($_POST['telefone']) && isset($_POST['password']) ) {
-                        $controller->cadastrar();
-                    }else{
-
-                    }
-                ?>
+                
 
                 <form id="registerForm" class="register-form" action="" method="POST">
                     <div class="wrap-input" data-validate="Nome é obrigatório">
@@ -50,7 +34,7 @@
                     <div class="wrap-input" data-validate="Senha é obrigatória">
                         <input class="input" type="password" name="password" placeholder="Senha" required>
                     </div>
-                    <!-- <div class="wrap-checkbox" data-validate="Termo de uso é obrigatório">                    
+                    <div class="wrap-checkbox" data-validate="Termo de uso é obrigatório">                    
                         <label for="user_term" class="label-checkbox">Eu aceito o <a href="#" class="popup" onclick="function_user_agreement()">termos de consentimento de uso
                             <span class="popuptext" id="popup_user_agreement">
                                 Pelo presente Termo de Uso e Consentimento, autorizo o tratamento dos dados pessoais cadastrados, para finalidades:
@@ -87,23 +71,27 @@
                         <input type="checkbox" name="user_data" id="user_data" required>
                             <span class="checkmark_data"></span>
                         </label>
-                    </div> -->
+                    </div>
                     <div class="register-btn">
-                        <a href="login.php" class="btn">Voltar</a>
-                        <button type="submit" class="register-form-btn">Criar</button>
+                            <a href="login.php" class="btn">Voltar</a>
+                            <button type="submit" class="register-form-btn">Criar</button>
                     </div>
                 </form>
             </div>
         </div>
         <div class="footer">
             <a href="unsubscribe.php" style="font-size:13px">Caso deseja remover o cadastro, clique aqui.</a>
-            <b style="font-size:15px">&copy; Todos os direitos reservados a Unimed São José dos Campos - Coorporativa de Trabalho Médico. 2023</b>
+            <b style="font-size:15px">Desenvolvido por Unimed São José dos Campos - Cooperativa de Trabalho Médico &copy; 2023 - todos os direitos reservados</b>
         </div>
     </div>
 
     <script>
         // FUNÇÃO PARA ATIVAR E DESATIVAR O MODAL "TERMO DE USO E CONSENTIMENTO" AO CLICAR NO "LINK"
         function function_user_agreement() {
+            var popupData = document.getElementById("popup_user_data");
+            if(popupData.classList.contains('show')){
+                popupData.classList.toggle('show');
+            }
             document.getElementById("popup_user_agreement").classList.toggle("show");
         }
 
@@ -123,6 +111,10 @@
 
         // FUNÇÃO PARA ATIVAR E DESATIVAR O MODAL "TERMO DE EXCLUSÃO DE DADOS" AO CLICAR NO "LINK"
         function function_user_data() {
+            var popupAgree = document.getElementById("popup_user_agreement");
+            if(popupAgree.classList.contains('show')){
+                popupAgree.classList.toggle('show');
+            }
             document.getElementById("popup_user_data").classList.toggle("show");
         }
 

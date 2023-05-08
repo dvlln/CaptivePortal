@@ -15,8 +15,9 @@ body{
 }
 
 .wrapper{
-    width: 30%;
-    height: 70vh;
+    width: 45%;
+    height: 80vh;
+    margin-bottom: 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -48,13 +49,20 @@ body{
 
 .register-header > img{
     width: auto;
-    height: 120px;
+    height: 100px;
+}
+
+/* FORMULARIO */
+.register-form{
+    display: flex;
+    flex-wrap: wrap;
+
 }
 
 /* CONTEUDO: INPUTS */
 
 .wrap-input{
-    margin: 8px 0;
+    margin: 8px 8px;
 }
 
 .input {
@@ -69,7 +77,8 @@ body{
 /* CONTEUDO: CHECKBOX */
 
 .wrap-checkbox{
-    margin: 8px 0;
+    margin: 0 8px;
+    flex-basis: 100%;
 }
 
 .label-checkbox {
@@ -180,14 +189,14 @@ body{
 
 .popup .popuptext {
     visibility: hidden;
-    width: 350px;
-    max-height: 600px;
+    max-width: 400px;
+    max-height: 350px;
     background-color: #555555;
     color: #fff;
     border-radius: 6px;
     padding: 8px;
-    z-index: 1;
     position: absolute;
+    z-index: 1;
     bottom: 125%;
     right: 0;
     left: 0;
@@ -229,6 +238,8 @@ body{
 .register-btn{
     display: flex;
     justify-content: space-between;
+    flex-basis: 100%;
+    margin: 0 8px;
 }
 
 .register-btn > button{

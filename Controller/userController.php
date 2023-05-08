@@ -1,7 +1,6 @@
 <?php
 
 namespace SRC\Controller;
-require_once "../vendor/autoload.php";
 
     class userController{
         public function cadastrar(){

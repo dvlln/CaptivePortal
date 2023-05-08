@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="../CSS/login.css" rel="stylesheet">
+    <link href="CSS/login.css" rel="stylesheet">
     <title>Captive Portal - UNIMED SJC</title>
 </head>
 <body>
@@ -12,7 +12,7 @@
         <div class="wrapper"> 
             <div class="wrap-login">
                 <div class="login-header">
-                    <img src="../Imagens/logoUnimed.png" alt="UNIMED SJC" >
+                    <img src="Imagens/logoUnimed.png" alt="UNIMED SJC" >
                     <p>Captive Portal</p>
                 </div>
                 <form class="login-form" action="" method="POST">
@@ -34,7 +34,7 @@
         </div>
         <div class="footer">
             <a href="unsubscribe.php" style="font-size:13px">Caso deseja remover o cadastro, clique aqui.</a>
-            <b style="font-size:15px">&copy; Todos os direitos reservados a Unimed São José dos Campos - Coorporativa de Trabalho Médico. 2023</b>
+            <b style="font-size:15px">Desenvolvido por Unimed São José dos Campos - Cooperativa de Trabalho Médico &copy; 2023 - todos os direitos reservados</b>
         </div>
     </div>
 </body>
