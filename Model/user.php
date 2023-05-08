@@ -1,25 +1,17 @@
 <?php
-
-namespace SRC\Model;
-
-	class Usuario{
+	class User{
 		protected $id;
 		private $nome;
 		private $email;
 		private $cpf;
 		private $telefone;
 		private $senha;
-		private $salt= "UKDH9H2965pYRlU";
 
         public function getId(){
 			return $this->id;
 		}
 		public function setId($id){
 			$this->id = $id;
-		}
-
-		public function getSalt(){
-			return $this->salt;
 		}
 
         public function getNome(){
