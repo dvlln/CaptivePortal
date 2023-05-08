@@ -1,7 +1,3 @@
-<?php
-    include '../Controller/userController.php';
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -12,6 +8,16 @@
     <title>Captive Portal - UNIMED SJC</title>
 </head>
 <body>
+    <?php
+        include '../Controller/userController.php';
+
+        $controller = new userController();
+        if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['cpf']) && isset($_POST['telefone']) && isset($_POST['password'])) {
+            $controller->cadastrar();
+        }
+    ?>
+
+
     <div class="container">
         <div class="wrapper"> 
             <div class="wrap-register">
@@ -19,14 +25,6 @@
                     <img src="Imagens/logoUnimed.png" alt="UNIMED SJC" >
                     <p>Registrar-se</p>
                 </div>
-
-                <?php
-                    $controller = new userController();
-                    if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['cpf']) && isset($_POST['telefone']) && isset($_POST['password'])) {
-                        $controller->cadastrar();
-                    }
-                ?>
-
                 <form id="registerForm" class="register-form" action="" method="POST">
                     <div class="wrap-input" data-validate="Nome é obrigatório">
                         <input class="input" type="text" name="name" placeholder="Nome" required>

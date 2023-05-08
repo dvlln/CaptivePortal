@@ -2,8 +2,37 @@
     include '../Model/user.php';
     include '../Model/conexao.php';
     class userController{
+        public function login(){
+            $u = new user();
+
+            $u->setEmail($_POST['email']);
+            $u->setSenha($_POST['password']);
+
+            try{
+                $sql = "SELECT * FROM user WHERE email=?";
+                $tmp = conexao::getConexao()->prepare($sql);
+                $tmp->bindValue(1, $u->getEmail());
+                $tmp->execute();
+
+                $user = $tmp->fetch(\PDO::FETCH_ASSOC);
+
+                if(isset($user['email'])){
+                    if(($user['email'] == $u->getEmail()) && ($user['password'] == $u->getSenha())){
+                        header("Location: /CaptivePortal/Views/teste.php");
+                    }else{
+                        $_SESSION['error'] = "Usuário ou senha invalidos";
+                        return false;
+                    }
+                }else{
+                    $_SESSION['error'] = "Usuário inexistente";
+                    return false;
+                }
+            } catch(\PDOException $error){
+                $_SESSION['error'] = ($error);
+                return false;
+            }
+        }
         public function cadastrar(){
-            if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['cpf']) && isset($_POST['telefone']) && isset($_POST['password']) ) {
                 $u = new user();
 
                 $u->setNome($_POST['name']);
@@ -24,11 +53,8 @@
     
                     header("Location: /CaptivePortal/Views/login.php");
                 } catch(\PDOException $error){
-                    return $error;
+                    return var_dump($error);
                 }
-            }else{
-                header("Location: /CaptivePortal/Views/register.php");
-            }
         }
     }
 
