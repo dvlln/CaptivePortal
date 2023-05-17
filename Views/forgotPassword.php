@@ -8,6 +8,15 @@
     <title>Captive Portal - UNIMED SJC</title>
 </head>
 <body>
+    <?php
+        include '../Controller/mailController.php';
+
+        $controller = new mailController();
+        if (isset($_POST['email'])) {
+            $controller->mailing();
+        }
+    ?>
+
     <div class="container">
         <div class="wrapper"> 
             <div class="wrap-forgotPwd">
@@ -15,6 +24,11 @@
                     <img src="Imagens/logoUnimed.png" alt="UNIMED SJC" >
                     <p>Esqueci minha senha</p>
                 </div>
+
+                <?php if(isset($_SESSION['error'])){ ?>
+                        <p><?php echo $_SESSION['error']; ?></p>
+                <?php } ?>
+
                 <form class="forgotPwd-form" action="" method="POST">
                     <div class="wrap-input" data-validate="E-mail é obrigatório">
                         <input class="input" type="text" name="email" placeholder="E-mail" required>

@@ -13,7 +13,7 @@
             <div class="wrap-login">
                 <div class="login-header">
                     <img src="Imagens/logoUnimed.png" alt="UNIMED SJC" >
-                    <p>LOGIN REALIZADO COM SUCESSO!!!</p>
+                    <p>EMAIL ENVIADO COM SUCESSO!!!</p>
                 </div>
             </div>
         </div>
