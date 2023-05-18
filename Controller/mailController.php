@@ -19,6 +19,7 @@ class mailController{
         $phpmailer->Port = 2525;
         $phpmailer->Username = 'cbfd12c278dd0e';
         $phpmailer->Password = '354a5cee4d6bb8';
+        $phpmailer->CharSet = "UTF-8"; 
 
         // PRESET
         $mail = new mail();
