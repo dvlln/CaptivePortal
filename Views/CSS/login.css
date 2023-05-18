@@ -84,6 +84,11 @@ body{
     cursor: pointer;
 }
 
+.login-btn > button:hover{
+    transition: all 0.8s;
+    background-color: rgb(51, 88, 51);
+}
+
 a{
     text-decoration: none;
     color: black;

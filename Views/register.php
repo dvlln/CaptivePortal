@@ -47,9 +47,9 @@
                                 Pelo presente Termo de Uso e Consentimento, autorizo o tratamento dos dados pessoais cadastrados, para finalidades:
                                 <ul>
                                     <li>Envio de mensagens e notificações (promoções, notícias e demais comunicados pertinentes)</li>
-                                    <li/>Análise do perfil e comportamento de usuários</li>
-                                    <li/>Defesa da empresa frente a processos administrativos e judiciais, como o cumprimento da Lei do Marco Civil da Internet</li>
-                                    <li/>Enriquecimento de dados</li>
+                                    <li>Análise do perfil e comportamento de usuários</li>
+                                    <li>Defesa da empresa frente a processos administrativos e judiciais, como o cumprimento da Lei do Marco Civil da Internet</li>
+                                    <li>Enriquecimento de dados</li>
                                 </ul>
                                 Nos termos da Política de Privacidade constante abaixo.
                                 <br/>Declaro que este consentimento se deu de forma livre, expressa, individual, clara, específica e legítima e que estou ciente que caso queira revogar a presente autorização basta acessar “formulário”.

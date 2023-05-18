@@ -23,6 +23,7 @@ class mailController{
         // PRESET
         $mail = new mail();
         $mail->setReceiver($_POST['email']);
+        $mail->setContent(file_get_contents('../views/layout/mailForgotPassword.html'));
 
         $phpmailer->IsHTML(true);
         $phpmailer->SetFrom($mail->getSender(), 'TESTE');
