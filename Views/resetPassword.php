@@ -4,38 +4,45 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="CSS/forgotPassword.css" rel="stylesheet">
+    <link href="CSS/resetPassword.css" rel="stylesheet">
     <title>Captive Portal - UNIMED SJC</title>
 </head>
 <body>
     <?php
-        include '../Controller/mailController.php';
+        include '../Controller/userController.php';
 
-        $controller = new mailController();
-        if (isset($_POST['email'])) {
-            $controller->mailing();
+        $controller = new userController();
+        if (isset($_GET['email']) && isset($_POST['password'])){
+            if($_POST['password'] === $_POST['passwordConfirmated']){
+                $controller->redefinirSenha();
+            } else{
+                $_SESSION['error'] = 'Senhas não correspondem';
+            }
         }
     ?>
 
     <div class="container">
         <div class="wrapper"> 
-            <div class="wrap-forgotPwd">
-                <div class="forgotPwd-header">
+            <div class="wrap-resetPwd">
+                <div class="resetPwd-header">
                     <img src="Imagens/logoUnimed.png" alt="UNIMED SJC" >
-                    <p>Esqueci minha senha</p>
+                    <p>Trocar de senha</p>
                 </div>
 
                 <?php if(isset($_SESSION['error'])){ ?>
                         <p><?php echo $_SESSION['error']; ?></p>
                 <?php } ?>
 
-                <form class="forgotPwd-form" method="POST">
-                    <div class="wrap-input" data-validate="E-mail é obrigatório">
-                        <input class="input" type="text" name="email" placeholder="E-mail" required>
+                <form class="resetPwd-form" method="POST">
+                    <div class="wrap-input" data-validate="A senha é obrigatório">
+                        <input class="input" type="password" name="password" placeholder="Senha" required>
                     </div>
-                    <div class="forgotPwd-btn">
+                    <div class="wrap-input" data-validate="A senha de confirmação é obrigatório">
+                        <input class="input" type="password" name="passwordConfirmated" placeholder="Senha de confirmação" required>
+                    </div>
+                    <div class="resetPwd-btn">
                         <a href="login.php" class="btn">Voltar</a>
-                        <button type="submit" class="forgotPwd-form-btn">Enviar</button>
+                        <button type="submit" class="resetPwd-form-btn">Enviar</button>
                     </div>
                 </form>
             </div>

@@ -25,6 +25,11 @@
                     <img src="Imagens/logoUnimed.png" alt="UNIMED SJC" >
                     <p>Registrar-se</p>
                 </div>
+                
+                <?php if(isset($_SESSION['error'])){ ?>
+                        <p><?php echo $_SESSION['error']; ?></p>
+                <?php } ?>
+
                 <form id="registerForm" class="register-form" action="" method="POST">
                     <div class="wrap-input" data-validate="Nome é obrigatório">
                         <input class="input" type="text" name="name" placeholder="Nome" required>

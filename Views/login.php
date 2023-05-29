@@ -10,6 +10,7 @@
 <body>
     <?php
         include '../Controller/userController.php';
+        
 
         $controller = new userController();
         if (isset($_POST['email']) && isset($_POST['password'])) {
@@ -28,7 +29,9 @@
                 <?php if(isset($_SESSION['error'])){ ?>
                         <p><?php echo $_SESSION['error']; ?></p>
                 <?php } ?>
-
+                <?php if(isset($_SESSION['status'])){ ?>
+                        <p><?php echo $_SESSION['status']; ?></p>
+                <?php } ?>
                 
                 
                 <form class="login-form" action="" method="POST">
