@@ -13,7 +13,7 @@
 
         $controller = new mailController();
         if (isset($_POST['email'])) {
-            $controller->mailing();
+            $controller->redefinirSenha();
         }
     ?>
 

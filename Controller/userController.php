@@ -86,6 +86,14 @@
                 return false;
             }
         }
+
+        public function descadastrar(){
+            session_unset();
+            $u = new user();
+
+            $u->setEmail($_GET['email']);
+            $u->setSenha($_POST['password']);
+        }
     }
 
 ?>

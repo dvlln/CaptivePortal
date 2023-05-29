@@ -12,9 +12,7 @@
         include '../Controller/mailController.php';
 
         $controller = new mailController();
-        if (isset($_POST['email'])) {
-            $controller->desinscrever();
-        }
+        $controller->desinscrever();
     ?>
 
     <div class="container">
@@ -29,15 +27,7 @@
                         <p><?php echo $_SESSION['error']; ?></p>
                 <?php } ?>
 
-                <form class="unsub-form" action="" method="POST">
-                    <div class="wrap-input" data-validate="E-mail é obrigatório">
-                        <input class="input" type="text" name="email" placeholder="E-mail" required>
-                    </div>
-                    <div class="unsub-btn">
-                        <a href="login.php" class="btn">Voltar</a>
-                        <button type="submit" class="unsub-form-btn">Enviar</button>
-                    </div>
-                </form>
+                <a href="login.php" class="btn">Voltar</a>
             </div>
         </div>
         <div class="footer">
