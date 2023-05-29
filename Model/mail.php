@@ -20,7 +20,7 @@ class mail{
 			return $this->subject;
 		}
         public function getContent($email){
-			$this->content = '<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Forgot Password</title></head><body style="margin:0;width:100vw;height:100vh;font:20px Calibri;>';
+			$this->content = '<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Forgot Password</title><body style="margin:0;width:100vw;height:100vh;font:20px Calibri;">';
 			$this->content .= '<div style="width:100%;height:100%;display:flex;flex-direction:column;justify-content:space-between;"><div style="display:flex;flex-direction:column;margin:20px;">';
 			$this->content .= '<h2>Olá :]</h2>';
 			$this->content .= '<p>Ficamos sabendo que você esqueceu a senha<br/>Mas não se preocupe, daremos um jeitinho para você</p>';

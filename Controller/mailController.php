@@ -26,8 +26,6 @@ class mailController{
         // PRESET
         $mail = new mail();
         $mail->setReceiver($_POST['email']);
-        // $_SESSION['email'] = ''.$mail->getReceiver();
-        // $mail->setContent(file_get_contents('http://localhost/captiveportal/views/forgotpasswordlayout.php'));
 
         $phpmailer->IsHTML(true);
         $phpmailer->SetFrom($mail->getSender(), 'TESTE');
