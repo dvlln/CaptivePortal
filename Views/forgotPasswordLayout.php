@@ -4,10 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="http://localhost/captiveportal/views/css/layout/mailforgotpassword.css" rel="stylesheet">
+    <link href="http://localhost/captiveportal/views/css/forgotpasswordLayout.css" rel="stylesheet">
     <title>Forgot Password</title>
 </head>
 <body>
+    <?php
+        session_start();
+
+        $email = $_SESSION['email'];
+    ?>
     <div class="wrapper">
         <div class="content">
             <h2>Olá :]</h2>
@@ -23,4 +28,3 @@
     </div>
 </body>
 </html>
-!

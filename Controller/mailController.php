@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 include '../Model/mail.php';
 include '../Model/user.php';
 
@@ -24,21 +26,23 @@ class mailController{
         // PRESET
         $mail = new mail();
         $mail->setReceiver($_POST['email']);
-        $mail->setContent(file_get_contents('../views/layout/mailForgotPassword.html'));
+        // $_SESSION['email'] = ''.$mail->getReceiver();
+        // $mail->setContent(file_get_contents('http://localhost/captiveportal/views/forgotpasswordlayout.php'));
 
         $phpmailer->IsHTML(true);
         $phpmailer->SetFrom($mail->getSender(), 'TESTE');
         $phpmailer->AddAddress($mail->getReceiver(), 'FULANO');
         $phpmailer->Subject = $mail->getSubject();
-        $content = $mail->getContent();
+        $content = $mail->getContent($mail->getReceiver());
 
 
         // ENVIO
-        $phpmailer->MsgHTML($content); 
+        $phpmailer->MsgHTML($content);
         if(!$phpmailer->Send()) {
             $_SESSION['error'] = $phpmailer->ErrorInfo;
             return false;
         } else {
+            session_destroy();
             return true;
         }
     }

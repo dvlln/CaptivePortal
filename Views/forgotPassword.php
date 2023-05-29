@@ -29,7 +29,7 @@
                         <p><?php echo $_SESSION['error']; ?></p>
                 <?php } ?>
 
-                <form class="forgotPwd-form" action="" method="POST">
+                <form class="forgotPwd-form" method="POST">
                     <div class="wrap-input" data-validate="E-mail é obrigatório">
                         <input class="input" type="text" name="email" placeholder="E-mail" required>
                     </div>
