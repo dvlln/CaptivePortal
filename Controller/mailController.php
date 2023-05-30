@@ -20,8 +20,8 @@ class mailController{
         $phpmailer->Host = 'sandbox.smtp.mailtrap.io';
         $phpmailer->SMTPAuth = true;
         $phpmailer->Port = 2525;
-        $phpmailer->Username = 'cbfd12c278dd0e';
-        $phpmailer->Password = '354a5cee4d6bb8';
+        $phpmailer->Username = '017b415f8e140d';
+        $phpmailer->Password = '36dc0603908e82';
         $phpmailer->CharSet = "UTF-8";
 
         // CONEXAO BANCO
