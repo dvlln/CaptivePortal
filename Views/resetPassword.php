@@ -10,6 +10,7 @@
 <body>
     <?php
         include '../Controller/userController.php';
+        session_unset();
 
         $controller = new userController();
         if (isset($_GET['email']) && isset($_POST['password'])){
@@ -20,6 +21,8 @@
             }
         }
     ?>
+
+    <img src="Imagens/wallpaper.jpg" class="wallpaper" alt="wallpaper">
 
     <div class="container">
         <div class="wrapper"> 

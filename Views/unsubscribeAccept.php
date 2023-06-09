@@ -9,23 +9,24 @@
 </head>
 <body>
     <?php
-        include '../Controller/mailController.php';
+        include '../Controller/userController.php';
+        session_unset();
 
-        $controller = new mailController();
-        $controller->desinscrever();
+        $controller = new userController();
+        if (isset($_GET['email'])) {
+            $controller->descadastrar();
+        }
     ?>
+
+    <img src="Imagens/wallpaper.jpg" class="wallpaper" alt="wallpaper">
 
     <div class="container">
         <div class="wrapper"> 
             <div class="wrap-unsub">
                 <div class="unsub-header">
                     <img src="Imagens/logoUnimed.png" alt="UNIMED SJC" >
-                    <p>Remover conta</p>
+                    <p>Conta removida com sucesso</p>
                 </div>
-
-                <?php if(isset($_SESSION['error'])){ ?>
-                        <p><?php echo $_SESSION['error']; ?></p>
-                <?php } ?>
 
                 <a href="login.php" class="btn">Voltar</a>
             </div>

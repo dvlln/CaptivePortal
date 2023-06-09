@@ -8,6 +8,7 @@
     <title>Captive Portal - UNIMED SJC</title>
 </head>
 <body>
+    <img src="Imagens/wallpaper.jpg" class="wallpaper" alt="wallpaper">
     <div class="container">
         <div class="wrapper"> 
             <div class="wrap-login">

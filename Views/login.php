@@ -10,13 +10,15 @@
 <body>
     <?php
         include '../Controller/userController.php';
-        
+        session_unset();       
 
         $controller = new userController();
         if (isset($_POST['email']) && isset($_POST['password'])) {
             $controller->login();
         }
     ?>
+
+    <img src="Imagens/wallpaper.jpg" class="wallpaper" alt="wallpaper">
 
 
     <div class="container">

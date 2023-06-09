@@ -5,17 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="CSS/register.css" rel="stylesheet">
+    <script src="../icons/fontawesome" crossorigin="anonymous"></script>
+    <link rel="" href="">
     <title>Captive Portal - UNIMED SJC</title>
 </head>
 <body>
     <?php
         include '../Controller/userController.php';
+        session_unset();
 
         $controller = new userController();
         if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['cpf']) && isset($_POST['telefone']) && isset($_POST['password'])) {
             $controller->cadastrar();
         }
     ?>
+
+    <img src="Imagens/wallpaper.jpg" class="wallpaper" alt="wallpaper">
 
 
     <div class="container">
@@ -27,7 +32,13 @@
                 </div>
                 
                 <?php if(isset($_SESSION['error'])){ ?>
-                        <p><?php echo $_SESSION['error']; ?></p>
+                    <div class="error" onclick="closeToast()" id="toastError">
+                        <img src="../icons/error.png"></img>
+                        <div>
+                            <p>Error</p>
+                            <span>Tente novamente!</span>
+                        </div>
+                    </div>    
                 <?php } ?>
 
                 <form id="registerForm" class="register-form" action="" method="POST">
@@ -38,18 +49,18 @@
                         <input class="input" type="text" name="email" placeholder="E-mail" required>
                     </div>
                     <div class="wrap-input" data-validate="CPF é obrigatório">
-                        <input class="input" type="text" name="cpf" placeholder="CPF" required>
+                        <input id="inputCPF" class="input" type="text" name="cpf" placeholder="CPF" required>
                         <?php if(isset($_SESSION['cpfError'])){ ?>
-                            <p><?php echo $_SESSION['cpfError']; ?></p>
+                            <p class="active"><?php echo $_SESSION['cpfError']; ?></p>
                         <?php } ?>
                     </div>
                     <div class="wrap-input" data-validate="Telefone é obrigatório">
                         <input class="input" type="text" name="telefone" placeholder="Telefone" required>
                     </div>
                     <div class="wrap-input" data-validate="Senha é obrigatória">
-                        <input class="input" type="password" name="password" placeholder="Senha" required>
+                        <input id="inputPassword" class="input" type="password" name="password" placeholder="Senha" required>
                         <?php if(isset($_SESSION['passError'])){ ?>
-                            <p><?php echo $_SESSION['passError']; ?></p>
+                            <p class="active"><?php echo $_SESSION['passError']; ?></p>
                         <?php } ?>
                     </div>
                     <div class="wrap-checkbox" data-validate="Termo de uso é obrigatório">                    
@@ -103,52 +114,19 @@
         </div>
     </div>
 
+    <script src="../functions/toasted.js"></script>
+    <script src="../functions/popup_user_data.js"></script>
+    <script src="../functions/popup_agreement.js"></script>
     <script>
-        // FUNÇÃO PARA ATIVAR E DESATIVAR O MODAL "TERMO DE USO E CONSENTIMENTO" AO CLICAR NO "LINK"
-        function function_user_agreement() {
-            var popupData = document.getElementById("popup_user_data");
-            if(popupData.classList.contains('show')){
-                popupData.classList.toggle('show');
-            }
-            document.getElementById("popup_user_agreement").classList.toggle("show");
-        }
+        <?php if(isset($_SESSION['cpfError'])){ ?>
+            var input = document.getElementById("inputCPF");
+            input.style.borderColor = 'red';
+        <?php } ?>
 
-        // FUNÇÃO AUTO INVOCAVEL(IIFE) PARA FECHAR O MODAL "TERMO DE USO E CONSENTIMENTO" AO CLICAR EM QUALQUER LUGAR FORA DO FORMULARIO
-        (function (){
-            document.addEventListener('click', (event) => {
-                var popup = document.getElementById("popup_user_agreement");
-                var form = document.getElementById("registerForm")
-
-                if(!(form.contains(event.target))){
-                    if(popup.classList.contains('show')){
-                        popup.classList.toggle('show');
-                    }
-                }
-            });
-        })();
-
-        // FUNÇÃO PARA ATIVAR E DESATIVAR O MODAL "TERMO DE EXCLUSÃO DE DADOS" AO CLICAR NO "LINK"
-        function function_user_data() {
-            var popupAgree = document.getElementById("popup_user_agreement");
-            if(popupAgree.classList.contains('show')){
-                popupAgree.classList.toggle('show');
-            }
-            document.getElementById("popup_user_data").classList.toggle("show");
-        }
-
-        // FUNÇÃO AUTO INVOCAVEL(IIFE) PARA FECHAR O MODAL "TERMO DE EXCLUSÃO DE DADOS" AO CLICAR EM QUALQUER LUGAR FORA DO FORMULARIO
-        (function (){
-            document.addEventListener('click', (event) => {
-                var popup = document.getElementById("popup_user_data");
-                var form = document.getElementById("registerForm")
-
-                if(!(form.contains(event.target))){
-                    if(popup.classList.contains('show')){
-                        popup.classList.toggle('show');
-                    }
-                }
-            });
-        })();
+        <?php if(isset($_SESSION['passError'])){ ?>
+            var input = document.getElementById("inputPassword");
+            input.style.borderColor = 'red';
+        <?php } ?>
     </script>
 </body>
 </html>

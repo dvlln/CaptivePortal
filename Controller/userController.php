@@ -8,7 +8,6 @@
     class userController{
         public function login(){
             session_unset();
-
             $u = new user();
 
             $u->setEmail($_POST['email']);
@@ -26,7 +25,7 @@
                     if(($user['email'] == $u->getEmail()) && ($user['senha'] == $u->getSenha())){
                         header("Location: /CaptivePortal/Views/teste.php");
                     }else{
-                        $_SESSION['error'] = "Usuário ou senha invalidos";
+                        $_SESSION['error'] = "Usuário ou senha inválidos";
                         return false;
                     }
                 }else{
@@ -52,15 +51,15 @@
                 if(!validaCPF($u->getCPF())){
                     if(!validaSenha($u->getSenha())){
                         $_SESSION['passError'] = 'Senha invalida!';
-                        $_SESSION['cpfError'] = 'CPF invalido!';
+                        $_SESSION['cpfError'] = 'CPF inválido!';
                         return false;
                     }else{
-                        $_SESSION['cpfError'] = 'CPF invalido!';
+                        $_SESSION['cpfError'] = 'CPF inválido!';
                         return false;
                     }
                 }else{
                     if(!validaSenha($u->getSenha())){
-                        $_SESSION['passError'] = 'Senha invalida!';
+                        $_SESSION['passError'] = 'Senha invlida!';
                         return false;
                     }
                 }
@@ -78,7 +77,7 @@
                     $_SESSION['status'] = "Cadastro realizado";
                     header("Location: /CaptivePortal/Views/login.php");
                 } catch(\PDOException $error){
-                    $_SESSION['error'] = ($error);
+                    $_SESSION['error'] = $error;
                     return false;
                 }
         }
@@ -110,7 +109,11 @@
             $u = new user();
 
             $u->setEmail($_GET['email']);
-            $u->setSenha($_POST['password']);
+            
+            $sql = "DELETE FROM user WHERE email=?";
+            $tmp = conexao::getConexao()->prepare($sql);
+            $tmp->bindValue(1, $u->getEmail());
+            $tmp->execute();
         }
     }
 

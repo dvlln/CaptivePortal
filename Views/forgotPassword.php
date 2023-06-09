@@ -10,12 +10,15 @@
 <body>
     <?php
         include '../Controller/mailController.php';
+        session_unset();
 
         $controller = new mailController();
         if (isset($_POST['email'])) {
             $controller->redefinirSenha();
         }
     ?>
+
+    <img src="Imagens/wallpaper.jpg" class="wallpaper" alt="wallpaper">
 
     <div class="container">
         <div class="wrapper"> 
