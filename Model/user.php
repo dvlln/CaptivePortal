@@ -1,20 +1,17 @@
 <?php
-	class Usuario{
+	class User{
 		protected $id;
 		private $nome;
 		private $email;
+		private $cpf;
+		private $telefone;
 		private $senha;
-		private $salt= "UKDH9H2965pYRlU";
 
         public function getId(){
 			return $this->id;
 		}
 		public function setId($id){
 			$this->id = $id;
-		}
-
-		public function getSalt(){
-			return $this->salt;
 		}
 
         public function getNome(){
@@ -29,6 +26,18 @@
 		}
 		public function setEmail($email){
 			$this->email = $email;
+		}
+		public function getCPF(){
+			return $this->cpf;
+		}
+		public function setCPF($cpf){
+			$this->cpf = $cpf;
+		}
+		public function getTelefone(){
+			return $this->telefone;
+		}
+		public function setTelefone($telefone){
+			$this->telefone = $telefone;
 		}
 
         public function getSenha(){
