@@ -1,6 +1,8 @@
 <?php
     include '../Model/user.php';
     include '../Model/conexao.php';
+    include '../Rules/cpf.php';
+    include '../Rules/password.php';
     session_start();
 
     class userController{
@@ -46,6 +48,22 @@
                 $u->setCPF($_POST['cpf']);
                 $u->setTelefone($_POST['telefone']);
                 $u->setSenha($_POST['password']);
+
+                if(!validaCPF($u->getCPF())){
+                    if(!validaSenha($u->getSenha())){
+                        $_SESSION['passError'] = 'Senha invalida!';
+                        $_SESSION['cpfError'] = 'CPF invalido!';
+                        return false;
+                    }else{
+                        $_SESSION['cpfError'] = 'CPF invalido!';
+                        return false;
+                    }
+                }else{
+                    if(!validaSenha($u->getSenha())){
+                        $_SESSION['passError'] = 'Senha invalida!';
+                        return false;
+                    }
+                }
 
                 try{
                     $sql = "INSERT INTO user (nome, email, cpf, telefone, senha) VALUES (?,?,?,?,?)";

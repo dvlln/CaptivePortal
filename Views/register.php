@@ -39,15 +39,21 @@
                     </div>
                     <div class="wrap-input" data-validate="CPF é obrigatório">
                         <input class="input" type="text" name="cpf" placeholder="CPF" required>
+                        <?php if(isset($_SESSION['cpfError'])){ ?>
+                            <p><?php echo $_SESSION['cpfError']; ?></p>
+                        <?php } ?>
                     </div>
                     <div class="wrap-input" data-validate="Telefone é obrigatório">
                         <input class="input" type="text" name="telefone" placeholder="Telefone" required>
                     </div>
                     <div class="wrap-input" data-validate="Senha é obrigatória">
                         <input class="input" type="password" name="password" placeholder="Senha" required>
+                        <?php if(isset($_SESSION['passError'])){ ?>
+                            <p><?php echo $_SESSION['passError']; ?></p>
+                        <?php } ?>
                     </div>
                     <div class="wrap-checkbox" data-validate="Termo de uso é obrigatório">                    
-                        <label for="user_term" class="label-checkbox">Eu aceito o <a href="#" class="popup" onclick="function_user_agreement()">termos de consentimento de uso
+                        <label for="user_term" class="label-checkbox">Eu aceito o <a href="#" class="popup" onclick="function_user_agreement()">termo de consentimento de uso
                             <span class="popuptext" id="popup_user_agreement">
                                 Pelo presente Termo de Uso e Consentimento, autorizo o tratamento dos dados pessoais cadastrados, para finalidades:
                                 <ul>
