@@ -14,7 +14,7 @@
 
         $controller = new userController();
         if (isset($_GET['email'])) {
-            $controller->descadastrar();
+            $controller->unsubscribeUser();
         }
     ?>
 

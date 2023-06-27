@@ -1,11 +1,11 @@
 <?php
 	class User{
 		protected $id;
-		private $nome;
+		private $name;
 		private $email;
 		private $cpf;
-		private $telefone;
-		private $senha;
+		private $phone;
+		private $password;
 
         public function getId(){
 			return $this->id;
@@ -14,11 +14,11 @@
 			$this->id = $id;
 		}
 
-        public function getNome(){
-			return $this->nome;
+        public function getName(){
+			return $this->name;
 		}
-		public function setNome($nome){
-			$this->nome = $nome;
+		public function setName($name){
+			$this->name = $name;
 		}
 
         public function getEmail(){
@@ -33,18 +33,18 @@
 		public function setCPF($cpf){
 			$this->cpf = $cpf;
 		}
-		public function getTelefone(){
-			return $this->telefone;
+		public function getPhone(){
+			return $this->phone;
 		}
-		public function setTelefone($telefone){
-			$this->telefone = $telefone;
+		public function setPhone($phone){
+			$this->phone = $phone;
 		}
 
-        public function getSenha(){
-			return $this->senha;
+        public function getPassword(){
+			return $this->password;
 		}
-		public function setSenha($senha){
-			$this->senha = $senha;
+		public function setPassword($password){
+			$this->password = $password;
 		}
     }
 

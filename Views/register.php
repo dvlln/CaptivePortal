@@ -15,8 +15,8 @@
         session_unset();
 
         $controller = new userController();
-        if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['cpf']) && isset($_POST['telefone']) && isset($_POST['password'])) {
-            $controller->cadastrar();
+        if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['cpf']) && isset($_POST['phone']) && isset($_POST['password'])) {
+            $controller->register();
         }
     ?>
 
@@ -55,7 +55,7 @@
                         <?php } ?>
                     </div>
                     <div class="wrap-input" data-validate="Telefone é obrigatório">
-                        <input class="input" type="text" name="telefone" placeholder="Telefone" required>
+                        <input class="input" type="text" name="phone" placeholder="Telefone" required>
                     </div>
                     <div class="wrap-input" data-validate="Senha é obrigatória">
                         <input id="inputPassword" class="input" type="password" name="password" placeholder="Senha" required>

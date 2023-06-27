@@ -14,7 +14,7 @@
 
         $controller = new mailController();
         if (isset($_POST['email'])) {
-            $controller->redefinirSenha();
+            $controller->sendPasswordResetInvitation();
         }
     ?>
 

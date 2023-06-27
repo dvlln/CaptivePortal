@@ -11,7 +11,7 @@
             $u = new user();
 
             $u->setEmail($_POST['email']);
-            $u->setSenha($_POST['password']);
+            $u->setPassword($_POST['password']);
 
             try{
                 $sql = "SELECT * FROM user WHERE email=?";
@@ -22,7 +22,7 @@
                 $user = $tmp->fetch(\PDO::FETCH_ASSOC);
 
                 if(isset($user['email'])){
-                    if(($user['email'] == $u->getEmail()) && ($user['senha'] == $u->getSenha())){
+                    if(($user['email'] == $u->getEmail()) && ($user['password'] == $u->getPassword())){
                         header("Location: /CaptivePortal/Views/teste.php");
                     }else{
                         $_SESSION['error'] = "Usuário ou senha inválidos";
@@ -38,18 +38,18 @@
             }
         }
 
-        public function cadastrar(){
+        public function register(){
                 session_unset();
                 $u = new user();
 
-                $u->setNome($_POST['name']);
+                $u->setName($_POST['name']);
                 $u->setEmail($_POST['email']);
                 $u->setCPF($_POST['cpf']);
-                $u->setTelefone($_POST['telefone']);
-                $u->setSenha($_POST['password']);
+                $u->setPhone($_POST['phone']);
+                $u->setPassword($_POST['password']);
 
                 if(!validaCPF($u->getCPF())){
-                    if(!validaSenha($u->getSenha())){
+                    if(!validaSenha($u->getPassword())){
                         $_SESSION['passError'] = 'Senha invalida!';
                         $_SESSION['cpfError'] = 'CPF inválido!';
                         return false;
@@ -58,20 +58,20 @@
                         return false;
                     }
                 }else{
-                    if(!validaSenha($u->getSenha())){
+                    if(!validaSenha($u->getPassword())){
                         $_SESSION['passError'] = 'Senha invlida!';
                         return false;
                     }
                 }
 
                 try{
-                    $sql = "INSERT INTO user (nome, email, cpf, telefone, senha) VALUES (?,?,?,?,?)";
+                    $sql = "INSERT INTO user (name, email, cpf, phone, password) VALUES (?,?,?,?,?)";
                     $tmp = conexao::getConexao()->prepare($sql);
-                    $tmp->bindValue(1, $u->getNome());
+                    $tmp->bindValue(1, $u->getName());
                     $tmp->bindValue(2, $u->getEmail());
                     $tmp->bindValue(3, $u->getCPF());
-                    $tmp->bindValue(4, $u->getTelefone());
-                    $tmp->bindValue(5, $u->getSenha());
+                    $tmp->bindValue(4, $u->getPhone());
+                    $tmp->bindValue(5, $u->getPassword());
                     $tmp->execute();
     
                     $_SESSION['status'] = "Cadastro realizado";
@@ -82,17 +82,17 @@
                 }
         }
 
-        public function redefinirSenha(){
+        public function resetPassword(){
             session_unset();
             $u = new user();
 
             $u->setEmail($_GET['email']);
-            $u->setSenha($_POST['password']);
+            $u->setPassword($_POST['password']);
 
             try{
-                $sql = "UPDATE user SET senha=? WHERE email=?";
+                $sql = "UPDATE user SET password=? WHERE email=?";
                 $tmp = conexao::getConexao()->prepare($sql);
-                $tmp->bindValue(1, $u->getSenha());
+                $tmp->bindValue(1, $u->getPassword());
                 $tmp->bindValue(2, $u->getEmail());
                 $tmp->execute();
 
@@ -104,7 +104,7 @@
             }
         }
 
-        public function descadastrar(){
+        public function unsubscribeUser(){
             session_unset();
             $u = new user();
 

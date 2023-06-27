@@ -13,15 +13,15 @@ require '../vendor/PHPMailer-master/src/PHPMailer.php';
 require '../vendor/PHPMailer-master/src/SMTP.php';
 
 class mailController{
-    public function redefinirSenha(){
+    public function sendPasswordResetInvitation(){
         // CONEXAO EMAIL
         $phpmailer = new PHPMailer();
         $phpmailer->isSMTP();
         $phpmailer->Host = 'sandbox.smtp.mailtrap.io';
         $phpmailer->SMTPAuth = true;
         $phpmailer->Port = 2525;
-        $phpmailer->Username = '017b415f8e140d';
-        $phpmailer->Password = '36dc0603908e82';
+        $phpmailer->Username = '4075d522bd2a32';
+        $phpmailer->Password = 'b014bec44d1bc8';
         $phpmailer->CharSet = "UTF-8";
 
         // CONEXAO BANCO
@@ -54,7 +54,7 @@ class mailController{
 
         $phpmailer->IsHTML(true);
         $phpmailer->SetFrom($mail->getSender(), "DON'T REPLY");
-        $phpmailer->AddAddress($mail->getReceiver(), $user['nome']);
+        $phpmailer->AddAddress($mail->getReceiver(), $user['name']);
         $phpmailer->Subject = $mail->getSubject();
         $content = $mail->getContent($mail->getReceiver());
 
@@ -70,15 +70,15 @@ class mailController{
         }
     }
 
-    public function desinscrever(){
+    public function sendUnsubscribeInvitation(){
         // CONEXAO EMAIL
         $phpmailer = new PHPMailer();
         $phpmailer->isSMTP();
         $phpmailer->Host = 'sandbox.smtp.mailtrap.io';
         $phpmailer->SMTPAuth = true;
         $phpmailer->Port = 2525;
-        $phpmailer->Username = 'cbfd12c278dd0e';
-        $phpmailer->Password = '354a5cee4d6bb8';
+        $phpmailer->Username = '4075d522bd2a32';
+        $phpmailer->Password = 'b014bec44d1bc8';
         $phpmailer->CharSet = "UTF-8";
 
         // CONEXAO BANCO
@@ -102,7 +102,7 @@ class mailController{
         $mail->setContent('<h2>Olá :]</h2>');
         $mail->setContent('<p>Ficamos sabendo que você quer se descadastrar☹️</p>');
         $mail->setContent('<p style="margin-bottom: 40px; font-weight:bold; color:red;">Caso não tenho sido você a pedir a redefinição de senha, pode ignorar esse e-mail. Caso tenha sido, clique no link abaixo.😉</p>');
-        $mail->setContent('<a href="http://localhost/captiveportal/views/resetPassword.php?email='.$u->getEmail().'" style="text-align:center;font-size:25px;text-decoration:none;background-color:rgb(67,119,67);color:white;padding:20px 26px;border:2px solid rgb(67,119,67);border-radius:40px;box-shadow:0 4px 4px rgba(0,0,0,.08),0 4px 8px rgba(0,0,0,.12),0 4px 16px rgba(0,0,0,.24);cursor:pointer;align-self:center;">Redefinir senha</a>');
+        $mail->setContent('<a href="http://localhost/captiveportal/views/unsubscribeAccept.php?email='.$u->getEmail().'" style="text-align:center;font-size:25px;text-decoration:none;background-color:rgb(67,119,67);color:white;padding:20px 26px;border:2px solid rgb(67,119,67);border-radius:40px;box-shadow:0 4px 4px rgba(0,0,0,.08),0 4px 8px rgba(0,0,0,.12),0 4px 16px rgba(0,0,0,.24);cursor:pointer;align-self:center;">Descadastrar</a>');
         $mail->setContent('</div>');
         $mail->setContent('<div style="position:relative;bottom:10px;text-align:center;font-size:15px;">');
         $mail->setContent('<b style="font-size:20px;">Enviado por Unimed São José dos Campos - Cooperativa de Trabalho Médico &copy; 2023</b>');
@@ -111,7 +111,7 @@ class mailController{
 
         $phpmailer->IsHTML(true);
         $phpmailer->SetFrom($mail->getSender(), "DON'T REPLY");
-        $phpmailer->AddAddress($mail->getReceiver(), $user['nome']);
+        $phpmailer->AddAddress($mail->getReceiver(), $user['name']);
         $phpmailer->Subject = $mail->getSubject();
         $content = $mail->getContent($mail->getReceiver());
 

@@ -14,7 +14,7 @@
 
         $controller = new mailController();
         if (isset($_POST['email'])) {
-            $controller->desinscrever();
+            $controller->sendUnsubscribeInvitation();
         }
     ?>
     <img src="Imagens/wallpaper.jpg" class="wallpaper" alt="wallpaper">

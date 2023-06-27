@@ -15,7 +15,7 @@
         $controller = new userController();
         if (isset($_GET['email']) && isset($_POST['password'])){
             if($_POST['password'] === $_POST['passwordConfirmated']){
-                $controller->redefinirSenha();
+                $controller->resetPassword();
             } else{
                 $_SESSION['error'] = 'Senhas não correspondem';
             }
