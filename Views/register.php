@@ -114,9 +114,9 @@
         </div>
     </div>
 
-    <script src="../functions/toasted.js"></script>
-    <script src="../functions/popup_user_data.js"></script>
-    <script src="../functions/popup_agreement.js"></script>
+    <script src="JS/toasted.js"></script>
+    <script src="JS/popup_user_data.js"></script>
+    <script src="JS/popup_agreement.js"></script>
     <script>
         <?php if(isset($_SESSION['cpfError'])){ ?>
             var input = document.getElementById("inputCPF");
