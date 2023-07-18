@@ -5,14 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Captive Portal - Login</title>
     <link href="../../Extensions/Bootstrap 5.3.0/CSS/bootstrap.min.css" rel="stylesheet">
-    <link href="CSS/login.css" rel="stylesheet">
+    <!-- <link href="CSS/login.css" rel="stylesheet"> -->
   </head>
   <body>
-    <!-- Section: Design Block -->
-    <section class="container-fluid">
-        <!-- Jumbotron -->
-        <div class="py-5 px-md-5 text-center text-lg-start">
-            <div class="container h-100">
+        <div class="d-flex flex-column h-100 " style="background-color: rgba(237,237,237,0.5)">
+            <div class="container py-5 pb-0 px-md-5 px-3 text-center text-lg-start">
                 <div class="row gx-lg-5 align-items-center">
                     <div class="col-lg-6 mb-5 mb-lg-0">
                         <img src="../Imagens/logoUnimed.png" alt="logo" class="img-fluid">
@@ -24,12 +21,12 @@
                                 <form>
                                     <div class="row">
                                         <!-- Name input -->
-    
+                                        
                                         <!-- Email input -->
                                         <div class="col-md-12 mb-4">
                                             <div class="form-floating">
-                                            <input type="email" id="floatingEmail" class="form-control" require />
-                                            <label for="floatingEmail">E-mail</label>
+                                                <input type="email" id="floatingEmail" class="form-control" require />
+                                                <label for="floatingEmail">E-mail</label>
                                             </div>
                                         </div>
     
@@ -41,7 +38,7 @@
                                             </div>
                                         </div>
                                     </div>
-
+    
                                     <!-- Submit button -->
                                     <div class="row mb-3">
                                         <div class="d-grid mb-4">
@@ -52,7 +49,7 @@
                                             <a href="forgotPassword.php" class="btn btn-outline-primary">Esqueci minha senha</a>
                                         </div>
                                     </div>
-
+    
                                     <!-- Register buttons -->
                                     <div class="text-center">
                                         <p>Não tem uma conta? <a href="register.php">Cadastre-se</a></p>
@@ -63,11 +60,12 @@
                     </div>
                 </div>
             </div>
+            <div class="mt-auto text-center">
+                <a href="unsubscribe.php" style="font-size:14px">Caso deseja remover o cadastro, clique aqui.</a>
+                <br>
+                <p class="border-top mb-0 mt-3 py-3 px-2 color-green bg-success text-light" style="font-size:13px">Desenvolvido por Unimed São José dos Campos - Cooperativa de Trabalho Médico &copy; 2023 - todos os direitos reservados</p>
+            </div>
         </div>
-        <!-- Jumbotron -->
-    </section>
-    <!-- Section: Design Block -->
-
     <script src="../../Extensions/Bootstrap 5.3.0/JS/bootstrap.bundle.min.js"></script>
   </body>
 </html>
