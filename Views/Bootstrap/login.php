@@ -6,16 +6,16 @@
     <title>Captive Portal - Login</title>
     <link href="../../Extensions/Bootstrap 5.3.0/CSS/bootstrap.min.css" rel="stylesheet">
   </head>
-  <body>
-        <!-- WRAPPER -->
-        <div class="d-flex flex-column vh-100 " style="background-color: rgba(237,237,237,0.5)">
+  <body style="background-color: #f2f2f2">
+        <!-- Wrapper -->
+        <div class="d-flex flex-column vh-100">
 
-            <!-- CONTENT -->
+            <!-- Content -->
             <div class="container py-5 pb-0 px-md-5 px-3 text-center text-lg-start">
-                <div class="row gx-lg-5 align-items-center">
-                    <div class="col-lg-6 mb-5 mb-lg-0">
+                <div class="row gx-lg-5 align-items-center justify-content-center">
+                    <div class="col-lg-6 mb-4 mb-lg-0 text-center">
                         <img src="../Imagens/logoUnimed.png" alt="logo" class="img-fluid">
-                        <h1  class="text-center mt-3"  style="color: hsl(217, 10%, 50.8%)">CAPTIVE PORTAL</h1>
+                        <h1 class="mt-3"  style="color: #333333">CAPTIVE PORTAL</h1>
                     </div>
                     <div class="col-lg-6 mb-5 mb-lg-0 ">
                         <div class="card shadow">
@@ -27,7 +27,7 @@
                                         <!-- Email input -->
                                         <div class="col-md-12 mb-4">
                                             <div class="form-floating">
-                                                <input type="email" id="floatingEmail" class="form-control" require />
+                                                <input type="email" id="floatingEmail" class="form-control" required />
                                                 <label for="floatingEmail">E-mail</label>
                                             </div>
                                         </div>
@@ -35,7 +35,7 @@
                                         <!-- Password input -->
                                         <div class="col-md-12 mb-4">
                                             <div class="form-floating">
-                                                <input type="password" id="floatingPassword" class="form-control" require />
+                                                <input type="password" id="floatingPassword" class="form-control" required />
                                                 <label for="floatingPassword">Senha</label>
                                             </div>
                                         </div>
@@ -44,26 +44,26 @@
                                     <!-- Submit button -->
                                     <div class="row mb-3">
                                         <div class="d-grid mb-4">
-                                            <button type="submit" class="btn btn-primary">Entrar</button>
+                                            <button type="submit" class="btn btn-success">Entrar</button>
                                         </div>
                                         
                                         <div class="d-grid mb-4">
-                                            <a href="forgotPassword.php" class="btn btn-outline-primary">Esqueci minha senha</a>
+                                            <a href="forgotPassword.php" class="btn btn-outline-success">Esqueci minha senha</a>
                                         </div>
                                     </div>
     
-                                    <!-- Register buttons -->
-                                    <div class="text-center">
-                                        <p>Não tem uma conta? <a href="register.php">Cadastre-se</a></p>
-                                    </div>
                                 </form>
+                                <!-- Register buttons -->
+                                <div class="text-center">
+                                    <p>Não tem uma conta? <a href="register.php">Cadastre-se</a></p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- FOOTER -->
+            <!-- Footer -->
             <div class="mt-auto text-center">
                 <a href="unsubscribe.php" style="font-size:14px">Caso deseja remover o cadastro, clique aqui.</a>
                 <br>

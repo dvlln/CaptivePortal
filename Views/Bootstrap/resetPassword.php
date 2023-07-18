@@ -22,14 +22,21 @@
                         <div class="card-body pt-4 pb-0 pt-md-5 px-md-5 px-4">
                             <form>
                                 <div class="row">
-                                    <div class="col-md-12 mb-4 text-center">
+                                    <div class="col-md-12 mb-4">
                                         <h3 class="font-family-calibri">Redefinir senha</h3>
                                     </div>
-                                    <!-- Email input -->
+                                    <!-- Password input -->
                                     <div class="col-md-12 mb-4">
                                         <div class="form-floating">
-                                        <input type="email" id="floatingEmail" class="form-control" required />
-                                        <label for="floatingEmail">E-mail</label>
+                                            <input type="password" id="floatingPassword" class="form-control" required />
+                                            <label for="floatingPassword">Senha</label>
+                                        </div>
+                                    </div>
+                                    <!-- Password input -->
+                                    <div class="col-md-12 mb-4">
+                                        <div class="form-floating">
+                                            <input type="password" id="floatingPasswordConfirmation" class="form-control" required />
+                                            <label for="floatingPasswordConfirmation">Confirmar Senha</label>
                                         </div>
                                     </div>
                                 </div>
@@ -50,8 +57,6 @@
 
         <!-- FOOTER -->
         <div class="mt-auto text-center">
-            <a href="unsubscribe.php" style="font-size:14px">Caso deseja remover o cadastro, clique aqui.</a>
-            <br>
             <p class="border-top mb-0 mt-3 py-3 px-2 color-green bg-success text-light" style="font-size:13px">Desenvolvido por Unimed São José dos Campos - Cooperativa de Trabalho Médico &copy; 2023 - todos os direitos reservados</p>
         </div>
     </div>
