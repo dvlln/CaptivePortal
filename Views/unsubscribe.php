@@ -1,50 +1,60 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="CSS/unsubscribe.css" rel="stylesheet">
-    <title>Captive Portal - UNIMED SJC</title>
-</head>
-<body>
-    <?php
-        include '../Controller/mailController.php';
-        session_unset();
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Captive Portal - Desinscrever</title>
+    <link href="../../Extensions/Bootstrap 5.3.0/CSS/bootstrap.min.css" rel="stylesheet">
+    <link href="CSS/login.css" rel="stylesheet">
+  </head>
+  <body>
+    <!-- Wrapper -->
+    <div class="d-flex flex-column vh-100">
 
-        $controller = new mailController();
-        if (isset($_POST['email'])) {
-            $controller->sendUnsubscribeInvitation();
-        }
-    ?>
-    <img src="Imagens/wallpaper.jpg" class="wallpaper" alt="wallpaper">
-
-    <div class="container">
-        <div class="wrapper"> 
-            <div class="wrap-unsub">
-                <div class="unsub-header">
-                    <img src="Imagens/logoUnimed.png" alt="UNIMED SJC" >
-                    <p>Remover conta</p>
+        <!-- Content -->
+        <div class="container py-5 pb-0 px-md-5 px-3 text-center text-lg-start">
+            <div class="row gx-lg-5 align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <img src="../Imagens/logoUnimed.png" alt="logo" class="img-fluid">
+                    <h1  class="text-center mt-3"  style="color: #333333">CAPTIVE PORTAL</h1>
                 </div>
+                <div class="col-lg-6 mb-5 mb-lg-0 ">
+                    <div class="card shadow">
+                        <div class="card-body pt-4 pb-0 pt-md-5 px-md-5 px-4">
+                            <form>
+                                <div class="row">
+                                    <div class="col-md-12 mb-4 text-center">
+                                        <h3 class="font-family-calibri">Desinscrever</h3>
+                                    </div>
+                                    <!-- Email input -->
+                                    <div class="col-md-12 mb-4">
+                                        <div class="form-floating">
+                                        <input type="email" id="floatingEmail" class="form-control" required />
+                                        <label for="floatingEmail">E-mail</label>
+                                        </div>
+                                    </div>
+                                </div>
 
-                <?php if(isset($_SESSION['error'])){ ?>
-                        <p><?php echo $_SESSION['error']; ?></p>
-                <?php } ?>
-
-                <form class="unsub-form" action="" method="POST">
-                    <div class="wrap-input" data-validate="E-mail é obrigatório">
-                        <input class="input" type="text" name="email" placeholder="E-mail" required>
+                                <!-- Submit button -->
+                                <div class="d-grid mb-4">
+                                    <button type="submit" class="btn btn-success">Enviar</button>
+                                </div>
+                                <div class="d-grid mb-4">
+                                    <a href="login.php" class="btn btn-secondary">Voltar</a>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                    <div class="unsub-btn">
-                        <a href="login.php" class="btn">Voltar</a>
-                        <button type="submit" class="unsub-form-btn">Enviar</button>
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
-        <div class="footer">
-        <b style="font-size:15px">Desenvolvido por Unimed São José dos Campos - Cooperativa de Trabalho Médico &copy; 2023 - todos os direitos reservados</b>
+
+        <!-- Footer -->
+        <div class="mt-auto text-center">
+            <p class="border-top mb-0 mt-3 py-3 px-2 color-green bg-success text-light" style="font-size:13px">Desenvolvido por Unimed São José dos Campos - Cooperativa de Trabalho Médico &copy; 2023 - todos os direitos reservados</p>
         </div>
     </div>
-</body>
+
+    <script src="../../Extensions/Bootstrap 5.3.0/JS/bootstrap.bundle.min.js"></script>
+  </body>
 </html>

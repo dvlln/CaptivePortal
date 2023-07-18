@@ -1,15 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="CSS/register.css" rel="stylesheet">
-    <script src="../icons/fontawesome" crossorigin="anonymous"></script>
-    <link rel="" href="">
-    <title>Captive Portal - UNIMED SJC</title>
-</head>
-<body>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Captive Portal - Register</title>
+    <link href="../Extensions/Bootstrap 5.3.0/CSS/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body style="background-color: #f2f2f2">
+
     <?php
         include '../Controller/userController.php';
         session_unset();
@@ -20,113 +18,175 @@
         }
     ?>
 
-    <img src="Imagens/wallpaper.jpg" class="wallpaper" alt="wallpaper">
-
-
-    <div class="container">
-        <div class="wrapper"> 
-            <div class="wrap-register">
-                <div class="register-header">
-                    <img src="Imagens/logoUnimed.png" alt="UNIMED SJC" >
-                    <p>Registrar-se</p>
+    <!-- Wrapper -->
+    <div class="d-flex flex-column vh-100">
+        <!-- Content -->
+        <div class="container py-5 pb-0 px-md-5 px-3 text-lg-start">
+            <div class="row gx-lg-5 align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <img src="Imagens/logoUnimed.png" alt="logo" class="img-fluid">
+                    <h1  class="text-center mt-3"  style="color: #333333">CAPTIVE PORTAL</h1>
                 </div>
-                
-                <?php if(isset($_SESSION['error'])){ ?>
-                    <div class="error" onclick="closeToast()" id="toastError">
-                        <img src="../icons/error.png"></img>
-                        <div>
-                            <p>Error</p>
-                            <span>Tente novamente!</span>
+                <div class="col-lg-6 mb-5 mb-lg-0 ">
+                    <!-- Error message -->
+                    <?php if(isset($_SESSION['error']) || isset($_SESSION['status'])){ ?>
+                        <div class="w-100 d-flex mb-3 p-2 rounded bg-danger-subtle text-danger fs-5 align-items-center">
+                            <img src="../icons/error.png" style="width:17px;height:17px"></img>
+                            <?php if(isset($_SESSION['error'])){ ?>
+                                <p class="m-0 px-2 fs-6"><?php echo $_SESSION['error']; ?></p>
+                            <?php } ?>
+                            <?php if(isset($_SESSION['status'])){ ?>
+                                <p class="m-0 px-2 fs-6"><?php echo $_SESSION['status']; ?></p>
+                            <?php } ?>
                         </div>
-                    </div>    
-                <?php } ?>
+                    <?php } ?>
+                    <!-- Forms -->
+                    <div class="card shadow">
+                        <div class="card-body pt-4 pb-0 pt-md-5 px-md-5 px-4">
+                            <form>
+                                <div class="row">
+                                    <!-- Name input -->
+                                    <div class="col-md-12 mb-4">
+                                        <div class="form-floating">
+                                            <input type="text" id="floatingName" class="form-control" required />
+                                            <label for="floatingName">Nome completo</label>
+                                        </div>
+                                    </div>
 
-                <form id="registerForm" class="register-form" action="" method="POST">
-                    <div class="wrap-input" data-validate="Nome é obrigatório">
-                        <input class="input" type="text" name="name" placeholder="Nome" required>
+                                    <!-- Email input -->
+                                    <div class="col-md-12 mb-4">
+                                        <div class="form-floating">
+                                        <input type="email" id="floatingEmail" class="form-control" required />
+                                        <label for="floatingEmail">E-mail</label>
+                                        </div>
+                                    </div>
+
+                                    <!-- CPF input -->
+                                    <div class="col-md-6 mb-4">
+                                        <div class="form-floating">
+                                            <input type="text" id="floatingCPF" class="form-control" required />
+                                            <label for="floatingCPF">CPF</label>
+                                            <?php if(isset($_SESSION['cpfError'])){ ?>
+                                                <p class="text-danger fs-6"><?php echo $_SESSION['cpfError']; ?></p>
+                                            <?php } ?>
+                                        </div>
+                                    </div>
+
+                                    <!-- Phone input -->
+                                    <div class="col-md-6 mb-4">
+                                        <div class="form-floating">
+                                            <input type="tel" id="floatingPhone" class="form-control" title="xx 9 xxxx-xxxx" required />
+                                            <label for="floatingPhone">Telefone</label>
+                                        </div>
+                                    </div>
+
+                                    <!-- Password input -->
+                                    <div class="col-md-12 mb-4">
+                                        <div class="form-floating">
+                                            <input type="password" id="floatingPassword" class="form-control" required />
+                                            <label for="floatingPassword">Senha</label>
+                                            <?php if(isset($_SESSION['passError'])){ ?>
+                                                <p class="text-danger fs-6"><?php echo $_SESSION['passError']; ?></p>
+                                            <?php } ?>
+                                        </div>
+                                    </div>
+
+                                    <!-- User agreement -->
+                                    <div class="col-md-12 mb-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="userAgreement">
+                                            <label class="form-check-label" for="userAgreement" style="font-size:14px">Eu aceito o <a href="" data-bs-toggle="modal" data-bs-target="#userAgreementModal">termo de consentimento de uso dos meus dados</a></label>
+                                        </div>
+                                    </div>
+
+                                    <!-- User agreement modal -->
+                                    <div class="modal fade" id="userAgreementModal" tabindex="-1" aria-labelledby="userAgreementModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="userAgreementModalLabel">Termo de consentimento de uso de dados</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <span>
+                                                        Pelo presente Termo de Uso e Consentimento, autorizo o tratamento dos dados pessoais cadastrados, para finalidades:
+                                                        <ul>
+                                                            <li>Envio de mensagens e notificações (promoções, notícias e demais comunicados pertinentes)</li>
+                                                            <li>Análise do perfil e comportamento de usuários</li>
+                                                            <li>Defesa da empresa frente a processos administrativos e judiciais, como o cumprimento da Lei do Marco Civil da Internet</li>
+                                                            <li>Enriquecimento de dados</li>
+                                                        </ul>
+                                                        Nos termos da Política de Privacidade constante abaixo.
+                                                        <br/>Declaro que este consentimento se deu de forma livre, expressa, individual, clara, específica e legítima e que estou ciente que caso queira revogar a presente autorização basta desmarcar o campo "Eu aceito o termo de consentimento do uso dos meus dados" no formulário de cadastro.
+                                                        <br/><br/>Assim, estando ciente e de acordo com os termos deste, firmo meu consentimento através da checagem do campo "Eu aceito o termo de consentimento do uso dos meus dados" no formulário de cadastro.
+                                                        <br/><br/>Em caso de dúvidas, o contato deverá ser realizado através do e-mail hotspot@unimedsjc.coop.br
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- User data -->
+                                    <div class="col-md-12 mb-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="userData">
+                                            <label class="form-check-label" for="userData" style="font-size:14px">Li e estou ciente do <a href="" data-bs-toggle="modal" data-bs-target="#userDataModal">termo de exclusão de dados</a></label>
+                                        </div>
+                                    </div>
+
+                                    <!-- User data modal -->
+                                    <div class="modal fade" id="userDataModal" tabindex="-1" aria-labelledby="userDataModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="userDataModalLabel">Termo de exclusão de dados</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                <span>
+                                                    Olá!
+                                                    <br/>De acordo com a LPGD (Lei Geral de Proteção de Dados), você tem agora a liberdade para pedir a exclusão dos seus dados de nossa base.
+                                                    <br/>Mas gostaríamos de reforçar que eles são captados por vários motivos importantes e totalmente idôneos, como:
+                                                    <ul>
+                                                        <li>Envio de mensagens e notificações (atualizações, promoções, notícias e demais comunicados pertinentes);</li>
+                                                        <li>Análise do perfil e comportamento de usuários com o objetivo de melhorar o produto e conteúdo ofertado;</li>
+                                                        <li>Possível criação de novos produtos, serviços, funcionalidades e promoções;</li>
+                                                        <li>Personalizações diversas de acordo com o interesse dos usuários;</li>
+                                                        <li>Defesa da empresa frente a processos administrativos e judiciais, como o cumprimento da Lei do Marco Civil da Internet.</li>
+                                                    </ul>
+                                                    Se, mesmo assim, ainda desejar excluir seus dados de nossa base, basta clicar no link presente no rodapé!
+                                                </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Submit button -->
+                                <div class="d-grid mb-4">
+                                    <button type="submit" class="btn btn-success">Cadastrar</button>
+                                </div>
+
+                            </form>
+                            <!-- Login button -->
+                            <div class="text-center">
+                            <p>Já possui uma conta? <a href="login.php">Faça login</a></p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="wrap-input" data-validate="E-mail é obrigatório">
-                        <input class="input" type="text" name="email" placeholder="E-mail" required>
-                    </div>
-                    <div class="wrap-input" data-validate="CPF é obrigatório">
-                        <input id="inputCPF" class="input" type="text" name="cpf" placeholder="CPF" required>
-                        <?php if(isset($_SESSION['cpfError'])){ ?>
-                            <p class="active"><?php echo $_SESSION['cpfError']; ?></p>
-                        <?php } ?>
-                    </div>
-                    <div class="wrap-input" data-validate="Telefone é obrigatório">
-                        <input class="input" type="text" name="phone" placeholder="Telefone" required>
-                    </div>
-                    <div class="wrap-input" data-validate="Senha é obrigatória">
-                        <input id="inputPassword" class="input" type="password" name="password" placeholder="Senha" required>
-                        <?php if(isset($_SESSION['passError'])){ ?>
-                            <p class="active"><?php echo $_SESSION['passError']; ?></p>
-                        <?php } ?>
-                    </div>
-                    <div class="wrap-checkbox" data-validate="Termo de uso é obrigatório">                    
-                        <label for="user_term" class="label-checkbox">Eu aceito o <a href="#" class="popup" onclick="function_user_agreement()">termo de consentimento de uso
-                            <span class="popuptext" id="popup_user_agreement">
-                                Pelo presente Termo de Uso e Consentimento, autorizo o tratamento dos dados pessoais cadastrados, para finalidades:
-                                <ul>
-                                    <li>Envio de mensagens e notificações (promoções, notícias e demais comunicados pertinentes)</li>
-                                    <li>Análise do perfil e comportamento de usuários</li>
-                                    <li>Defesa da empresa frente a processos administrativos e judiciais, como o cumprimento da Lei do Marco Civil da Internet</li>
-                                    <li>Enriquecimento de dados</li>
-                                </ul>
-                                Nos termos da Política de Privacidade constante abaixo.
-                                <br/>Declaro que este consentimento se deu de forma livre, expressa, individual, clara, específica e legítima e que estou ciente que caso queira revogar a presente autorização basta acessar “formulário”.
-                                <br/><br/>Assim, estando ciente e de acordo com os termos deste, firmo meu consentimento através da checagem do campo "Eu aceito o Termo de Consentimento do uso dos meus dados" no formulário de cadastro.
-                                <br/><br/>Em caso de dúvidas, o contato deverá ser realizado através do e-mail hotspot@unimedsjc.coop.br</span>
-                        </a>
-                        <input type="checkbox" name="user_term" id="user_term" required>
-                            <span class="checkmark_term"></span>
-                        dos meus dados</label>
-                    </div>
-                    <div class="wrap-checkbox" data-validate="Termo de uso é obrigatório">                    
-                        <label for="user_data" class="label-checkbox">Li e estou ciente do <a href="#" class="popup" onclick="function_user_data()">termo de exclusão de dados
-                            <span class="popuptext" id="popup_user_data">
-                                Olá!
-                                <br/>De acordo com a LPGD (Lei Geral de Proteção de Dados), você tem agora a liberdade para pedir a exclusão dos seus dados de nossa base.
-                                <br/>Mas gostaríamos de reforçar que eles são captados por vários motivos importantes e totalmente idôneos, como:
-                                <ul>
-                                    <li>Envio de mensagens e notificações (atualizações, promoções, notícias e demais comunicados pertinentes);</li>
-                                    <li>Análise do perfil e comportamento de usuários com o objetivo de melhorar o produto e conteúdo ofertado;</li>
-                                    <li>Possível criação de novos produtos, serviços, funcionalidades e promoções;</li>
-                                    <li>Personalizações diversas de acordo com o interesse dos usuários;</li>
-                                    <li>Defesa da empresa frente a processos administrativos e judiciais, como o cumprimento da Lei do Marco Civil da Internet.</li>
-                                </ul>
-                                Se, mesmo assim, ainda desejar excluir seus dados de nossa base, basta clicar no link presente no rodapé!</span>
-                        </a>
-                        <input type="checkbox" name="user_data" id="user_data" required>
-                            <span class="checkmark_data"></span>
-                        </label>
-                    </div>
-                    <div class="register-btn">
-                            <a href="login.php" class="btn">Voltar</a>
-                            <button type="submit" class="register-form-btn">Criar</button>
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
-        <div class="footer">
-            <a href="unsubscribe.php" style="font-size:13px">Caso deseja remover o cadastro, clique aqui.</a>
-            <b style="font-size:15px">Desenvolvido por Unimed São José dos Campos - Cooperativa de Trabalho Médico &copy; 2023 - todos os direitos reservados</b>
+
+        <!-- Footer -->
+        <div class="mt-auto text-center">
+            <a href="unsubscribe.php" style="font-size:14px">Caso deseja remover o cadastro, clique aqui.</a>
+            <br>
+            <p class="border-top mb-0 mt-3 py-3 px-2 color-green bg-success text-light" style="font-size:13px">Desenvolvido por Unimed São José dos Campos - Cooperativa de Trabalho Médico &copy; 2023 - todos os direitos reservados</p>
         </div>
     </div>
 
-    <script src="JS/toasted.js"></script>
-    <script src="JS/popup_user_data.js"></script>
-    <script src="JS/popup_agreement.js"></script>
-    <script>
-        <?php if(isset($_SESSION['cpfError'])){ ?>
-            var input = document.getElementById("inputCPF");
-            input.style.borderColor = 'red';
-        <?php } ?>
 
-        <?php if(isset($_SESSION['passError'])){ ?>
-            var input = document.getElementById("inputPassword");
-            input.style.borderColor = 'red';
-        <?php } ?>
-    </script>
-</body>
+    <script src="../Extensions/Bootstrap 5.3.0/JS/bootstrap.bundle.min.js"></script>
+  </body>
 </html>
