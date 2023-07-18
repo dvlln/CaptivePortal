@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Captive Portal - Login</title>
     <link href="../../Extensions/Bootstrap 5.3.0/CSS/bootstrap.min.css" rel="stylesheet">
-    <!-- <link href="CSS/login.css" rel="stylesheet"> -->
   </head>
   <body>
-        <div class="d-flex flex-column h-100 " style="background-color: rgba(237,237,237,0.5)">
+        <!-- WRAPPER -->
+        <div class="d-flex flex-column vh-100 " style="background-color: rgba(237,237,237,0.5)">
+
+            <!-- CONTENT -->
             <div class="container py-5 pb-0 px-md-5 px-3 text-center text-lg-start">
                 <div class="row gx-lg-5 align-items-center">
                     <div class="col-lg-6 mb-5 mb-lg-0">
@@ -60,6 +62,8 @@
                     </div>
                 </div>
             </div>
+
+            <!-- FOOTER -->
             <div class="mt-auto text-center">
                 <a href="unsubscribe.php" style="font-size:14px">Caso deseja remover o cadastro, clique aqui.</a>
                 <br>
