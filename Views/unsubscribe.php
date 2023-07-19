@@ -6,7 +6,7 @@
     <title>Captive Portal - Desinscrever</title>
     <link href="../Extensions/Bootstrap 5.3.0/CSS/bootstrap.min.css" rel="stylesheet">
   </head>
-  <body>
+  <body style="background-color: #f2f2f2">
 
     <?php
         include '../Controller/mailController.php';
@@ -38,11 +38,11 @@
 
                     <!-- Forms -->
                     <div class="card shadow">
-                        <div class="card-body pt-4 pb-0 pt-md-5 px-md-5 px-4">
+                        <div class="card-body pb-0 pt-4 px-md-5 px-4">
                             <form method="POST">
                                 <div class="row">
                                     <div class="col-md-12 mb-4 text-center">
-                                        <h3 class="text-center font-family-calibri">Desinscrever</h3>
+                                        <h3 class="m-0 text-center font-family-calibri">Desinscrever</h3>
                                     </div>
                                     <!-- Email input -->
                                     <div class="col-md-12 mb-4">

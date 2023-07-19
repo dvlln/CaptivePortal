@@ -6,7 +6,7 @@
     <title>Captive Portal - Desinscrever</title>
     <link href="../Extensions/Bootstrap 5.3.0/CSS/bootstrap.min.css" rel="stylesheet">
   </head>
-  <body>
+  <body style="background-color: #f2f2f2">
     <?php
         include '../Controller/userController.php';
         session_unset();

@@ -47,11 +47,11 @@
                     
                     <!-- Forms -->
                     <div class="card shadow">
-                        <div class="card-body pt-4 pb-0 pt-md-5 px-md-5 px-4">
+                        <div class="card-body pb-0 pt-4 px-md-5 px-4">
                             <form method="POST">
                                 <div class="row">
                                     <div class="col-md-12 mb-4">
-                                        <h3 class="text-center font-family-calibri">Redefinir senha</h3>
+                                        <h3 class="m-0 text-center font-family-calibri">Redefinir senha</h3>
                                     </div>
 
                                     <!-- Password input -->
