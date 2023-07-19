@@ -8,23 +8,12 @@
     <link href="CSS/login.css" rel="stylesheet">
   </head>
   <body>
-    <?php
-        include '../Controller/userController.php';
-        session_unset();
-
-        $controller = new userController();
-        if (isset($_GET['email'])) {
-            $controller->unsubscribeUser();
-        }else{
-            return header("Location: /CaptivePortal/Views/login.php");
-        }
-    ?>
-
     <!-- Wrapper -->
     <div class="d-flex flex-column vh-100">
+
         <!-- Content -->
-        <div class="container py-5 pb-0 px-md-5 px-3 text-lg-start">
-            <div class="row gx-lg-5">
+        <div class="container py-5 pb-0 px-md-5 px-3 text-center text-lg-start">
+            <div class="row gx-lg-5 align-items-center">
                 <div class="col-lg-6 mb-5 mb-lg-0">
                     <img src="Imagens/logoUnimed.png" alt="logo" class="img-fluid">
                     <h1  class="text-center mt-3"  style="color: #333333">CAPTIVE PORTAL</h1>
@@ -34,11 +23,7 @@
                         <div class="card-body pt-4 pb-0 pt-md-5 px-md-5 px-4">
                                 <div class="row">
                                     <div class="col-md-12 mb-4">
-                                        <?php if(isset($_SESSION['error'])){ ?>
-                                            <h3 class="text-center font-family-calibri text-danger-emphasis">Erro durante a remoção, tente novamente mais tarde!</h3>
-                                        <?php }else{ ?>
-                                            <h3 class="text-center font-family-calibri text-success-emphasis">Conta removida com sucesso</h3>
-                                        <?php } ?>
+                                        <h3 class="font-family-calibri text-success-emphasis">TESTE REALIZADO COM SUCESSO</h3>
                                     </div>
                                 </div>
 
@@ -58,6 +43,6 @@
         </div>
     </div>
 
-    <script src="../Extensions/Bootstrap 5.3.0/JS/bootstrap.bundle.min.js"></script>
+    <script src="../../Extensions/Bootstrap 5.3.0/JS/bootstrap.bundle.min.js"></script>
   </body>
 </html>

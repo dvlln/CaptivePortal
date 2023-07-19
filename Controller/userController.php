@@ -21,17 +21,14 @@
 
                 $user = $tmp->fetch(\PDO::FETCH_ASSOC);
 
-                if(isset($user['email'])){
-                    if(($user['email'] == $u->getEmail()) && ($user['password'] == $u->getPassword())){
-                        header("Location: /CaptivePortal/Views/teste.php");
-                    }else{
-                        $_SESSION['error'] = "Usuário ou senha inválidos";
-                        return false;
-                    }
-                }else{
-                    $_SESSION['error'] = "Usuário inexistente";
+                if(!isset($user['email'])){
+                    $_SESSION['errorLogin'] = "Usuário ou senha inválidos";
+                    return false;
+                }elseif(!(password_verify($u->getPassword(),$user['password']))){
+                    $_SESSION['errorLogin'] = "Usuário ou senha inválidos";
                     return false;
                 }
+                header("Location: /CaptivePortal/Views/teste.php");
             } catch(\PDOException $error){
                 $_SESSION['error'] = ($error);
                 return false;
@@ -48,6 +45,7 @@
                 $u->setPhone($_POST['phone']);
                 $u->setPassword($_POST['password']);
 
+                // Validated CPF and Password
                 if(!validaCPF($u->getCPF())){
                     if(!validaSenha($u->getPassword())){
                         $_SESSION['passError'] = 'Senha invalida!';
@@ -59,10 +57,13 @@
                     }
                 }else{
                     if(!validaSenha($u->getPassword())){
-                        $_SESSION['passError'] = 'Senha invlida!';
+                        $_SESSION['passError'] = 'Senha invalida!';
                         return false;
                     }
                 }
+
+                // Convert to hash
+                $u->setPassword(PASSWORD_HASH($u->getPassword(), PASSWORD_BCRYPT));
 
                 try{
                     $sql = "INSERT INTO user (name, email, cpf, phone, password) VALUES (?,?,?,?,?)";
@@ -74,7 +75,7 @@
                     $tmp->bindValue(5, $u->getPassword());
                     $tmp->execute();
     
-                    $_SESSION['status'] = "Cadastro realizado";
+                    $_SESSION['status'] = "Cadastro realizado com sucesso";
                     header("Location: /CaptivePortal/Views/login.php");
                 } catch(\PDOException $error){
                     $_SESSION['error'] = $error;
@@ -89,6 +90,11 @@
             $u->setEmail($_GET['email']);
             $u->setPassword($_POST['password']);
 
+            if(!validaSenha($u->getPassword())){
+                $_SESSION['passError'] = 'Senha invalida!';
+                return false;
+            }
+
             try{
                 $sql = "UPDATE user SET password=? WHERE email=?";
                 $tmp = conexao::getConexao()->prepare($sql);
@@ -96,10 +102,10 @@
                 $tmp->bindValue(2, $u->getEmail());
                 $tmp->execute();
 
-                $_SESSION['status'] = "Senha redefinida";
+                $_SESSION['status'] = "Senha redefinida com sucesso";
                 return header("Location: /CaptivePortal/Views/login.php");
             } catch(\PDOException $error){
-                $_SESSION['error'] = ($error);
+                $_SESSION['error'] = $error;
                 return false;
             }
         }
@@ -110,10 +116,18 @@
 
             $u->setEmail($_GET['email']);
             
-            $sql = "DELETE FROM user WHERE email=?";
-            $tmp = conexao::getConexao()->prepare($sql);
-            $tmp->bindValue(1, $u->getEmail());
-            $tmp->execute();
+            try {
+                $sql = "DELETE FROM user WHERE email=?";
+                $tmp = conexao::getConexao()->prepare($sql);
+                $tmp->bindValue(1, $u->getEmail());
+                $tmp->execute();
+
+                return false;
+            } catch(\PDOException $error){
+                $_SESSION['error'] = $error;
+                return false;
+            }
+            
         }
     }
 

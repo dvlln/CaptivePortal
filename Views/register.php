@@ -22,33 +22,28 @@
     <div class="d-flex flex-column vh-100">
         <!-- Content -->
         <div class="container py-5 pb-0 px-md-5 px-3 text-lg-start">
-            <div class="row gx-lg-5 align-items-center">
+            <div class="row gx-lg-5">
                 <div class="col-lg-6 mb-5 mb-lg-0">
                     <img src="Imagens/logoUnimed.png" alt="logo" class="img-fluid">
-                    <h1  class="text-center mt-3"  style="color: #333333">CAPTIVE PORTAL</h1>
+                    <h1 class="text-center mt-3" style="color: #333333">CAPTIVE PORTAL</h1>
                 </div>
                 <div class="col-lg-6 mb-5 mb-lg-0 ">
                     <!-- Error message -->
-                    <?php if(isset($_SESSION['error']) || isset($_SESSION['status'])){ ?>
+                    <?php if(isset($_SESSION['error'])){ ?>
                         <div class="w-100 d-flex mb-3 p-2 rounded bg-danger-subtle text-danger fs-5 align-items-center">
                             <img src="../icons/error.png" style="width:17px;height:17px"></img>
-                            <?php if(isset($_SESSION['error'])){ ?>
-                                <p class="m-0 px-2 fs-6"><?php echo $_SESSION['error']; ?></p>
-                            <?php } ?>
-                            <?php if(isset($_SESSION['status'])){ ?>
-                                <p class="m-0 px-2 fs-6"><?php echo $_SESSION['status']; ?></p>
-                            <?php } ?>
+                            <p class="m-0 px-2 fs-6"><?php echo $_SESSION['error']; ?></p>
                         </div>
                     <?php } ?>
                     <!-- Forms -->
                     <div class="card shadow">
                         <div class="card-body pt-4 pb-0 pt-md-5 px-md-5 px-4">
-                            <form>
+                            <form action="" method="POST">
                                 <div class="row">
                                     <!-- Name input -->
                                     <div class="col-md-12 mb-4">
                                         <div class="form-floating">
-                                            <input type="text" id="floatingName" class="form-control" required />
+                                            <input type="text" id="floatingName" name="name" class="form-control" required />
                                             <label for="floatingName">Nome completo</label>
                                         </div>
                                     </div>
@@ -56,7 +51,7 @@
                                     <!-- Email input -->
                                     <div class="col-md-12 mb-4">
                                         <div class="form-floating">
-                                        <input type="email" id="floatingEmail" class="form-control" required />
+                                        <input type="email" id="floatingEmail" name="email" class="form-control" required />
                                         <label for="floatingEmail">E-mail</label>
                                         </div>
                                     </div>
@@ -64,7 +59,7 @@
                                     <!-- CPF input -->
                                     <div class="col-md-6 mb-4">
                                         <div class="form-floating">
-                                            <input type="text" id="floatingCPF" class="form-control" required />
+                                            <input type="text" id="floatingCPF" name="cpf" class="form-control" required />
                                             <label for="floatingCPF">CPF</label>
                                             <?php if(isset($_SESSION['cpfError'])){ ?>
                                                 <p class="text-danger fs-6"><?php echo $_SESSION['cpfError']; ?></p>
@@ -75,7 +70,7 @@
                                     <!-- Phone input -->
                                     <div class="col-md-6 mb-4">
                                         <div class="form-floating">
-                                            <input type="tel" id="floatingPhone" class="form-control" title="xx 9 xxxx-xxxx" required />
+                                            <input type="tel" id="floatingPhone" name="phone" class="form-control" required />
                                             <label for="floatingPhone">Telefone</label>
                                         </div>
                                     </div>
@@ -83,7 +78,7 @@
                                     <!-- Password input -->
                                     <div class="col-md-12 mb-4">
                                         <div class="form-floating">
-                                            <input type="password" id="floatingPassword" class="form-control" required />
+                                            <input type="password" id="floatingPassword" name="password" class="form-control" required />
                                             <label for="floatingPassword">Senha</label>
                                             <?php if(isset($_SESSION['passError'])){ ?>
                                                 <p class="text-danger fs-6"><?php echo $_SESSION['passError']; ?></p>
@@ -94,7 +89,7 @@
                                     <!-- User agreement -->
                                     <div class="col-md-12 mb-4">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="userAgreement">
+                                            <input class="form-check-input" type="checkbox" id="userAgreement" required>
                                             <label class="form-check-label" for="userAgreement" style="font-size:14px">Eu aceito o <a href="" data-bs-toggle="modal" data-bs-target="#userAgreementModal">termo de consentimento de uso dos meus dados</a></label>
                                         </div>
                                     </div>
@@ -129,7 +124,7 @@
                                     <!-- User data -->
                                     <div class="col-md-12 mb-4">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="userData">
+                                            <input class="form-check-input" type="checkbox" id="userData" required>
                                             <label class="form-check-label" for="userData" style="font-size:14px">Li e estou ciente do <a href="" data-bs-toggle="modal" data-bs-target="#userDataModal">termo de exclusão de dados</a></label>
                                         </div>
                                     </div>

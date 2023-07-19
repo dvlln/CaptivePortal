@@ -14,6 +14,7 @@ require '../vendor/PHPMailer-master/src/SMTP.php';
 
 class mailController{
     public function sendPasswordResetInvitation(){
+        session_unset();
         // CONEXAO EMAIL
         $phpmailer = new PHPMailer();
         $phpmailer->isSMTP();
@@ -34,6 +35,11 @@ class mailController{
         $tmp->execute();
 
         $user = $tmp->fetch(\PDO::FETCH_ASSOC);
+
+        if(!isset($user['email'])){
+            $_SESSION['errorEmail'] = "E-mail inexistente";
+            return false;
+        }
 
         // PRESET
         $mail = new mail();
@@ -65,12 +71,14 @@ class mailController{
             $_SESSION['error'] = $phpmailer->ErrorInfo;
             return false;
         } else {
-            session_destroy();
+            $_SESSION['status'] = "E-mail enviado com sucesso";
+            header("Location: /CaptivePortal/Views/login.php");
             return true;
         }
     }
 
     public function sendUnsubscribeInvitation(){
+        session_unset();
         // CONEXAO EMAIL
         $phpmailer = new PHPMailer();
         $phpmailer->isSMTP();
@@ -91,6 +99,11 @@ class mailController{
         $tmp->execute();
 
         $user = $tmp->fetch(\PDO::FETCH_ASSOC);
+
+        if(!isset($user['email'])){
+            $_SESSION['errorEmail'] = "E-mail inexistente";
+            return false;
+        }
 
         // PRESET
         $mail = new mail();
@@ -122,7 +135,8 @@ class mailController{
             $_SESSION['error'] = $phpmailer->ErrorInfo;
             return false;
         } else {
-            session_destroy();
+            $_SESSION['status'] = "E-mail enviado com sucesso";
+            header("Location: /CaptivePortal/Views/login.php");
             return true;
         }
     }

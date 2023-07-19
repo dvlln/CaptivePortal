@@ -9,7 +9,7 @@
   <body style="background-color: #f2f2f2">
         <?php
             include '../Controller/userController.php';
-            session_unset();       
+            unset($_SESSION['error']);
 
             $controller = new userController();
             if (isset($_POST['email']) && isset($_POST['password'])) {
@@ -27,22 +27,31 @@
                         <h1 class="mt-3"  style="color: #333333">CAPTIVE PORTAL</h1>
                     </div>
                     <div class="col-lg-6 mb-5 mb-lg-0 ">
+
                         <!-- Error message -->
-                        <?php if(isset($_SESSION['error']) || isset($_SESSION['status'])){ ?>
+                        <?php if(isset($_SESSION['error']) || isset($_SESSION['errorLogin'])){ ?>
                             <div class="w-100 d-flex mb-3 p-2 rounded bg-danger-subtle text-danger fs-5 align-items-center">
                                 <img src="../icons/error.png" style="width:17px;height:17px"></img>
-                                <?php if(isset($_SESSION['error'])){ ?>
-                                    <p class="m-0 px-2 fs-6"><?php echo $_SESSION['error']; ?></p>
+                                <?php if(isset($_SESSION['errorLogin'])){ ?>
+                                    <p class="m-0 px-2 fs-6"><?php echo $_SESSION['errorLogin']; ?></p>
                                 <?php } ?>
-                                <?php if(isset($_SESSION['status'])){ ?>
-                                    <p class="m-0 px-2 fs-6"><?php echo $_SESSION['status']; ?></p>
+                                <?php if(isset($_SESSION['error'])){ ?>
+                                    <p class="m-0 px-2 fs-6">Erro: fazer tentar novamente mais tarde</p>
                                 <?php } ?>
                             </div>
                         <?php } ?>
+
+                        <!-- Status message -->
+                        <?php if(isset($_SESSION['status'])){ ?>
+                            <div class="w-100 d-flex mb-3 p-2 rounded bg-success-subtle text-success fs-5 align-items-center">
+                                <p class="m-0 px-2 fs-6"><?php echo $_SESSION['status']; ?></p>
+                            </div>
+                        <?php } ?>
+
                         <!-- Forms -->
                         <div class="card shadow">
                             <div class="card-body pt-4 pb-0 pt-md-5 px-md-5 px-4">
-                                <form>
+                                <form action="" method="POST">
                                     <div class="row">
                                         <!-- Name input -->
                                         
@@ -81,6 +90,7 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -92,6 +102,6 @@
                 <p class="border-top mb-0 mt-3 py-3 px-2 color-green bg-success text-light" style="font-size:13px">Desenvolvido por Unimed São José dos Campos - Cooperativa de Trabalho Médico &copy; 2023 - todos os direitos reservados</p>
             </div>
         </div>
-    <script src="../../Extensions/Bootstrap 5.3.0/JS/bootstrap.bundle.min.js"></script>
+    <script src="../Extensions/Bootstrap 5.3.0/JS/bootstrap.bundle.min.js"></script>
   </body>
 </html>
