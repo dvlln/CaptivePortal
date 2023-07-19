@@ -53,8 +53,6 @@
                             <div class="card-body pt-4 pb-0 pt-md-5 px-md-5 px-4">
                                 <form action="" method="POST">
                                     <div class="row">
-                                        <!-- Name input -->
-                                        
                                         <!-- Email input -->
                                         <div class="col-md-12 mb-4">
                                             <div class="form-floating">

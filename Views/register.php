@@ -59,10 +59,13 @@
                                     <!-- CPF input -->
                                     <div class="col-md-6 mb-4">
                                         <div class="form-floating">
-                                            <input type="text" id="floatingCPF" name="cpf" class="form-control" required />
-                                            <label for="floatingCPF">CPF</label>
                                             <?php if(isset($_SESSION['cpfError'])){ ?>
+                                                <input type="text" id="floatingCPF" name="cpf" class="form-control is-invalid" required />
+                                                <label for="floatingCPF">CPF</label>
                                                 <p class="text-danger fs-6"><?php echo $_SESSION['cpfError']; ?></p>
+                                            <?php }else{ ?>
+                                                <input type="text" id="floatingCPF" name="cpf" class="form-control" required />
+                                                <label for="floatingCPF">CPF</label>
                                             <?php } ?>
                                         </div>
                                     </div>
@@ -78,10 +81,13 @@
                                     <!-- Password input -->
                                     <div class="col-md-12 mb-4">
                                         <div class="form-floating">
-                                            <input type="password" id="floatingPassword" name="password" class="form-control" required />
-                                            <label for="floatingPassword">Senha</label>
                                             <?php if(isset($_SESSION['passError'])){ ?>
+                                                <input type="password" id="floatingPassword" name="password" class="form-control is-invalid" required />
+                                                <label for="floatingPassword">Senha</label>
                                                 <p class="text-danger fs-6"><?php echo $_SESSION['passError']; ?></p>
+                                            <?php }else{ ?>
+                                                <input type="password" id="floatingPassword" name="password" class="form-control" required />
+                                                <label for="floatingPassword">Senha</label>
                                             <?php } ?>
                                         </div>
                                     </div>

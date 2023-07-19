@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Captive Portal - Desinscrever</title>
     <link href="../Extensions/Bootstrap 5.3.0/CSS/bootstrap.min.css" rel="stylesheet">
-    <link href="CSS/login.css" rel="stylesheet">
   </head>
   <body>
     <!-- Wrapper -->

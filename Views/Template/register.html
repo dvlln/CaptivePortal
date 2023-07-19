@@ -4,37 +4,19 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Captive Portal - Register</title>
-    <link href="../Extensions/Bootstrap 5.3.0/CSS/bootstrap.min.css" rel="stylesheet">
+    <link href="../../Extensions/Bootstrap 5.3.0/CSS/bootstrap.min.css" rel="stylesheet">
   </head>
   <body style="background-color: #f2f2f2">
-
-    <?php
-        include '../Controller/userController.php';
-        session_unset();
-
-        $controller = new userController();
-        if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['cpf']) && isset($_POST['phone']) && isset($_POST['password'])) {
-            $controller->register();
-        }
-    ?>
-
     <!-- Wrapper -->
     <div class="d-flex flex-column vh-100">
         <!-- Content -->
         <div class="container py-5 pb-0 px-md-5 px-3 text-lg-start">
             <div class="row gx-lg-5">
                 <div class="col-lg-6 mb-5 mb-lg-0">
-                    <img src="Imagens/logoUnimed.png" alt="logo" class="img-fluid">
+                    <img src="../Imagens/logoUnimed.png" alt="logo" class="img-fluid">
                     <h1 class="text-center mt-3" style="color: #333333">CAPTIVE PORTAL</h1>
                 </div>
                 <div class="col-lg-6 mb-5 mb-lg-0 ">
-                    <!-- Error message -->
-                    <?php if(isset($_SESSION['error'])){ ?>
-                        <div class="w-100 d-flex mb-3 p-2 rounded bg-danger-subtle text-danger fs-5 align-items-center">
-                            <img src="../icons/error.png" style="width:17px;height:17px"></img>
-                            <p class="m-0 px-2 fs-6"><?php echo $_SESSION['error']; ?></p>
-                        </div>
-                    <?php } ?>
                     <!-- Forms -->
                     <div class="card shadow">
                         <div class="card-body pt-4 pb-0 pt-md-5 px-md-5 px-4">
@@ -47,7 +29,6 @@
                                             <label for="floatingName">Nome completo</label>
                                         </div>
                                     </div>
-
                                     <!-- Email input -->
                                     <div class="col-md-12 mb-4">
                                         <div class="form-floating">
@@ -55,15 +36,11 @@
                                         <label for="floatingEmail">E-mail</label>
                                         </div>
                                     </div>
-
                                     <!-- CPF input -->
                                     <div class="col-md-6 mb-4">
                                         <div class="form-floating">
                                             <input type="text" id="floatingCPF" name="cpf" class="form-control" required />
                                             <label for="floatingCPF">CPF</label>
-                                            <?php if(isset($_SESSION['cpfError'])){ ?>
-                                                <p class="text-danger fs-6"><?php echo $_SESSION['cpfError']; ?></p>
-                                            <?php } ?>
                                         </div>
                                     </div>
 
@@ -80,9 +57,6 @@
                                         <div class="form-floating">
                                             <input type="password" id="floatingPassword" name="password" class="form-control" required />
                                             <label for="floatingPassword">Senha</label>
-                                            <?php if(isset($_SESSION['passError'])){ ?>
-                                                <p class="text-danger fs-6"><?php echo $_SESSION['passError']; ?></p>
-                                            <?php } ?>
                                         </div>
                                     </div>
 
@@ -165,7 +139,7 @@
                             </form>
                             <!-- Login button -->
                             <div class="text-center">
-                            <p>Já possui uma conta? <a href="login.php">Faça login</a></p>
+                            <p>Já possui uma conta? <a href="login.html">Faça login</a></p>
                             </div>
                         </div>
                     </div>
@@ -175,13 +149,13 @@
 
         <!-- Footer -->
         <div class="mt-auto text-center">
-            <a href="unsubscribe.php" style="font-size:14px">Caso deseja remover o cadastro, clique aqui.</a>
+            <a href="unsubscribe.html" style="font-size:14px">Caso deseja remover o cadastro, clique aqui.</a>
             <br>
             <p class="border-top mb-0 mt-3 py-3 px-2 color-green bg-success text-light" style="font-size:13px">Desenvolvido por Unimed São José dos Campos - Cooperativa de Trabalho Médico &copy; 2023 - todos os direitos reservados</p>
         </div>
     </div>
 
 
-    <script src="../Extensions/Bootstrap 5.3.0/JS/bootstrap.bundle.min.js"></script>
+    <script src="../../Extensions/Bootstrap 5.3.0/JS/bootstrap.bundle.min.js"></script>
   </body>
 </html>
