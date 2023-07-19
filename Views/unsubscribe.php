@@ -22,7 +22,7 @@
     <div class="d-flex flex-column vh-100">
         <!-- Content -->
         <div class="container py-5 pb-0 px-md-5 px-3 text-lg-start">
-            <div class="row gx-lg-5">
+            <div class="row gx-lg-5 align-items-center">
                 <div class="col-lg-6 mb-5 mb-lg-0">
                     <img src="Imagens/logoUnimed.png" alt="logo" class="img-fluid">
                     <h1  class="text-center mt-3"  style="color: #333333">CAPTIVE PORTAL</h1>
