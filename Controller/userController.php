@@ -3,9 +3,12 @@
     include '../Model/conexao.php';
     include '../Rules/cpf.php';
     include '../Rules/password.php';
+    include '../Rules/phone.php';
     session_start();
 
     class userController{
+        private $error;
+
         public function login(){
             session_unset();
             $u = new user();
@@ -45,24 +48,49 @@
                 $u->setPhone($_POST['phone']);
                 $u->setPassword($_POST['password']);
 
-                // Validated CPF and Password
-                if(!validaCPF($u->getCPF())){
-                    if(!validaSenha($u->getPassword())){
-                        $_SESSION['passError'] = 'Senha invalida!';
+                // Valida se CPF e E-mail já existem
+                $sql = "SELECT * FROM user WHERE email=?";
+                $tmp = conexao::getConexao()->prepare($sql);
+                $tmp->bindValue(1, $u->getEmail());
+                $tmp->execute();
+                
+                $user = $tmp->fetch(\PDO::FETCH_ASSOC);
+
+                // Validação CPF
+                if(!($user['cpf'] == $u->getCPF())){
+                    if(!validaCPF($u->getCPF())){
                         $_SESSION['cpfError'] = 'CPF inválido!';
-                        return false;
-                    }else{
-                        $_SESSION['cpfError'] = 'CPF inválido!';
-                        return false;
-                    }
+                        $error = true;
+                    }    
                 }else{
-                    if(!validaSenha($u->getPassword())){
-                        $_SESSION['passError'] = 'Senha invalida!';
-                        return false;
-                    }
+                    $_SESSION['cpfError'] = 'Esse CPF já está em uso';
+                    $error = true;
                 }
 
-                // Convert to hash
+                // Validação e-mail
+                if($user['email'] == $u->getEmail()){
+                    $_SESSION['emailError'] = 'Esse E-mail já está em uso';
+                    $error = true;
+                }
+
+                // Validação senha
+                if(!validaSenha($u->getPassword())){
+                    $_SESSION['passError'] = 'Senha inválida!';
+                    $error = true;
+                }
+
+                // Validação telefone
+                if(!validaTelefone($u->getPhone())){
+                    $_SESSION['phoneError'] = 'Telefone inválido!';
+                    $error = true;
+                }
+
+                // Verifica se existe algum erro
+                if($error){
+                    return ;
+                }
+
+                // Converte para hash
                 $u->setPassword(PASSWORD_HASH($u->getPassword(), PASSWORD_BCRYPT));
 
                 try{
@@ -91,7 +119,7 @@
             $u->setPassword($_POST['password']);
 
             if(!validaSenha($u->getPassword())){
-                $_SESSION['passError'] = 'Senha invalida!';
+                $_SESSION['passError'] = 'Senha inválida!';
                 return false;
             }
 

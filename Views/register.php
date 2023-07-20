@@ -3,7 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Captive Portal - Register</title>
+    <title>Unimed SJC Wi-Fi</title>
+    <link href="Imagens/logoUnimed.png" rel="icon"/>
     <link href="../Extensions/Bootstrap 5.3.0/CSS/bootstrap.min.css" rel="stylesheet">
   </head>
   <body style="background-color: #f2f2f2">
@@ -21,25 +22,27 @@
     <!-- Wrapper -->
     <div class="d-flex flex-column vh-100">
         <!-- Content -->
-        <div class="container py-lg-5 pb-0 px-md-5 px-3 text-lg-start">
-            <div class="row gx-lg-5 align-items-center">
-                <div class="col-lg-6 mb-5 mb-lg-0">
-                    <img src="Imagens/logoUnimed.png" alt="logo" class="img-fluid">
-                    <h1 class="text-center mt-3" style="color: #333333">CAPTIVE PORTAL</h1>
+        <div class="container mt-auto pt-lg-0 pt-3 px-md-5 px-3 text-lg-start">
+            <div class="row gx-lg-5 align-items-center justify-content-center">
+                <div class="col-lg-12 mb-3 text-center">
+                    <img src="Imagens/logoUnimed.png" alt="logo" style="width: 300px">
                 </div>
-                <div class="col-lg-6 mb-5 mb-lg-0 ">
+                <div class="col-lg-5 mb-5 mb-lg-0 ">
                     <!-- Error message -->
                     <?php if(isset($_SESSION['error'])){ ?>
                         <div class="w-100 d-flex mb-3 p-2 rounded bg-danger-subtle text-danger fs-5 align-items-center">
                             <img src="../icons/error.png" style="width:17px;height:17px"></img>
-                            <p class="m-0 px-2 fs-6"><?php echo $_SESSION['error']; ?></p>
+                            <p class="m-0 px-2 fs-6">Erro: Tente novamente mais tarde!</p>
                         </div>
                     <?php } ?>
                     <!-- Forms -->
                     <div class="card shadow">
-                        <div class="card-body pt-4 pb-0 pt-md-5 px-md-5 px-4">
+                        <div class="card-body pb-0 pt-4 px-md-5 px-4">
                             <form action="" method="POST">
                                 <div class="row">
+                                    <div class="col-md-12 mb-4 text-center">
+                                        <h3 class="m-0 text-center font-family-calibri">Cadastre-se</h3>
+                                    </div>
                                     <!-- Name input -->
                                     <div class="col-md-12 mb-4">
                                         <div class="form-floating">
@@ -51,8 +54,14 @@
                                     <!-- Email input -->
                                     <div class="col-md-12 mb-4">
                                         <div class="form-floating">
-                                        <input type="email" id="floatingEmail" name="email" class="form-control" required />
-                                        <label for="floatingEmail">E-mail</label>
+                                            <?php if(isset($_SESSION['emailError'])){ ?>
+                                                <input type="email" id="floatingEmail" name="email" class="form-control is-invalid" required />
+                                                <label for="floatingEmail">E-mail</label>
+                                                <p class="m-0 text-danger" style="font-size: 14px;"><?php echo $_SESSION['emailError']; ?></p>
+                                            <?php }else{ ?>
+                                                    <input type="email" id="floatingEmail" name="email" class="form-control" required />
+                                                    <label for="floatingEmail">E-mail</label>
+                                            <?php } ?>
                                         </div>
                                     </div>
 
@@ -62,7 +71,7 @@
                                             <?php if(isset($_SESSION['cpfError'])){ ?>
                                                 <input type="text" id="floatingCPF" name="cpf" class="form-control is-invalid" required />
                                                 <label for="floatingCPF">CPF</label>
-                                                <p class="text-danger fs-6"><?php echo $_SESSION['cpfError']; ?></p>
+                                                <p class="m-0 text-danger" style="font-size: 14px;"><?php echo $_SESSION['cpfError']; ?></p>
                                             <?php }else{ ?>
                                                 <input type="text" id="floatingCPF" name="cpf" class="form-control" required />
                                                 <label for="floatingCPF">CPF</label>
@@ -73,8 +82,14 @@
                                     <!-- Phone input -->
                                     <div class="col-md-6 mb-4">
                                         <div class="form-floating">
-                                            <input type="tel" id="floatingPhone" name="phone" class="form-control" required />
-                                            <label for="floatingPhone">Telefone</label>
+                                            <?php if(isset($_SESSION['phoneError'])){ ?>
+                                                <input type="tel" id="floatingPhone" name="phone" class="form-control is-invalid" required />
+                                                <label for="floatingPhone">Telefone</label>
+                                                <p class="m-0 text-danger" style="font-size: 14px;"><?php echo $_SESSION['phoneError']; ?></p>
+                                            <?php }else{ ?>
+                                                <input type="tel" id="floatingPhone" name="phone" class="form-control" required />
+                                                <label for="floatingPhone">Telefone</label>
+                                            <?php } ?>
                                         </div>
                                     </div>
 
@@ -84,7 +99,7 @@
                                             <?php if(isset($_SESSION['passError'])){ ?>
                                                 <input type="password" id="floatingPassword" name="password" class="form-control is-invalid" required />
                                                 <label for="floatingPassword">Senha</label>
-                                                <p class="text-danger fs-6"><?php echo $_SESSION['passError']; ?></p>
+                                                <p class="m-0 text-danger" style="font-size: 14px;"><?php echo $_SESSION['passError']; ?></p>
                                             <?php }else{ ?>
                                                 <input type="password" id="floatingPassword" name="password" class="form-control" required />
                                                 <label for="floatingPassword">Senha</label>
@@ -96,7 +111,7 @@
                                     <div class="col-md-12 mb-4">
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" id="userAgreement" required>
-                                            <label class="form-check-label" for="userAgreement" style="font-size:14px">Eu aceito o <a href="" data-bs-toggle="modal" data-bs-target="#userAgreementModal">termo de consentimento de uso dos meus dados</a></label>
+                                            <label class="form-check-label" for="userAgreement" style="font-size:14px">Eu aceito o <a href="" data-bs-toggle="modal" data-bs-target="#userAgreementModal">Termo de consentimento de uso dos meus dados</a></label>
                                         </div>
                                     </div>
 
@@ -126,41 +141,6 @@
                                             </div>
                                         </div>
                                     </div>
-
-                                    <!-- User data -->
-                                    <div class="col-md-12 mb-4">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="userData" required>
-                                            <label class="form-check-label" for="userData" style="font-size:14px">Li e estou ciente do <a href="" data-bs-toggle="modal" data-bs-target="#userDataModal">termo de exclusão de dados</a></label>
-                                        </div>
-                                    </div>
-
-                                    <!-- User data modal -->
-                                    <div class="modal fade" id="userDataModal" tabindex="-1" aria-labelledby="userDataModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h1 class="modal-title fs-5" id="userDataModalLabel">Termo de exclusão de dados</h1>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                <span>
-                                                    Olá!
-                                                    <br/>De acordo com a LPGD (Lei Geral de Proteção de Dados), você tem agora a liberdade para pedir a exclusão dos seus dados de nossa base.
-                                                    <br/>Mas gostaríamos de reforçar que eles são captados por vários motivos importantes e totalmente idôneos, como:
-                                                    <ul>
-                                                        <li>Envio de mensagens e notificações (atualizações, promoções, notícias e demais comunicados pertinentes);</li>
-                                                        <li>Análise do perfil e comportamento de usuários com o objetivo de melhorar o produto e conteúdo ofertado;</li>
-                                                        <li>Possível criação de novos produtos, serviços, funcionalidades e promoções;</li>
-                                                        <li>Personalizações diversas de acordo com o interesse dos usuários;</li>
-                                                        <li>Defesa da empresa frente a processos administrativos e judiciais, como o cumprimento da Lei do Marco Civil da Internet.</li>
-                                                    </ul>
-                                                    Se, mesmo assim, ainda desejar excluir seus dados de nossa base, basta clicar no link presente no rodapé!
-                                                </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
 
                                 <!-- Submit button -->
@@ -183,7 +163,7 @@
         <div class="mt-auto text-center">
             <a href="unsubscribe.php" style="font-size:14px">Caso deseja remover o cadastro, clique aqui.</a>
             <br>
-            <p class="border-top mb-0 mt-3 py-3 px-2 color-green bg-success text-light" style="font-size:13px">Desenvolvido por Unimed São José dos Campos - Cooperativa de Trabalho Médico &copy; 2023 - todos os direitos reservados</p>
+            <p class="border-top mb-0 mt-3 py-3 px-2 color-green bg-success text-light" style="font-size:13px">Desenvolvido por www.unimedsjc.com.br © 2023 - todos os direitos reservados</p>
         </div>
     </div>
 

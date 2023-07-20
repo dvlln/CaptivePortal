@@ -3,7 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Captive Portal - Login</title>
+    <title>Unimed SJC Wi-Fi</title>
+    <link href="Imagens/logoUnimed.png" rel="icon"/>
     <link href="../Extensions/Bootstrap 5.3.0/CSS/bootstrap.min.css" rel="stylesheet">
   </head>
   <body style="background-color: #f2f2f2">
@@ -20,13 +21,14 @@
         <!-- Wrapper -->
         <div class="d-flex flex-column vh-100">
             <!-- Content -->
-            <div class="container py-5 pb-0 px-md-5 px-3 text-center text-lg-start">
-                <div class="row gx-lg-5 align-items-center">
-                    <div class="col-lg-6 mb-4 mb-lg-0 text-center">
-                        <img src="Imagens/logoUnimed.png" alt="logo" class="img-fluid">
-                        <h1 class="mt-3"  style="color: #333333">CAPTIVE PORTAL</h1>
+            <div class="container mt-auto pt-lg-0 pt-3 px-md-5 px-3 text-center text-lg-start">
+                <div class="row gx-lg-5 align-items-center justify-content-center">
+                    <div class="col-lg-12 mb-3 text-center">
+                        <img src="Imagens/logoUnimed.png" alt="logo" style="width: 300px">
+                        <h3 class="mt-3"  style="color: #333333">Wi-Fi Unimed</h3>
+                        <h5 class="m-0" style="color: #333333">Bem vindo!</h5>
                     </div>
-                    <div class="col-lg-6 mb-5 mb-lg-0 ">
+                    <div class="col-lg-5 mb-5 mb-lg-0">
 
                         <!-- Error message -->
                         <?php if(isset($_SESSION['error']) || isset($_SESSION['errorLogin'])){ ?>
@@ -36,7 +38,7 @@
                                     <p class="m-0 px-2 fs-6"><?php echo $_SESSION['errorLogin']; ?></p>
                                 <?php } ?>
                                 <?php if(isset($_SESSION['error'])){ ?>
-                                    <p class="m-0 px-2 fs-6">Erro: fazer tentar novamente mais tarde</p>
+                                    <p class="m-0 px-2 fs-6">Erro: fazer tentar novamente mais tarde!</p>
                                 <?php } ?>
                             </div>
                         <?php } ?>
@@ -97,7 +99,7 @@
             <div class="mt-auto text-center">
                 <a href="unsubscribe.php" style="font-size:14px">Caso deseja remover o cadastro, clique aqui.</a>
                 <br>
-                <p class="border-top mb-0 mt-3 py-3 px-2 color-green bg-success text-light" style="font-size:13px">Desenvolvido por Unimed São José dos Campos - Cooperativa de Trabalho Médico &copy; 2023 - todos os direitos reservados</p>
+                <p class="border-top mb-0 mt-3 py-3 px-2 color-green bg-success text-light" style="font-size:13px">Desenvolvido por www.unimedsjc.com.br © 2023 - todos os direitos reservados</p>
             </div>
         </div>
     <script src="../Extensions/Bootstrap 5.3.0/JS/bootstrap.bundle.min.js"></script>
