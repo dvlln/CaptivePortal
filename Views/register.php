@@ -27,7 +27,7 @@
                 <div class="col-lg-12 mb-3 text-center">
                     <img src="Imagens/logoUnimed.png" alt="logo" style="width: 300px">
                 </div>
-                <div class="col-lg-5 mb-5 mb-lg-0 ">
+                <div class="col-lg-6 mb-5 mb-lg-0">
                     <!-- Error message -->
                     <?php if(isset($_SESSION['error'])){ ?>
                         <div class="w-100 d-flex mb-3 p-2 rounded bg-danger-subtle text-danger fs-5 align-items-center">
@@ -46,7 +46,7 @@
                                     <!-- Name input -->
                                     <div class="col-md-12 mb-4">
                                         <div class="form-floating">
-                                            <input type="text" id="floatingName" name="name" class="form-control" required />
+                                            <input type="text" id="floatingName" name="name" class="form-control" value="<?php if(isset($_SESSION['getName'])){echo $_SESSION['getName'];} ?>" required />
                                             <label for="floatingName">Nome completo</label>
                                         </div>
                                     </div>
@@ -55,11 +55,11 @@
                                     <div class="col-md-12 mb-4">
                                         <div class="form-floating">
                                             <?php if(isset($_SESSION['emailError'])){ ?>
-                                                <input type="email" id="floatingEmail" name="email" class="form-control is-invalid" required />
+                                                <input type="email" id="floatingEmail" name="email" class="form-control is-invalid" value="<?php if(isset($_SESSION['getEmail'])){echo $_SESSION['getEmail'];} ?>" required />
                                                 <label for="floatingEmail">E-mail</label>
                                                 <p class="m-0 text-danger" style="font-size: 14px;"><?php echo $_SESSION['emailError']; ?></p>
                                             <?php }else{ ?>
-                                                    <input type="email" id="floatingEmail" name="email" class="form-control" required />
+                                                    <input type="email" id="floatingEmail" name="email" class="form-control" value="<?php if(isset($_SESSION['getEmail'])){echo $_SESSION['getEmail'];} ?>" required />
                                                     <label for="floatingEmail">E-mail</label>
                                             <?php } ?>
                                         </div>
@@ -69,11 +69,11 @@
                                     <div class="col-md-6 mb-4">
                                         <div class="form-floating">
                                             <?php if(isset($_SESSION['cpfError'])){ ?>
-                                                <input type="text" id="floatingCPF" name="cpf" class="form-control is-invalid" required />
+                                                <input type="text" id="floatingCPF" name="cpf" class="form-control is-invalid" value="<?php if(isset($_SESSION['getCPF'])){echo $_SESSION['getCPF'];} ?>" required />
                                                 <label for="floatingCPF">CPF</label>
                                                 <p class="m-0 text-danger" style="font-size: 14px;"><?php echo $_SESSION['cpfError']; ?></p>
                                             <?php }else{ ?>
-                                                <input type="text" id="floatingCPF" name="cpf" class="form-control" required />
+                                                <input type="text" id="floatingCPF" name="cpf" class="form-control" value="<?php if(isset($_SESSION['getCPF'])){echo $_SESSION['getCPF'];} ?>" required />
                                                 <label for="floatingCPF">CPF</label>
                                             <?php } ?>
                                         </div>
@@ -82,14 +82,8 @@
                                     <!-- Phone input -->
                                     <div class="col-md-6 mb-4">
                                         <div class="form-floating">
-                                            <?php if(isset($_SESSION['phoneError'])){ ?>
-                                                <input type="tel" id="floatingPhone" name="phone" class="form-control is-invalid" required />
-                                                <label for="floatingPhone">Telefone</label>
-                                                <p class="m-0 text-danger" style="font-size: 14px;"><?php echo $_SESSION['phoneError']; ?></p>
-                                            <?php }else{ ?>
-                                                <input type="tel" id="floatingPhone" name="phone" class="form-control" required />
-                                                <label for="floatingPhone">Telefone</label>
-                                            <?php } ?>
+                                            <input type="text" id="floatingPhone" name="phone" class="form-control" value="<?php if(isset($_SESSION['getPhone'])){echo $_SESSION['getPhone'];} ?>" required />
+                                            <label for="floatingPhone">Telefone</label>
                                         </div>
                                     </div>
 
@@ -169,5 +163,15 @@
 
 
     <script src="../Extensions/Bootstrap 5.3.0/JS/bootstrap.bundle.min.js"></script>
+    <script src="../Extensions/JQuery-Mask/jquery-1.9.0.min.js" type="text/javascript"></script>
+    <script src="../Extensions/JQuery-Mask/jquery.maskedinput.min.js" type="text/javascript"></script>
+    <script>
+        jQuery(function($){
+            $.mask.definitions['x']='9';
+            $('#floatingPhone').mask('(99) 99999-9999',{placeholder:"(00) 00000-0000"});
+            $('#floatingCPF').mask('999.999.999-99',{placeholder:"000.000.000-00"});
+        });
+        
+    </script>
   </body>
 </html>

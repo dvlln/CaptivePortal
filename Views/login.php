@@ -11,6 +11,7 @@
         <?php
             include '../Controller/userController.php';
             unset($_SESSION['error']);
+            unset($_SESSION['getEmail']);
 
             $controller = new userController();
             if (isset($_POST['email']) && isset($_POST['password'])) {
@@ -58,7 +59,7 @@
                                         <!-- Email input -->
                                         <div class="col-md-12 mb-4">
                                             <div class="form-floating">
-                                                <input type="email" id="floatingEmail" class="form-control" name="email" required />
+                                                <input type="email" id="floatingEmail" class="form-control" name="email" value="<?php if(isset($_SESSION['getEmail'])){echo $_SESSION['getEmail'];} ?>" required />
                                                 <label for="floatingEmail">E-mail</label>
                                             </div>
                                         </div>

@@ -48,7 +48,7 @@
                                     <div class="col-md-12 mb-4">
                                         <div class="form-floating">
                                             <?php if(isset($_SESSION['errorEmail'])){ ?>
-                                                <input type="email" id="floatingEmail" name="email" class="form-control is-invalid" required />
+                                                <input type="email" id="floatingEmail" name="email" class="form-control is-invalid" value="<?php if(isset($_SESSION['getEmail'])){echo $_SESSION['getEmail'];} ?>" required />
                                                 <label for="floatingEmail">E-mail</label>
                                                 <p class="text-danger fs-6"><?php echo $_SESSION['errorEmail']; ?></p>
                                             <?php }else{ ?>

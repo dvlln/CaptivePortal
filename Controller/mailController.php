@@ -29,6 +29,8 @@ class mailController{
         $u = new user();
         $u->setEmail($_POST['email']);
 
+        $_SESSION['getEmail'] = $u->getEmail();
+
         $sql = "SELECT * FROM user WHERE email=?";
         $tmp = conexao::getConexao()->prepare($sql);
         $tmp->bindValue(1, $u->getEmail());
@@ -92,6 +94,8 @@ class mailController{
         // CONEXAO BANCO
         $u = new user();
         $u->setEmail($_POST['email']);
+
+        $_SESSION['getEmail'] = $u->getEmail();
 
         $sql = "SELECT * FROM user WHERE email=?";
         $tmp = conexao::getConexao()->prepare($sql);

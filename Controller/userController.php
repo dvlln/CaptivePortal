@@ -3,7 +3,6 @@
     include '../Model/conexao.php';
     include '../Rules/cpf.php';
     include '../Rules/password.php';
-    include '../Rules/phone.php';
     session_start();
 
     class userController{
@@ -15,6 +14,8 @@
 
             $u->setEmail($_POST['email']);
             $u->setPassword($_POST['password']);
+
+            $_SESSION['getEmail'] = $u->getEmail();
 
             try{
                 $sql = "SELECT * FROM user WHERE email=?";
@@ -48,29 +49,28 @@
                 $u->setPhone($_POST['phone']);
                 $u->setPassword($_POST['password']);
 
+                $_SESSION['getName'] = $u->getName();
+                $_SESSION['getEmail'] = $u->getEmail();
+                $_SESSION['getCPF'] = $u->getCPF();
+                $_SESSION['getPhone'] = $u->getPhone();
+
                 // Valida se CPF e E-mail já existem
-                $sql = "SELECT * FROM user WHERE email=?";
+                $sql = "SELECT * FROM user WHERE email=? || cpf=?";
                 $tmp = conexao::getConexao()->prepare($sql);
                 $tmp->bindValue(1, $u->getEmail());
+                $tmp->bindValue(2, $u->getCPF());
                 $tmp->execute();
                 
                 $user = $tmp->fetch(\PDO::FETCH_ASSOC);
 
-                // Validação CPF
-                if(!($user['cpf'] == $u->getCPF())){
-                    if(!validaCPF($u->getCPF())){
-                        $_SESSION['cpfError'] = 'CPF inválido!';
-                        $error = true;
-                    }    
-                }else{
+                if(isset($user['cpf'])){
                     $_SESSION['cpfError'] = 'Esse CPF já está em uso';
-                    $error = true;
+                    $error = true;  
                 }
 
-                // Validação e-mail
-                if($user['email'] == $u->getEmail()){
+                if(isset($user['email'])){
                     $_SESSION['emailError'] = 'Esse E-mail já está em uso';
-                    $error = true;
+                    $error = true; 
                 }
 
                 // Validação senha
@@ -79,15 +79,13 @@
                     $error = true;
                 }
 
-                // Validação telefone
-                if(!validaTelefone($u->getPhone())){
-                    $_SESSION['phoneError'] = 'Telefone inválido!';
-                    $error = true;
-                }
-
                 // Verifica se existe algum erro
                 if($error){
                     return ;
+                }
+                if(!validaCPF($u->getCPF())){
+                    $_SESSION['cpfError'] = 'CPF inválido!';
+                    $error = true;
                 }
 
                 // Converte para hash
