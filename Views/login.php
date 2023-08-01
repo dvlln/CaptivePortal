@@ -22,7 +22,7 @@
         <!-- Wrapper -->
         <div class="d-flex flex-column vh-100">
             <!-- Content -->
-            <div class="container mt-auto pt-lg-0 pt-3 px-md-5 px-3 text-center text-lg-start">
+            <div class="container mt-auto pt-3 pb-5 px-md-5 px-3 text-center text-lg-start">
                 <div class="row gx-lg-5 align-items-center justify-content-center">
                     <div class="col-lg-12 mb-3 text-center">
                         <img src="Imagens/logoUnimed.png" alt="logo" style="width: 300px">
@@ -98,9 +98,9 @@
 
             <!-- Footer -->
             <div class="mt-auto text-center">
-                <a href="unsubscribe.php" style="font-size:14px">Caso deseja remover o cadastro, clique aqui.</a>
+                <a href="unsubscribe.php" style="font-size:14px">Caso deseje remover o cadastro, clique aqui.</a>
                 <br>
-                <p class="border-top mb-0 mt-3 py-3 px-2 color-green bg-success text-light" style="font-size:13px">Desenvolvido por www.unimedsjc.com.br © 2023 - todos os direitos reservados</p>
+                <p class="border-top mb-0 mt-1 py-3 px-2 color-green bg-success text-light" style="font-size:13px">Desenvolvido por www.unimedsjc.com.br © 2023 - todos os direitos reservados</p>
             </div>
         </div>
     <script src="../Extensions/Bootstrap 5.3.0/JS/bootstrap.bundle.min.js"></script>
