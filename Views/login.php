@@ -10,6 +10,7 @@
   <body style="background-color: #f2f2f2">
         <?php
             include '../Controller/userController.php';
+
             unset($_SESSION['error']);
             unset($_SESSION['getEmail']);
 

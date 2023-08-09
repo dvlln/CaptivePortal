@@ -1,8 +1,15 @@
 <?php
     include '../Model/user.php';
     include '../Model/conexao.php';
+    include '../Model/env.php';
     include '../Rules/cpf.php';
     include '../Rules/password.php';
+
+    require '../vendor/autoload.php';
+
+    use Firebase\JWT\JWT;
+    use Firebase\JWT\Key;
+
     session_start();
 
     class userController{
@@ -112,14 +119,23 @@
         public function resetPassword(){
             session_unset();
             $u = new user();
+            $env = new env();
 
-            $u->setEmail($_GET['email']);
+            // E-mail descriptografado
+            $key = $env->getPasswordSecret();
+            $decoded = JWT::decode($_GET['email'], new Key($key, 'HS256'));
+            $decoded_array = (array) $decoded;
+
+            $u->setEmail($decoded_array[0]);
             $u->setPassword($_POST['password']);
 
             if(!validaSenha($u->getPassword())){
                 $_SESSION['passError'] = 'Senha inválida!';
                 return false;
             }
+
+            // Converte para hash
+            $u->setPassword(PASSWORD_HASH($u->getPassword(), PASSWORD_BCRYPT));
 
             try{
                 $sql = "UPDATE user SET password=? WHERE email=?";
@@ -140,7 +156,14 @@
             session_unset();
             $u = new user();
 
-            $u->setEmail($_GET['email']);
+            $env = new env();
+
+            // E-mail descriptografado
+            $key = $env->getPasswordSecret();
+            $decoded = JWT::decode($_GET['email'], new Key($key, 'HS256'));
+            $decoded_array = (array) $decoded;
+
+            $u->setEmail($decoded_array[0]);
             
             try {
                 $sql = "DELETE FROM user WHERE email=?";

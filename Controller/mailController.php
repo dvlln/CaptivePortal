@@ -5,12 +5,16 @@ session_start();
 include '../Model/mail.php';
 include '../Model/user.php';
 include '../Model/conexao.php';
+include '../Model/env.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 require '../vendor/PHPMailer-master/src/Exception.php';
 require '../vendor/PHPMailer-master/src/PHPMailer.php';
 require '../vendor/PHPMailer-master/src/SMTP.php';
+
+require '../vendor/autoload.php';
+use Firebase\JWT\JWT;
 
 class mailController{
     public function sendPasswordResetInvitation(){
@@ -29,7 +33,15 @@ class mailController{
         $u = new user();
         $u->setEmail($_POST['email']);
 
-        $_SESSION['getEmail'] = $u->getEmail();
+        // PUXAR OS DADOS DO ENV
+        $env = new env();
+
+        // E-mail criptografado
+        $key = $env->getPasswordSecret();
+        $payload = [$u->getEmail()];
+        $EncodeEmail = JWT::encode($payload, $key ,'HS256');
+
+        // $_SESSION['getEmail'] = $u->getEmail(); PRA QUE ALLAN????
 
         $sql = "SELECT * FROM user WHERE email=?";
         $tmp = conexao::getConexao()->prepare($sql);
@@ -53,7 +65,7 @@ class mailController{
         $mail->setContent('<h2>Olá :]</h2>');
         $mail->setContent('<p>Ficamos sabendo que você esqueceu a senha.☹️<br/>Mas não se preocupe, daremos um jeitinho para você.</p>');
         $mail->setContent('<p style="margin-bottom: 40px; font-weight:bold; color:red;">Caso não tenho sido você que pediu a redefinição de senha, pode ignorar esse e-mail. Caso tenha sido, clique no link abaixo.😉</p>');
-        $mail->setContent('<a href="http://localhost/captiveportal/views/resetPassword.php?email='.$u->getEmail().'" style="text-align:center;font-size:25px;text-decoration:none;background-color:rgb(67,119,67);color:white;padding:20px 26px;border:2px solid rgb(67,119,67);border-radius:40px;box-shadow:0 4px 4px rgba(0,0,0,.08),0 4px 8px rgba(0,0,0,.12),0 4px 16px rgba(0,0,0,.24);cursor:pointer;align-self:center;">Redefinir senha</a>');
+        $mail->setContent('<a href="http://localhost/captiveportal/views/resetPassword.php?email='.$EncodeEmail.'" style="text-align:center;font-size:25px;text-decoration:none;background-color:rgb(67,119,67);color:white;padding:20px 26px;border:2px solid rgb(67,119,67);border-radius:40px;box-shadow:0 4px 4px rgba(0,0,0,.08),0 4px 8px rgba(0,0,0,.12),0 4px 16px rgba(0,0,0,.24);cursor:pointer;align-self:center;">Redefinir senha</a>');
         $mail->setContent('</div>');
         $mail->setContent('<div style="position:relative;bottom:10px;text-align:center;font-size:15px;">');
         $mail->setContent('<b style="font-size:20px;">Enviado por Unimed São José dos Campos - Cooperativa de Trabalho Médico &copy; 2023</b>');
@@ -95,7 +107,15 @@ class mailController{
         $u = new user();
         $u->setEmail($_POST['email']);
 
-        $_SESSION['getEmail'] = $u->getEmail();
+        // PUXAR OS DADOS DO ENV
+        $env = new env();
+
+        // E-mail criptografado
+        $key = $env->getPasswordSecret();
+        $payload = [$u->getEmail()];
+        $EncodeEmail = JWT::encode($payload, $key ,'HS256');
+
+        // $_SESSION['getEmail'] = $u->getEmail(); PRA QUE ALLAN????
 
         $sql = "SELECT * FROM user WHERE email=?";
         $tmp = conexao::getConexao()->prepare($sql);
@@ -119,7 +139,7 @@ class mailController{
         $mail->setContent('<h2>Olá :]</h2>');
         $mail->setContent('<p>Ficamos sabendo que você quer se descadastrar☹️</p>');
         $mail->setContent('<p style="margin-bottom: 40px; font-weight:bold; color:red;">Caso não tenho sido você a pedir a redefinição de senha, pode ignorar esse e-mail. Caso tenha sido, clique no link abaixo.😉</p>');
-        $mail->setContent('<a href="http://localhost/captiveportal/views/unsubscribeAccept.php?email='.$u->getEmail().'" style="text-align:center;font-size:25px;text-decoration:none;background-color:rgb(67,119,67);color:white;padding:20px 26px;border:2px solid rgb(67,119,67);border-radius:40px;box-shadow:0 4px 4px rgba(0,0,0,.08),0 4px 8px rgba(0,0,0,.12),0 4px 16px rgba(0,0,0,.24);cursor:pointer;align-self:center;">Descadastrar</a>');
+        $mail->setContent('<a href="http://localhost/captiveportal/views/unsubscribeAccept.php?email='.$EncodeEmail.'" style="text-align:center;font-size:25px;text-decoration:none;background-color:rgb(67,119,67);color:white;padding:20px 26px;border:2px solid rgb(67,119,67);border-radius:40px;box-shadow:0 4px 4px rgba(0,0,0,.08),0 4px 8px rgba(0,0,0,.12),0 4px 16px rgba(0,0,0,.24);cursor:pointer;align-self:center;">Descadastrar</a>');
         $mail->setContent('</div>');
         $mail->setContent('<div style="position:relative;bottom:10px;text-align:center;font-size:15px;">');
         $mail->setContent('<b style="font-size:20px;">Enviado por Unimed São José dos Campos - Cooperativa de Trabalho Médico &copy; 2023</b>');

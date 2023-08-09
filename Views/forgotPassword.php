@@ -31,7 +31,8 @@
                     <?php if(isset($_SESSION['error'])){ ?>
                         <div class="w-100 d-flex mb-3 p-2 rounded bg-danger-subtle text-danger fs-5 align-items-center">
                             <img src="../icons/error.png" style="width:17px;height:17px"></img>
-                            <p class="m-0 px-2 fs-6">Erro: tente novamente mais tarde!</p>
+                            <!-- <p class="m-0 px-2 fs-6">Erro: tente novamente mais tarde!</p> -->
+                            <p class="m-0 px-2 fs-6"><?php echo $_SESSION['error'] ?></p>
                         </div>
                     <?php } ?>
                 
