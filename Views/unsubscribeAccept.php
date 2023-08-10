@@ -53,7 +53,7 @@
 
         <!-- Footer -->
         <div class="mt-auto text-center">
-            <p class="border-top mb-0 mt-3 py-3 px-2 color-green bg-success text-light" style="font-size:13px">Desenvolvido por www.unimedsjc.com.br © 2023 - todos os direitos reservados</p>
+            <p class="border-top mb-0 mt-3 py-3 px-2 color-green bg-success text-light" style="font-size:13px">Desenvolvido por <a href="https://www.unimedsjc.com.br/" target=”_blank” class="text-light">www.unimedsjc.com.br</a> © 2023 - todos os direitos reservados</p>
         </div>
     </div>
 

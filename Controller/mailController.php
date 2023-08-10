@@ -19,10 +19,13 @@ class mailController{
         // CONEXAO EMAIL
         $phpmailer = new PHPMailer();
         $phpmailer->isSMTP();
+        // CONECTION
         $phpmailer->Host = 'mail.unimedsjc.com.br';
         $phpmailer->Port = 25;
         $phpmailer->SMTPAuth = false;
         $phpmailer->SMTPAutoTLS = false;
+
+        // PLUS
         $phpmailer->CharSet = "UTF-8";
 
         // CONEXAO BANCO
@@ -34,10 +37,11 @@ class mailController{
 
         // E-mail criptografado
         $key = $env->getPasswordSecret();
-        $payload = [$u->getEmail()];
+        $payload = [
+            'sub' => $u->getEmail(),
+            'exp' => '60',
+        ];
         $EncodeEmail = JWT::encode($payload, $key ,'HS256');
-
-        // $_SESSION['getEmail'] = $u->getEmail(); PRA QUE ALLAN????
 
         $sql = "SELECT * FROM user WHERE email=?";
         $tmp = conexao::getConexao()->prepare($sql);
@@ -57,19 +61,15 @@ class mailController{
         $mail->setReceiver($u->getEmail());
         $mail->setSubject('Pedido de redefinição de senha');
         $mail->setContent('<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Forgot Password</title><body style="margin:0;width:100vw;height:100vh;font:20px Calibri;">');
-        $mail->setContent('<div style="width:100%;height:100%;display:flex;flex-direction:column;justify-content:space-between;"><div style="display:flex;flex-direction:column;margin:20px;">');
-        $mail->setContent('<h2>Olá :]</h2>');
-        $mail->setContent('<p>Ficamos sabendo que você esqueceu a senha.☹️<br/>Mas não se preocupe, daremos um jeitinho para você.</p>');
-        $mail->setContent('<p style="margin-bottom: 40px; font-weight:bold; color:red;">Caso não tenho sido você que pediu a redefinição de senha, pode ignorar esse e-mail. Caso tenha sido, clique no link abaixo.😉</p>');
-        $mail->setContent('<a href="http://localhost/captiveportal/views/resetPassword.php?email='.$EncodeEmail.'"><button>Redefinir senha</button></a>');
-        $mail->setContent('</div>');
-        $mail->setContent('<div style="position:relative;bottom:10px;text-align:center;font-size:15px;">');
-        $mail->setContent('<b style="font-size:20px;">Enviado por Unimed São José dos Campos - Cooperativa de Trabalho Médico &copy; 2023</b>');
-        $mail->setContent('</div></div></div></body></html>');
+        $mail->setContent('<h2>Olá '.$user['name'].'</h2>');
+        $mail->setContent('<p style="margin-bottom: 40px; font-weight:bold; color:red;">Caso não tenho sido você quem pediu a redefinição de senha, pode ignorar esse e-mail.</p>');
+        $mail->setContent('Caso tenha sido, <a href="http://localhost/captiveportal/views/resetPassword.php?email='.$EncodeEmail.'">clique aqui.</a>');
+        $mail->setContent('<br/><br/><b>Desenvolvido por <a href="https://www.unimedsjc.com.br/">www.unimedsjc.com.br</a> © 2023 - todos os direitos reservados</b>');
+        $mail->setContent('</body></html>');
 
 
         $phpmailer->IsHTML(true);
-        $phpmailer->SetFrom($mail->getSender(), "DON'T REPLY");
+        $phpmailer->SetFrom($mail->getSender(), "Don't reply");
         $phpmailer->AddAddress($mail->getReceiver(), $user['name']);
         $phpmailer->Subject = $mail->getSubject();
         $content = $mail->getContent($mail->getReceiver());
@@ -79,6 +79,7 @@ class mailController{
         $phpmailer->MsgHTML($content);
         if(!$phpmailer->Send()) {
             $_SESSION['error'] = $phpmailer->ErrorInfo;
+            // $phpmailer->SMTPDebug;
             return false;
         } else {
             $_SESSION['status'] = "E-mail enviado com sucesso";
@@ -107,10 +108,11 @@ class mailController{
 
         // E-mail criptografado
         $key = $env->getPasswordSecret();
-        $payload = [$u->getEmail()];
+        $payload = [
+            'sub' => $u->getEmail(),
+            'exp' => '60',
+        ];
         $EncodeEmail = JWT::encode($payload, $key ,'HS256');
-
-        // $_SESSION['getEmail'] = $u->getEmail(); PRA QUE ALLAN????
 
         $sql = "SELECT * FROM user WHERE email=?";
         $tmp = conexao::getConexao()->prepare($sql);
@@ -130,19 +132,17 @@ class mailController{
         $mail->setReceiver($u->getEmail());
         $mail->setSubject('Pedido para descadastrar do site');
         $mail->setContent('<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Forgot Password</title><body style="margin:0;width:100vw;height:100vh;font:20px Calibri;">');
-        $mail->setContent('<div style="width:100%;height:100%;display:flex;flex-direction:column;justify-content:space-between;"><div style="display:flex;flex-direction:column;margin:20px;">');
-        $mail->setContent('<h2>Olá :]</h2>');
-        $mail->setContent('<p>Ficamos sabendo que você quer se descadastrar☹️</p>');
-        $mail->setContent('<p style="margin-bottom: 40px; font-weight:bold; color:red;">Caso não tenho sido você a pedir a redefinição de senha, pode ignorar esse e-mail. Caso tenha sido, clique no link abaixo.😉</p>');
-        $mail->setContent('<a href="http://localhost/captiveportal/views/unsubscribeAccept.php?email='.$EncodeEmail.'"><button>Descadastrar</button></a>');
-        $mail->setContent('</div>');
+        $mail->setContent('<h2>Olá '.$user['name'].'</h2>');
+        $mail->setContent('<p>Ficamos sabendo que você quer se descadastrar :(</p>');
+        $mail->setContent('<p style="margin-bottom: 40px; font-weight:bold; color:red;">Caso não tenho sido você a pedir a redefinição de senha, pode ignorar esse e-mail. </p>');
+        $mail->setContent('Caso tenha sido, <a href="http://localhost/captiveportal/views/unsubscribeAccept.php?email='.$EncodeEmail.'">clique aqui</a>');
         $mail->setContent('<div style="position:relative;bottom:10px;text-align:center;font-size:15px;">');
-        $mail->setContent('<b style="font-size:20px;">Enviado por Unimed São José dos Campos - Cooperativa de Trabalho Médico &copy; 2023</b>');
-        $mail->setContent('</div></div></div></body></html>');
+        $mail->setContent('<br/><br/><b>Desenvolvido por <a href="https://www.unimedsjc.com.br/">www.unimedsjc.com.br</a> © 2023 - todos os direitos reservados</b>');
+        $mail->setContent('</body></html>');
 
 
         $phpmailer->IsHTML(true);
-        $phpmailer->SetFrom($mail->getSender(), "DON'T REPLY");
+        $phpmailer->SetFrom($mail->getSender(), "Don't reply");
         $phpmailer->AddAddress($mail->getReceiver(), $user['name']);
         $phpmailer->Subject = $mail->getSubject();
         $content = $mail->getContent($mail->getReceiver());
