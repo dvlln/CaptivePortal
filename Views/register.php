@@ -8,7 +8,14 @@
     <link href="../Extensions/Bootstrap 5.3.0/CSS/bootstrap.min.css" rel="stylesheet">
   </head>
   <body style="background-color: #f2f2f2">
-
+  <script src="../Extensions/Bootstrap 5.3.0/JS/bootstrap.bundle.min.js"></script>
+    <script>
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    </script>
+    <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Tooltip on bottom">
+        Tooltip on bottom
+    </button>
     <?php
         include '../Controller/userController.php';
         session_unset();
@@ -95,11 +102,14 @@
                                                 <label for="floatingPassword">Senha</label>
                                                 <p class="m-0 text-danger" style="font-size: 14px;"><?php echo $_SESSION['passError']; ?></p>
                                             <?php }else{ ?>
-                                                <input type="password" id="floatingPassword" name="password" class="form-control" required />
+                                                
+                                                <input type="password" id="floatingPassword" name="password" class="form-control" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Tooltip on bottom" required />
                                                 <label for="floatingPassword">Senha</label>
                                             <?php } ?>
                                         </div>
                                     </div>
+
+                                    
 
                                     <!-- User agreement -->
                                     <div class="col-md-12 mb-4">
@@ -162,7 +172,7 @@
     </div>
 
 
-    <script src="../Extensions/Bootstrap 5.3.0/JS/bootstrap.bundle.min.js"></script>
+    <!-- <script src="../Extensions/Bootstrap 5.3.0/JS/bootstrap.bundle.min.js"></script> -->
     <script src="../Extensions/JQuery-Mask/jquery-1.9.0.min.js" type="text/javascript"></script>
     <script src="../Extensions/JQuery-Mask/jquery.maskedinput.min.js" type="text/javascript"></script>
     <script>

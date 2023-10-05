@@ -39,7 +39,7 @@
                     $_SESSION['errorLogin'] = "Usuário ou senha inválidos";
                     return false;
                 }
-                header("Location: /CaptivePortal/Views/teste.php");
+                header("Location: https://linktr.ee/unimedsjc");
             } catch(\PDOException $error){
                 $_SESSION['error'] = ($error);
                 return false;

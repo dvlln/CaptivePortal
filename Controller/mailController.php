@@ -21,9 +21,9 @@ class mailController{
         $phpmailer->isSMTP();
         // CONECTION
         $phpmailer->Host = 'mail.unimedsjc.com.br';
-        $phpmailer->Port = 25;
+        $phpmailer->Port = 587;
         $phpmailer->SMTPAuth = false;
-        $phpmailer->SMTPAutoTLS = false;
+        // $phpmailer->SMTPAutoTLS = false;
 
         // PLUS
         $phpmailer->CharSet = "UTF-8";
