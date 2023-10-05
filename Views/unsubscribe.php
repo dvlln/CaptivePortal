@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Unimed SJC Wi-Fi</title>
-    <link href="Imagens/logoUnimed.png" rel="icon"/>
+    <link href="Imagens/logoTitle.png" rel="icon"/>
     <link href="../Extensions/Bootstrap 5.3.0/CSS/bootstrap.min.css" rel="stylesheet">
   </head>
   <body style="background-color: #f2f2f2">
