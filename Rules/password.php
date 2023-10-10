@@ -13,4 +13,3 @@ function validaSenha($password){
     return true;
 }
 ?>
-

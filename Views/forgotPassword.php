@@ -28,11 +28,10 @@
                 </div>
                 <div class="col-lg-5">
                     <!-- Error message -->
-                    <?php if(isset($_SESSION['error'])){ ?>
+                    <?php if(isset($_SESSION['errorSystem'])){ ?>
                         <div class="w-100 d-flex mb-3 p-2 rounded bg-danger-subtle text-danger fs-5 align-items-center">
                             <img src="../icons/error.png" style="width:17px;height:17px"></img>
-                            <!-- <p class="m-0 px-2 fs-6">Erro: tente novamente mais tarde!</p> -->
-                            <p class="m-0 px-2 fs-6"><?php echo $_SESSION['error'] ?></p>
+                            <p class="m-0 px-2 fs-6">Erro: tente novamente mais tarde!</p>
                         </div>
                     <?php } ?>
                 
@@ -50,7 +49,7 @@
                                             <?php if(isset($_SESSION['errorEmail'])){ ?>
                                                 <input type="email" id="floatingEmail" name="email" class="form-control is-invalid" value="<?php if(isset($_SESSION['getEmail'])){echo $_SESSION['getEmail'];} ?>" required />
                                                 <label for="floatingEmail">E-mail</label>
-                                                <p class="text-danger fs-6"><?php echo $_SESSION['errorEmail']; ?></p>
+                                                <p class="text-danger my-0 fs-6"><?php echo $_SESSION['errorEmail']; ?></p>
                                             <?php }else{ ?>
                                                 <input type="email" id="floatingEmail" name="email" class="form-control" required />
                                                 <label for="floatingEmail">E-mail</label>

@@ -13,7 +13,7 @@
     session_start();
 
     class userController{
-        private $error;
+        
 
         public function login(){
             session_unset();
@@ -33,87 +33,95 @@
                 $user = $tmp->fetch(\PDO::FETCH_ASSOC);
 
                 if(!isset($user['email'])){
-                    $_SESSION['errorLogin'] = "Usuário ou senha inválidos";
+                    $_SESSION['errorGeneral'] = "Usuário ou senha inválidos";
                     return false;
                 }elseif(!(password_verify($u->getPassword(),$user['password']))){
-                    $_SESSION['errorLogin'] = "Usuário ou senha inválidos";
+                    $_SESSION['errorGeneral'] = "Usuário ou senha inválidos";
                     return false;
                 }
                 header("Location: https://linktr.ee/unimedsjc");
             } catch(\PDOException $error){
-                $_SESSION['error'] = ($error);
+                $_SESSION['errorSystem'] = ($error);
                 return false;
             }
         }
 
         public function register(){
-                session_unset();
-                $u = new user();
+            session_unset();
+            $errorValidation=false;
 
-                $u->setName($_POST['name']);
-                $u->setEmail($_POST['email']);
-                $u->setCPF($_POST['cpf']);
-                $u->setPhone($_POST['phone']);
-                $u->setPassword($_POST['password']);
+            $u = new user();            
 
-                $_SESSION['getName'] = $u->getName();
-                $_SESSION['getEmail'] = $u->getEmail();
-                $_SESSION['getCPF'] = $u->getCPF();
-                $_SESSION['getPhone'] = $u->getPhone();
+            $u->setName($_POST['name']);
+            $u->setEmail($_POST['email']);
+            $u->setCPF(str_replace(['.', '-'],'',$_POST['cpf']));
+            $u->setPhone(str_replace([' ', '(', ')', '-'],'',$_POST['phone']));
+            $u->setPassword($_POST['password']);
 
-                // Valida se CPF e E-mail já existem
-                $sql = "SELECT * FROM user WHERE email=? || cpf=?";
-                $tmp = conexao::getConexao()->prepare($sql);
-                $tmp->bindValue(1, $u->getEmail());
-                $tmp->bindValue(2, $u->getCPF());
-                $tmp->execute();
-                
-                $user = $tmp->fetch(\PDO::FETCH_ASSOC);
+            $_SESSION['getName'] = $u->getName();
+            $_SESSION['getEmail'] = $u->getEmail();
+            $_SESSION['getCPF'] = $u->getCPF();
+            $_SESSION['getPhone'] = $u->getPhone();
 
-                if(isset($user['cpf'])){
-                    $_SESSION['cpfError'] = 'Esse CPF já está em uso';
-                    $error = true;  
-                }
+            // Valida se CPF e E-mail já existem
+            $sql = "SELECT * FROM user WHERE email=? || cpf=?";
+            $tmp = conexao::getConexao()->prepare($sql);
+            $tmp->bindValue(1, $u->getEmail());
+            $tmp->bindValue(2, $u->getCPF());
+            $tmp->execute();
+            
+            $user = $tmp->fetch(\PDO::FETCH_ASSOC);
 
-                if(isset($user['email'])){
+            if($user != false){
+                if($user['email'] == $u->getEmail()){
                     $_SESSION['emailError'] = 'Esse E-mail já está em uso';
-                    $error = true; 
+                    $errorValidation = true; 
                 }
+                
+                if($user['cpf'] == $u->getCPF()){
+                    $_SESSION['cpfError'] = 'Esse CPF já está em uso';
+                    $errorValidation = true;  
+                }
+            }
 
-                // Validação senha
-                if(!validaSenha($u->getPassword())){
-                    $_SESSION['passError'] = 'Senha inválida!';
-                    $error = true;
-                }
+            // Validação CPF
+            if(!validaCPF($u->getCPF())){
+                $_SESSION['cpfError'] = 'CPF inválido!';
+                $errorValidation = true;
+            }
 
-                // Verifica se existe algum erro
-                if($error){
-                    return ;
-                }
-                if(!validaCPF($u->getCPF())){
-                    $_SESSION['cpfError'] = 'CPF inválido!';
-                    $error = true;
-                }
 
-                // Converte para hash
-                $u->setPassword(PASSWORD_HASH($u->getPassword(), PASSWORD_BCRYPT));
+            // Validação senha
+            if(!validaSenha($u->getPassword())){
+                $_SESSION['passError'] = 'Senha não atende os requisitos!';
+                $errorValidation = true;
+            }
 
-                try{
-                    $sql = "INSERT INTO user (name, email, cpf, phone, password) VALUES (?,?,?,?,?)";
-                    $tmp = conexao::getConexao()->prepare($sql);
-                    $tmp->bindValue(1, $u->getName());
-                    $tmp->bindValue(2, $u->getEmail());
-                    $tmp->bindValue(3, $u->getCPF());
-                    $tmp->bindValue(4, $u->getPhone());
-                    $tmp->bindValue(5, $u->getPassword());
-                    $tmp->execute();
-    
-                    $_SESSION['status'] = "Cadastro realizado com sucesso";
-                    header("Location: /CaptivePortal/Views/login.php");
-                } catch(\PDOException $error){
-                    $_SESSION['error'] = $error;
-                    return false;
-                }
+            // Verifica se existe algum erro
+            if($errorValidation == true){
+                return ;
+            }
+
+
+            // Converte para hash
+            $u->setPassword(PASSWORD_HASH($u->getPassword(), PASSWORD_BCRYPT));
+
+            try{
+                $sql = "INSERT INTO user (name, email, cpf, phone, password) VALUES (?,?,?,?,?)";
+                $tmp = conexao::getConexao()->prepare($sql);
+                $tmp->bindValue(1, $u->getName());
+                $tmp->bindValue(2, $u->getEmail());
+                $tmp->bindValue(3, $u->getCPF());
+                $tmp->bindValue(4, $u->getPhone());
+                $tmp->bindValue(5, $u->getPassword());
+                $tmp->execute();
+
+                $_SESSION['status'] = "Cadastro realizado com sucesso";
+                header("Location: /CaptivePortal/Views/login.php");
+            } catch(\PDOException $error){
+                $_SESSION['errorSystem'] = $error;
+                return false;
+            }
         }
 
         public function resetPassword(){
@@ -122,15 +130,20 @@
             $env = new env();
 
             // E-mail descriptografado
-            $key = $env->getPasswordSecret();
-            $decoded = JWT::decode($_GET['email'], new Key($key, 'HS256'));
-            $decoded_array = (array) $decoded;
+            try {
+                $key = $env->getPasswordSecret();
+                $decoded = JWT::decode($_GET['email'], new Key($key, 'HS256'));
+                $decoded_array = (array) $decoded;
+            } catch (\Throwable $th) {
+                $_SESSION['errorGeneral'] = 'Link expirou';
+                return header("Location: /CaptivePortal/Views/login.php");
+            }
 
-            $u->setEmail($decoded_array[0]);
+            $u->setEmail($decoded_array['sub']);
             $u->setPassword($_POST['password']);
 
             if(!validaSenha($u->getPassword())){
-                $_SESSION['passError'] = 'Senha inválida!';
+                $_SESSION['passError'] = 'Senha não atende aos requisitos!';
                 return false;
             }
 
@@ -147,7 +160,7 @@
                 $_SESSION['status'] = "Senha redefinida com sucesso";
                 return header("Location: /CaptivePortal/Views/login.php");
             } catch(\PDOException $error){
-                $_SESSION['error'] = $error;
+                $_SESSION['errorSystem'] = $error;
                 return false;
             }
         }
@@ -159,11 +172,17 @@
             $env = new env();
 
             // E-mail descriptografado
-            $key = $env->getPasswordSecret();
-            $decoded = JWT::decode($_GET['email'], new Key($key, 'HS256'));
-            $decoded_array = (array) $decoded;
+            try {
+                $key = $env->getPasswordSecret();
+                $decoded = JWT::decode($_GET['email'], new Key($key, 'HS256'));
+                $decoded_array = (array) $decoded;
+            } catch (\Throwable $th) {
+                $_SESSION['errorGeneral'] = 'Link expirou';
+                return header("Location: /CaptivePortal/Views/login.php");
+            }
+            
 
-            $u->setEmail($decoded_array[0]);
+            $u->setEmail($decoded_array['sub']);
             
             try {
                 $sql = "DELETE FROM user WHERE email=?";
@@ -173,7 +192,7 @@
 
                 return false;
             } catch(\PDOException $error){
-                $_SESSION['error'] = $error;
+                $_SESSION['errorSystem'] = $error;
                 return false;
             }
             

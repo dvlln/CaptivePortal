@@ -8,7 +8,6 @@
     <link href="../Extensions/Bootstrap 5.3.0/CSS/bootstrap.min.css" rel="stylesheet">
   </head>
   <body style="background-color: #f2f2f2">
-  <script src="../Extensions/Bootstrap 5.3.0/JS/bootstrap.bundle.min.js"></script>
     <?php
         include '../Controller/userController.php';
         session_unset();
@@ -69,7 +68,7 @@
                                     <div class="col-md-6 mb-4">
                                         <div class="form-floating">
                                             <?php if(isset($_SESSION['cpfError'])){ ?>
-                                                <input type="text" id="floatingCPF" name="cpf" class="form-control is-invalid" value="<?php if(isset($_SESSION['getCPF'])){echo $_SESSION['getCPF'];} ?>" required />
+                                                <input type="text" id="floatingCPF" name="cpf" class="form-control is-invalid floatingCPF" value="<?php if(isset($_SESSION['getCPF'])){echo $_SESSION['getCPF'];} ?>" required />
                                                 <label for="floatingCPF">CPF</label>
                                                 <p class="m-0 text-danger" style="font-size: 14px;"><?php echo $_SESSION['cpfError']; ?></p>
                                             <?php }else{ ?>
@@ -82,7 +81,7 @@
                                     <!-- Phone input -->
                                     <div class="col-md-6 mb-4">
                                         <div class="form-floating">
-                                            <input type="text" id="floatingPhone" name="phone" class="form-control" value="<?php if(isset($_SESSION['getPhone'])){echo $_SESSION['getPhone'];} ?>" required />
+                                            <input type="tel" id="floatingPhone" name="phone" class="form-control" value="<?php if(isset($_SESSION['getPhone'])){echo $_SESSION['getPhone'];} ?>" required />
                                             <label for="floatingPhone">Telefone</label>
                                         </div>
                                     </div>
@@ -95,14 +94,11 @@
                                                 <label for="floatingPassword">Senha</label>
                                                 <p class="m-0 text-danger" style="font-size: 14px;"><?php echo $_SESSION['passError']; ?></p>
                                             <?php }else{ ?>
-                                                
                                                 <input type="password" id="floatingPassword" name="password" class="form-control" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Tooltip on bottom" required />
                                                 <label for="floatingPassword">Senha</label>
                                             <?php } ?>
                                         </div>
                                     </div>
-
-                                    
 
                                     <!-- User agreement -->
                                     <div class="col-md-12 mb-4">
@@ -165,16 +161,6 @@
     </div>
 
 
-    <!-- <script src="../Extensions/Bootstrap 5.3.0/JS/bootstrap.bundle.min.js"></script> -->
-    <script src="../Extensions/JQuery-Mask/jquery-1.9.0.min.js" type="text/javascript"></script>
-    <script src="../Extensions/JQuery-Mask/jquery.maskedinput.min.js" type="text/javascript"></script>
-    <script>
-        jQuery(function($){
-            $.mask.definitions['x']='9';
-            $('#floatingPhone').mask('(99) 99999-9999',{placeholder:"(00) 00000-0000"});
-            $('#floatingCPF').mask('999.999.999-99',{placeholder:"000.000.000-00"});
-        });
-        
-    </script>
+    <script src="../Extensions/Bootstrap 5.3.0/JS/bootstrap.bundle.min.js"></script>
   </body>
 </html>

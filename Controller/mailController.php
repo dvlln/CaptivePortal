@@ -19,11 +19,11 @@ class mailController{
         // CONEXAO EMAIL
         $phpmailer = new PHPMailer();
         $phpmailer->isSMTP();
-        // CONECTION
+
+        // DADOS DA CONEXAO
         $phpmailer->Host = 'mail.unimedsjc.com.br';
         $phpmailer->Port = 587;
         $phpmailer->SMTPAuth = false;
-        // $phpmailer->SMTPAutoTLS = false;
 
         // PLUS
         $phpmailer->CharSet = "UTF-8";
@@ -39,7 +39,7 @@ class mailController{
         $key = $env->getPasswordSecret();
         $payload = [
             'sub' => $u->getEmail(),
-            'exp' => '60',
+            'exp' => $_SERVER['REQUEST_TIME']+600
         ];
         $EncodeEmail = JWT::encode($payload, $key ,'HS256');
 
@@ -78,7 +78,7 @@ class mailController{
         // ENVIO
         $phpmailer->MsgHTML($content);
         if(!$phpmailer->Send()) {
-            $_SESSION['error'] = $phpmailer->ErrorInfo;
+            $_SESSION['errorSystem'] = $phpmailer->ErrorInfo;
             // $phpmailer->SMTPDebug;
             return false;
         } else {
@@ -93,10 +93,13 @@ class mailController{
         // CONEXAO EMAIL
         $phpmailer = new PHPMailer();
         $phpmailer->isSMTP();
+
+        // DADOS DA CONEXAO
         $phpmailer->Host = 'mail.unimedsjc.com.br';
-        $phpmailer->Port = 25;
+        $phpmailer->Port = 587;
         $phpmailer->SMTPAuth = false;
-        $phpmailer->SMTPAutoTLS = false;
+
+        // PLUS
         $phpmailer->CharSet = "UTF-8";
 
         // CONEXAO BANCO
@@ -110,7 +113,7 @@ class mailController{
         $key = $env->getPasswordSecret();
         $payload = [
             'sub' => $u->getEmail(),
-            'exp' => '60',
+            'exp' => $_SERVER['REQUEST_TIME']+600
         ];
         $EncodeEmail = JWT::encode($payload, $key ,'HS256');
 
@@ -151,7 +154,7 @@ class mailController{
         // ENVIO
         $phpmailer->MsgHTML($content);
         if(!$phpmailer->Send()) {
-            $_SESSION['error'] = $phpmailer->ErrorInfo;
+            $_SESSION['errorSystem'] = $phpmailer->ErrorInfo;
             return false;
         } else {
             $_SESSION['status'] = "E-mail enviado com sucesso";

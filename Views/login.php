@@ -11,7 +11,9 @@
         <?php
             include '../Controller/userController.php';
 
-            unset($_SESSION['error']);
+            require_once "../vendor/autoload.php";
+
+            unset($_SESSION['errorSystem']);
             unset($_SESSION['getEmail']);
 
             $controller = new userController();
@@ -33,14 +35,14 @@
                     <div class="col-lg-5 mb-5 mb-lg-0">
 
                         <!-- Error message -->
-                        <?php if(isset($_SESSION['error']) || isset($_SESSION['errorLogin'])){ ?>
+                        <?php if(isset($_SESSION['errorSystem']) || isset($_SESSION['errorGeneral'])){ ?>
                             <div class="w-100 d-flex mb-3 p-2 rounded bg-danger-subtle text-danger fs-5 align-items-center">
-                                <img src="../icons/error.png" style="width:17px;height:17px"></img>
-                                <?php if(isset($_SESSION['errorLogin'])){ ?>
-                                    <p class="m-0 px-2 fs-6"><?php echo $_SESSION['errorLogin']; ?></p>
+                                <img src="../icons/error.png" style="width:17px;height:17px;margin-left:15px"></img>
+                                <?php if(isset($_SESSION['errorSystem'])){ ?>
+                                    <p class="m-0 px-2 fs-6">Erro: tente novamente mais tarde!</p>
                                 <?php } ?>
-                                <?php if(isset($_SESSION['error'])){ ?>
-                                    <p class="m-0 px-2 fs-6">Erro: fazer tentar novamente mais tarde!</p>
+                                <?php if(isset($_SESSION['errorGeneral'])){ ?>
+                                    <p class="m-0 px-2 fs-6"><?php echo $_SESSION['errorGeneral']; ?></p>
                                 <?php } ?>
                             </div>
                         <?php } ?>
@@ -48,6 +50,7 @@
                         <!-- Status message -->
                         <?php if(isset($_SESSION['status'])){ ?>
                             <div class="w-100 d-flex mb-3 p-2 rounded bg-success-subtle text-success fs-5 align-items-center">
+                                <img src="../icons/teste.png" style="width:17px;height:17px;margin-left:15px"></img>
                                 <p class="m-0 px-2 fs-6"><?php echo $_SESSION['status']; ?></p>
                             </div>
                         <?php } ?>
