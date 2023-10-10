@@ -4,6 +4,7 @@
     include '../Model/env.php';
     include '../Rules/cpf.php';
     include '../Rules/password.php';
+    include '../Rules/phone.php';
 
     require '../vendor/autoload.php';
 
@@ -90,6 +91,11 @@
                 $errorValidation = true;
             }
 
+            // Validação Telefone
+            if(!validaPhone($u->getPhone())){
+                $_SESSION['phoneError'] = 'Telefone inválido!';
+                $errorValidation = true;
+            }
 
             // Validação senha
             if(!validaSenha($u->getPassword())){

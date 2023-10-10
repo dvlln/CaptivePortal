@@ -68,7 +68,7 @@
                                     <div class="col-md-6 mb-4">
                                         <div class="form-floating">
                                             <?php if(isset($_SESSION['cpfError'])){ ?>
-                                                <input type="text" id="floatingCPF" name="cpf" class="form-control is-invalid floatingCPF" value="<?php if(isset($_SESSION['getCPF'])){echo $_SESSION['getCPF'];} ?>" required />
+                                                <input type="text" id="floatingCPF" name="cpf" class="form-control is-invalid" value="<?php if(isset($_SESSION['getCPF'])){echo $_SESSION['getCPF'];} ?>" required />
                                                 <label for="floatingCPF">CPF</label>
                                                 <p class="m-0 text-danger" style="font-size: 14px;"><?php echo $_SESSION['cpfError']; ?></p>
                                             <?php }else{ ?>
@@ -81,8 +81,14 @@
                                     <!-- Phone input -->
                                     <div class="col-md-6 mb-4">
                                         <div class="form-floating">
-                                            <input type="tel" id="floatingPhone" name="phone" class="form-control" value="<?php if(isset($_SESSION['getPhone'])){echo $_SESSION['getPhone'];} ?>" required />
-                                            <label for="floatingPhone">Telefone</label>
+                                            <?php if(isset($_SESSION['phoneError'])){ ?>
+                                                <input type="tel" id="floatingPhone" name="phone" class="form-control is-invalid" value="<?php if(isset($_SESSION['getPhone'])){echo $_SESSION['getPhone'];} ?>" required />
+                                                <label for="floatingPhone">Telefone</label>
+                                                <p class="m-0 text-danger" style="font-size: 14px;"><?php echo $_SESSION['phoneError']; ?></p>
+                                            <?php }else{ ?>
+                                                <input type="tel" id="floatingPhone" name="phone" class="form-control" value="<?php if(isset($_SESSION['getPhone'])){echo $_SESSION['getPhone'];} ?>" required />
+                                                <label for="floatingPhone">Telefone</label>
+                                            <?php } ?>
                                         </div>
                                     </div>
 
@@ -162,5 +168,14 @@
 
 
     <script src="../Extensions/Bootstrap 5.3.0/JS/bootstrap.bundle.min.js"></script>
+    <script src="../vendor/components/jquery/jquery.min.js"></script>
+    <script src="../vendor/igorescobar/jquery-mask-plugin/dist/jquery.mask.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            $('#floatingPhone').mask('(00) 00000-0000');
+            $('#floatingCPF').mask('000.000.000-00');
+        });
+    </script>
   </body>
 </html>

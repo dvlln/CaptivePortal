@@ -4,8 +4,57 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "73867bbe2b7fa9e12e9068c104ad002a",
+    "content-hash": "c1e4b6e95d88f4cdb6c25aece46bad12",
     "packages": [
+        {
+            "name": "components/jquery",
+            "version": "v3.7.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/components/jquery.git",
+                "reference": "8edc7785239bb8c2ad2b83302b856a1d61de60e7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/components/jquery/zipball/8edc7785239bb8c2ad2b83302b856a1d61de60e7",
+                "reference": "8edc7785239bb8c2ad2b83302b856a1d61de60e7",
+                "shasum": ""
+            },
+            "type": "component",
+            "extra": {
+                "component": {
+                    "scripts": [
+                        "jquery.js"
+                    ],
+                    "files": [
+                        "jquery.min.js",
+                        "jquery.min.map",
+                        "jquery.slim.js",
+                        "jquery.slim.min.js",
+                        "jquery.slim.min.map"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "JS Foundation and other contributors"
+                }
+            ],
+            "description": "jQuery JavaScript Library",
+            "homepage": "http://jquery.com",
+            "support": {
+                "forum": "http://forum.jquery.com",
+                "irc": "irc://irc.freenode.org/jquery",
+                "issues": "https://github.com/jquery/jquery/issues",
+                "source": "https://github.com/jquery/jquery",
+                "wiki": "http://docs.jquery.com/"
+            },
+            "time": "2023-09-22T01:43:46+00:00"
+        },
         {
             "name": "firebase/php-jwt",
             "version": "v6.8.1",
@@ -68,6 +117,52 @@
                 "source": "https://github.com/firebase/php-jwt/tree/v6.8.1"
             },
             "time": "2023-07-14T18:33:00+00:00"
+        },
+        {
+            "name": "igorescobar/jquery-mask-plugin",
+            "version": "v1.14.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kamihouse/jQuery-Mask-Plugin.git",
+                "reference": "678a7df1f0bb275ce53f365b91af99d86850978d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kamihouse/jQuery-Mask-Plugin/zipball/678a7df1f0bb275ce53f365b91af99d86850978d",
+                "reference": "678a7df1f0bb275ce53f365b91af99d86850978d",
+                "shasum": ""
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Igor Escobar",
+                    "email": "blog@igorescobar.com",
+                    "homepage": "https://about.me/igorescobar",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Thiago Pereira Rosa",
+                    "email": "thiagor@engineer.com",
+                    "homepage": "http://coderi.com.br",
+                    "role": "Contributor"
+                }
+            ],
+            "description": "A jQuery Plugin to make masks on form fields and html elements.",
+            "homepage": "https://github.com/igorescobar/jQuery-Mask-Plugin",
+            "keywords": [
+                "jquery",
+                "mask",
+                "plugin"
+            ],
+            "support": {
+                "issues": "https://github.com/igorescobar/jQuery-Mask-Plugin/issues",
+                "source": "https://github.com/kamihouse/jQuery-Mask-Plugin/tree/v1.14.1"
+            },
+            "time": "2016-04-27T16:16:55+00:00"
         },
         {
             "name": "phpmailer/phpmailer",
