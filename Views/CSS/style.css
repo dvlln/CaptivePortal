@@ -2,5 +2,9 @@
     background-color: #0a693d;
     color: white;
     text-align: left;
-    padding: 5px 15px;
+    padding: 8px 16px;
+}
+
+.tooltip-inner > ul{
+    margin-bottom: 0;
 }
