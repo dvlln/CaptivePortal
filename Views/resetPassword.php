@@ -6,6 +6,7 @@
     <title>Unimed SJC Wi-Fi</title>
     <link href="Imagens/logoTitle.png" rel="icon"/>
     <link href="../Extensions/Bootstrap 5.3.0/CSS/bootstrap.min.css" rel="stylesheet">
+    <link href="CSS/style.css" rel="stylesheet">
   </head>
   <body style="background-color: #f2f2f2">
 
@@ -58,11 +59,21 @@
                                     <div class="col-md-12 mb-4">
                                         <div class="form-floating">
                                             <?php if(isset($_SESSION['passError'])){ ?>
-                                                <input type="password" id="floatingPassword" name="password" class="form-control is-invalid" required />
+                                                <input type="password" id="floatingPassword" name="password" class="form-control is-invalid" required 
+                                                    data-bs-toggle="tooltip" 
+                                                    data-bs-placement="top" 
+                                                    data-bs-html="true"
+                                                    data-bs-title="A senha precisa possuir os seguintes requisitos: <br/> <ul><li>Letras Maiusculas</li><li>Letras Minusculas</li><li>Numeros</li><li>Simbolos (Ex.: @!$%)</li><li>Mínimo 8 caracteres</li></ul>"
+                                                />
                                                 <label for="floatingPassword">Senha</label>
                                                 <p class="text-danger fs-6"><?php echo $_SESSION['passError']; ?></p>
                                             <?php }else{ ?>
-                                                <input type="password" id="floatingPassword" name="password" class="form-control" required />
+                                                <input type="password" id="floatingPassword" name="password" class="form-control" required 
+                                                    data-bs-toggle="tooltip" 
+                                                    data-bs-placement="top" 
+                                                    data-bs-html="true"
+                                                    data-bs-title="A senha precisa possuir os seguintes requisitos: <br/> <ul><li>Letras Maiusculas</li><li>Letras Minusculas</li><li>Numeros</li><li>Simbolos (Ex.: @!$%)</li><li>Mínimo 8 caracteres</li></ul>"
+                                                />
                                                 <label for="floatingPassword">Senha</label>
                                             <?php } ?>
                                         </div>
@@ -105,6 +116,10 @@
 
     
 
+    <!-- BOOTSTRAP GENERAL -->
     <script src="../Extensions/Bootstrap 5.3.0/JS/bootstrap.bundle.min.js"></script>
+    
+    <!-- TOOLTIP -->
+    <script src="JS/tooltipInitialize.js"></script>
   </body>
 </html>

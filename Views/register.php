@@ -24,7 +24,7 @@
         <!-- Content -->
         <div class="container mt-auto pt-3 pb-5 px-md-5 px-3 text-lg-start">
             <div class="row gx-lg-5 align-items-center justify-content-center">
-                <div class="col-lg-12 mb-3 text-center">
+                <div class="col-lg-12 mb-4 text-center">
                     <img src="Imagens/logoUnimed.png" alt="logo" style="width: 300px">
                 </div>
                 <div class="col-lg-6 mb-5 mb-lg-0">
@@ -69,11 +69,19 @@
                                     <div class="col-md-6 mb-4">
                                         <div class="form-floating">
                                             <?php if(isset($_SESSION['cpfError'])){ ?>
-                                                <input type="text" id="floatingCPF" name="cpf" class="form-control is-invalid" value="<?php if(isset($_SESSION['getCPF'])){echo $_SESSION['getCPF'];} ?>" required />
+                                                <input type="text" id="floatingCPF" name="cpf" class="form-control is-invalid" value="<?php if(isset($_SESSION['getCPF'])){echo $_SESSION['getCPF'];} ?>" required 
+                                                    data-bs-toggle="tooltip" 
+                                                    data-bs-placement="top" 
+                                                    data-bs-title="Exemplo: 668.093.070-65"
+                                                />
                                                 <label for="floatingCPF">CPF</label>
                                                 <p class="m-0 text-danger" style="font-size: 14px;"><?php echo $_SESSION['cpfError']; ?></p>
                                             <?php }else{ ?>
-                                                <input type="text" id="floatingCPF" name="cpf" class="form-control" value="<?php if(isset($_SESSION['getCPF'])){echo $_SESSION['getCPF'];} ?>" required />
+                                                <input type="text" id="floatingCPF" name="cpf" class="form-control" value="<?php if(isset($_SESSION['getCPF'])){echo $_SESSION['getCPF'];} ?>" required 
+                                                    data-bs-toggle="tooltip" 
+                                                    data-bs-placement="top" 
+                                                    data-bs-title="Exemplo: 668.093.070-65"
+                                                />
                                                 <label for="floatingCPF">CPF</label>
                                             <?php } ?>
                                         </div>
@@ -83,11 +91,19 @@
                                     <div class="col-md-6 mb-4">
                                         <div class="form-floating">
                                             <?php if(isset($_SESSION['phoneError'])){ ?>
-                                                <input type="tel" id="floatingPhone" name="phone" class="form-control is-invalid" value="<?php if(isset($_SESSION['getPhone'])){echo $_SESSION['getPhone'];} ?>" required />
+                                                <input type="tel" id="floatingPhone" name="phone" class="form-control is-invalid" value="<?php if(isset($_SESSION['getPhone'])){echo $_SESSION['getPhone'];} ?>" required 
+                                                    data-bs-toggle="tooltip" 
+                                                    data-bs-placement="top" 
+                                                    data-bs-title="Exemplo: (12) 94002-8922"
+                                                />
                                                 <label for="floatingPhone">Telefone</label>
                                                 <p class="m-0 text-danger" style="font-size: 14px;"><?php echo $_SESSION['phoneError']; ?></p>
                                             <?php }else{ ?>
-                                                <input type="tel" id="floatingPhone" name="phone" class="form-control" value="<?php if(isset($_SESSION['getPhone'])){echo $_SESSION['getPhone'];} ?>" required />
+                                                <input type="tel" id="floatingPhone" name="phone" class="form-control" value="<?php if(isset($_SESSION['getPhone'])){echo $_SESSION['getPhone'];} ?>" required
+                                                    data-bs-toggle="tooltip" 
+                                                    data-bs-placement="top" 
+                                                    data-bs-title="Exemplo: (12) 94002-8922"
+                                                />
                                                 <label for="floatingPhone">Telefone</label>
                                             <?php } ?>
                                         </div>
@@ -97,14 +113,20 @@
                                     <div class="col-md-12 mb-4">
                                         <div class="form-floating">
                                             <?php if(isset($_SESSION['passError'])){ ?>
-                                                <input type="password" id="floatingPassword" name="password" class="form-control is-invalid" required />
+                                                <input type="password" id="floatingPassword" name="password" class="form-control is-invalid" required
+                                                    data-bs-toggle="tooltip" 
+                                                    data-bs-placement="top" 
+                                                    data-bs-html="true"
+                                                    data-bs-title="A senha precisa possuir os seguintes requisitos: <br/> <ul><li>Letras Maiusculas</li><li>Letras Minusculas</li><li>Numeros</li><li>Simbolos (Ex.: @!$%)</li><li>Mínimo 8 caracteres</li></ul>"
+                                                />
                                                 <label for="floatingPassword">Senha</label>
                                                 <p class="m-0 text-danger" style="font-size: 14px;"><?php echo $_SESSION['passError']; ?></p>
                                             <?php }else{ ?>
                                                 <input type="password" id="floatingPassword" name="password" class="form-control" required
                                                     data-bs-toggle="tooltip" 
                                                     data-bs-placement="top" 
-                                                    data-bs-title="A senha precisa possuir os seguintes requisitos: * Letra Maiuscula. "
+                                                    data-bs-html="true"
+                                                    data-bs-title="A senha precisa possuir os seguintes requisitos: <br/> <ul><li>Letras Maiusculas</li><li>Letras Minusculas</li><li>Numeros</li><li>Simbolos (Ex.: @!$%)</li><li>Mínimo 8 caracteres</li></ul>"
                                                 />
                                                 <label for="floatingPassword">Senha</label>
                                             <?php } ?>
