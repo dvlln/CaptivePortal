@@ -461,7 +461,7 @@ class SMTP
         }
 
         //Allow the best TLS version(s) we can
-        $crypto_method = STREAM_CRYPTO_METHOD_TLS_CLIENT;
+        $crypto_method = STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT;
 
         //PHP 5.6.7 dropped inclusion of TLS 1.1 and 1.2 in STREAM_CRYPTO_METHOD_TLS_CLIENT
         //so add them back in manually if we can
