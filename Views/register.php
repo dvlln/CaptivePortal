@@ -6,6 +6,7 @@
     <title>Unimed SJC Wi-Fi</title>
     <link href="Imagens/logoTitle.png" rel="icon"/>
     <link href="../Extensions/Bootstrap 5.3.0/CSS/bootstrap.min.css" rel="stylesheet">
+    <link href="CSS/style.css" rel="stylesheet">
   </head>
   <body style="background-color: #f2f2f2">
     <?php
@@ -100,7 +101,11 @@
                                                 <label for="floatingPassword">Senha</label>
                                                 <p class="m-0 text-danger" style="font-size: 14px;"><?php echo $_SESSION['passError']; ?></p>
                                             <?php }else{ ?>
-                                                <input type="password" id="floatingPassword" name="password" class="form-control" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Tooltip on bottom" required />
+                                                <input type="password" id="floatingPassword" name="password" class="form-control" required
+                                                    data-bs-toggle="tooltip" 
+                                                    data-bs-placement="top" 
+                                                    data-bs-title="A senha precisa possuir os seguintes requisitos: * Letra Maiuscula. "
+                                                />
                                                 <label for="floatingPassword">Senha</label>
                                             <?php } ?>
                                         </div>
@@ -166,16 +171,15 @@
         </div>
     </div>
 
-
+    <!-- BOOTSTRAP GENERAL -->
     <script src="../Extensions/Bootstrap 5.3.0/JS/bootstrap.bundle.min.js"></script>
+    
+    <!-- TOOLTIP -->
+    <script src="JS/tooltipInitialize.js"></script>
+
+    <!-- MASK -->
     <script src="../vendor/components/jquery/jquery.min.js"></script>
     <script src="../vendor/igorescobar/jquery-mask-plugin/dist/jquery.mask.min.js"></script>
-
-    <script>
-        $(document).ready(function(){
-            $('#floatingPhone').mask('(00) 00000-0000');
-            $('#floatingCPF').mask('000.000.000-00');
-        });
-    </script>
+    <script src="JS/inputMask.js"></script>
   </body>
 </html>

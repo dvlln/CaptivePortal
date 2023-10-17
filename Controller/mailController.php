@@ -61,10 +61,9 @@ class mailController{
         $mail->setReceiver($u->getEmail());
         $mail->setSubject('Pedido de redefinição de senha');
         $mail->setContent('<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Forgot Password</title><body style="margin:0;width:100vw;height:100vh;font:20px Calibri;">');
-        $mail->setContent('<h2>Olá '.$user['name'].'</h2>');
-        $mail->setContent('<p style="margin-bottom: 40px; font-weight:bold; color:red;">Caso não tenho sido você quem pediu a redefinição de senha, pode ignorar esse e-mail.</p>');
-        $mail->setContent('Caso tenha sido, <a href="http://localhost/captiveportal/views/resetPassword.php?email='.$EncodeEmail.'">clique aqui.</a>');
-        $mail->setContent('<br/><br/><b>Desenvolvido por <a href="https://www.unimedsjc.com.br/">www.unimedsjc.com.br</a> © 2023 - todos os direitos reservados</b>');
+        $mail->setContent('<h2>Olá '.$user['name'].',</h2>');
+        $mail->setContent('<p style="margin:0">Se você não solicitou a redefinição de senha, sinta-se à vontade para descartar este e-mail. Se solicitou, <a href="http://localhost/captiveportal/views/resetPassword.php?email='.$EncodeEmail.'">clique aqui.</a></p>');
+        $mail->setContent('<br/><p>Estamos à disposição! 😊 <br/> Unimed São José dos Campos - Cooperativa de Trabalho Médico</p>');
         $mail->setContent('</body></html>');
 
 
@@ -131,16 +130,13 @@ class mailController{
 
         // PRESET
         $mail = new mail();
-        $mail->setSender('ti.unsubscribe@gmail.com');
+        $mail->setSender('ti.unsubscribe@unimedsjc.coop.br');
         $mail->setReceiver($u->getEmail());
         $mail->setSubject('Pedido para descadastrar do site');
         $mail->setContent('<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Forgot Password</title><body style="margin:0;width:100vw;height:100vh;font:20px Calibri;">');
-        $mail->setContent('<h2>Olá '.$user['name'].'</h2>');
-        $mail->setContent('<p>Ficamos sabendo que você quer se descadastrar :(</p>');
-        $mail->setContent('<p style="margin-bottom: 40px; font-weight:bold; color:red;">Caso não tenho sido você a pedir a redefinição de senha, pode ignorar esse e-mail. </p>');
-        $mail->setContent('Caso tenha sido, <a href="http://localhost/captiveportal/views/unsubscribeAccept.php?email='.$EncodeEmail.'">clique aqui</a>');
-        $mail->setContent('<div style="position:relative;bottom:10px;text-align:center;font-size:15px;">');
-        $mail->setContent('<br/><br/><b>Desenvolvido por <a href="https://www.unimedsjc.com.br/">www.unimedsjc.com.br</a> © 2023 - todos os direitos reservados</b>');
+        $mail->setContent('<h2>Olá '.$user['name'].',</h2>');
+        $mail->setContent('<p style="margin:0">Se você não solicitou o descadastramento, pode ignorar este e-mail. Se solicitou, <a href="http://localhost/captiveportal/views/unsubscribeAccept.php?email='.$EncodeEmail.'">clique aqui</a>. </p>');
+        $mail->setContent('<br/><p>Estamos à disposição! 😊 <br/> Unimed São José dos Campos - Cooperativa de Trabalho Médico</p>');
         $mail->setContent('</body></html>');
 
 
