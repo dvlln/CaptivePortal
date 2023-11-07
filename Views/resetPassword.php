@@ -30,7 +30,7 @@
     ?>
 
     <!-- WRAPPER -->
-    <div class="d-flex flex-column vh-100">;
+    <div class="d-flex flex-column vh-100">
         <!-- CONTENT -->
         <div class="container mt-auto px-md-5 px-3 text-lg-start">
             <div class="row gx-lg-5 align-items-center justify-content-center">
