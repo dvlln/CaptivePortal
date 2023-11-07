@@ -70,7 +70,7 @@
                                             <?php }else{ ?>
                                                 <input type="password" id="floatingPassword" name="password" class="form-control" required 
                                                     data-bs-toggle="tooltip" 
-                                                    data-bs-placement="top" 
+                                                    data-bs-placement="bottom" 
                                                     data-bs-html="true"
                                                     data-bs-title="A senha precisa possuir os seguintes requisitos: <br/> <ul><li>Letras Maiusculas</li><li>Letras Minusculas</li><li>Numeros</li><li>Simbolos (Ex.: @!$%)</li><li>Mínimo 8 caracteres</li></ul>"
                                                 />
