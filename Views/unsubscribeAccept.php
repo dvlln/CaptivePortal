@@ -30,7 +30,7 @@
                 </div>
                 <div class="col-lg-5">
                     <div class="card shadow">
-                        <div class="card-body pt-4 pb-0 pt-md-5 px-md-5 px-4">
+                        <div class="card-body pb-0 pt-4 px-md-5 px-4">
                                 <div class="row">
                                     <div class="col-md-12 mb-4">
                                         <?php if(isset($_SESSION['error'])){ ?>
