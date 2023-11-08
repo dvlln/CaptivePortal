@@ -63,7 +63,7 @@
                                                     data-bs-toggle="tooltip" 
                                                     data-bs-placement="top" 
                                                     data-bs-html="true"
-                                                    data-bs-title="A senha precisa possuir os seguintes requisitos: <br/> <ul><li>Letras Maiusculas</li><li>Letras Minusculas</li><li>Numeros</li><li>Simbolos (Ex.: @!$%)</li><li>Mínimo 8 caracteres</li></ul>"
+                                                    data-bs-title="A senha precisa possuir os seguintes requisitos: <br/> <ul><li>Letras</li><li>Números</li><li>Mínimo de 8 caracteres</li></ul>"
                                                 />
                                                 <label for="floatingPassword">Senha</label>
                                                 <p class="text-danger fs-6"><?php echo $_SESSION['passError']; ?></p>
@@ -72,7 +72,7 @@
                                                     data-bs-toggle="tooltip" 
                                                     data-bs-placement="bottom" 
                                                     data-bs-html="true"
-                                                    data-bs-title="A senha precisa possuir os seguintes requisitos: <br/> <ul><li>Letras Maiusculas</li><li>Letras Minusculas</li><li>Numeros</li><li>Simbolos (Ex.: @!$%)</li><li>Mínimo 8 caracteres</li></ul>"
+                                                    data-bs-title="A senha precisa possuir os seguintes requisitos: <br/> <ul><li>Letras</li><li>Números</li><li>Mínimo 8 caracteres</li></ul>"
                                                 />
                                                 <label for="floatingPassword">Senha</label>
                                             <?php } ?>

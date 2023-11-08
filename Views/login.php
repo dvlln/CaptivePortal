@@ -102,7 +102,7 @@
 
             <!-- Footer -->
             <div class="mt-auto text-center">
-                <a href="unsubscribe.php" style="font-size:14px">Caso deseje remover o cadastro, clique aqui.</a>
+                <a href="unsubscribe.php" style="font-size:14px">Caso deseje excluir o cadastro, clique aqui.</a>
                 <br>
                 <p class="border-top mb-0 mt-1 py-3 px-2 color-green bg-success text-light" style="font-size:13px">Desenvolvido por <a href="https://www.unimedsjc.com.br/" target=”_blank” class="text-light">www.unimedsjc.com.br</a> © 2023 - todos os direitos reservados</p>
             </div>

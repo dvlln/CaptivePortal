@@ -59,7 +59,7 @@ class mailController{
         $mail = new mail();
         $mail->setSender('ti.forgot-password@unimedsjc.coop.br');
         $mail->setReceiver($u->getEmail());
-        $mail->setSubject('Pedido de redefinição de senha');
+        $mail->setSubject('Pedido de redefinição da senha');
         $mail->setContent('<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Forgot Password</title><body style="margin:0;width:100vw;height:100vh;font:20px Calibri;">');
         $mail->setContent('<h2>Olá '.$user['name'].',</h2>');
         $mail->setContent('<p style="margin:0">Se você não solicitou a redefinição de senha, sinta-se à vontade para descartar este e-mail. Se solicitou, <a href="http://localhost/captiveportal/views/resetPassword.php?email='.$EncodeEmail.'">clique aqui.</a></p>');
@@ -132,10 +132,10 @@ class mailController{
         $mail = new mail();
         $mail->setSender('ti.unsubscribe@unimedsjc.coop.br');
         $mail->setReceiver($u->getEmail());
-        $mail->setSubject('Pedido para descadastrar do site');
+        $mail->setSubject('Pedido de exclusão dos dados');
         $mail->setContent('<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Forgot Password</title><body style="margin:0;width:100vw;height:100vh;font:20px Calibri;">');
         $mail->setContent('<h2>Olá '.$user['name'].',</h2>');
-        $mail->setContent('<p style="margin:0">Se você não solicitou o descadastramento, pode ignorar este e-mail. Se solicitou, <a href="http://localhost/captiveportal/views/unsubscribeAccept.php?email='.$EncodeEmail.'">clique aqui</a>. </p>');
+        $mail->setContent('<p style="margin:0">Se você não solicitou a exclusão do cadastro, pode ignorar este e-mail. Se solicitou, <a href="http://localhost/captiveportal/views/unsubscribeAccept.php?email='.$EncodeEmail.'">clique aqui</a>. </p>');
         $mail->setContent('<br/><p>Estamos à disposição! 😊 <br/> <b>Unimed São José dos Campos - Cooperativa de Trabalho Médico</b></p>');
         $mail->setContent('</body></html>');
 

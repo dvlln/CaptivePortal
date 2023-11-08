@@ -41,9 +41,10 @@
                         <div class="card-body pb-0 pt-4 px-md-5 px-4">
                             <form method="POST">
                                 <div class="row">
-                                    <div class="col-md-12 mb-4 text-center">
-                                        <h3 class="m-0 text-center font-family-calibri">Desinscrever</h3>
-                                    </div>
+                                    <!-- CODIGO COMENTADO PARA USO FUTURO - TITULO DA TELA DE EXCLUSÃO DE CADASTRO -->
+                                    <!-- <div class="col-md-12 mb-4 text-center"> 
+                                        <h3 class="m-0 text-center font-family-calibri">Excluir cadastro</h3>
+                                    </div> -->
                                     <!-- Email input -->
                                     <div class="col-md-12 mb-4">
                                         <div class="form-floating">
