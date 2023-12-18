@@ -78,13 +78,13 @@
                                         </div>
                                     </div>
     
-                                    <!-- Submit button -->
+                                    <!-- Submit/Forgot Password button -->
                                     <div class="row mb-3">
-                                        <div class="d-grid mb-4">
+                                        <div class="d-grid mb-2">
                                             <button type="submit" class="btn btn-success">Entrar</button>
                                         </div>
                                         
-                                        <div class="d-grid mb-4">
+                                        <div class="d-grid mb-2">
                                             <a href="forgotPassword.php" class="btn btn-outline-success">Esqueci minha senha</a>
                                         </div>
                                     </div>

@@ -52,9 +52,16 @@
             $net = new user_sessionData();
 
             // CRIAR TOKEN DA SESSAO
+            $caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            $keyWord = "";
+            for ($i=0; $i<16;$i++){
+                $keyWord .= $caracteres[rand(0, strlen($caracteres) - 1)];
+            }
+
+            // CRIPTOGRAFAR TOKEN DA SESSAO
             $key = $env->getPasswordSecret();
             $payload = [
-                'sub' => $u->getEmail(),
+                'sub' => $keyWord,
             ];
             $net->setIdSession(JWT::encode($payload, $key ,'HS256'));
 
@@ -83,10 +90,10 @@
             $net->setCreatedAt($date->format('Y-m-d H:i:s'));
 
             try {
-                $sql2 = "INSERT INTO user_session_data (idSession, userName, ip, macAddress, created_at) VALUES (?, ?, ?, ?, ?)";
+                $sql2 = "INSERT INTO user_session_data (idSession, idUser, ip, macAddress, created_at) VALUES (?, ?, ?, ?, ?)";
                 $tmp2 = conexao::getConexao()->prepare($sql2);
                 $tmp2->bindValue(1, $net->getIdSession());
-                $tmp2->bindValue(2, $user['name']);
+                $tmp2->bindValue(2, $user['id']);
                 $tmp2->bindValue(3, $net->getIp());
                 $tmp2->bindValue(4, $net->getMacAddress());
                 $tmp2->bindValue(5, $net->getCreatedAt());
