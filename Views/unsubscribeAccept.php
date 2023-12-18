@@ -9,6 +9,9 @@
   </head>
   <body style="background-color: #f2f2f2">
     <?php
+        // REDIRECIONAMENTO CRIADO, POIS A OPÇÃO DE EXCLUIR OS DADOS FOI REVOGADA ATE SEGUNDA ORDEM. 14/12/2023
+        return header("Location: /CaptivePortal/Views/login.php");
+
         include '../Controller/userController.php';
         session_unset();
 

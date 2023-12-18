@@ -1,7 +1,9 @@
 <?php
     include '../Model/user.php';
+    include '../Model/user_sessionData.php';
     include '../Model/conexao.php';
     include '../Model/env.php';
+
     include '../Rules/cpf.php';
     include '../Rules/password.php';
     include '../Rules/phone.php';
@@ -23,8 +25,8 @@
             $u->setEmail($_POST['email']);
             $u->setPassword($_POST['password']);
 
-            $_SESSION['getEmail'] = $u->getEmail();
-
+            $_SESSION['getEmail'] = $u->getEmail();            
+            
             try{
                 $sql = "SELECT * FROM user WHERE email=?";
                 $tmp = conexao::getConexao()->prepare($sql);
@@ -39,12 +41,62 @@
                 }elseif(!(password_verify($u->getPassword(),$user['password']))){
                     $_SESSION['errorGeneral'] = "Usuário ou senha inválidos";
                     return false;
-                }
-                header("Location: https://linktr.ee/unimedsjc");
+                }                
             } catch(\PDOException $error){
                 $_SESSION['errorSystem'] = ($error);
                 return false;
             }
+
+            // PUXAR OS DADOS DO ENV E USER SESSION DATA
+            $env = new env();
+            $net = new user_sessionData();
+
+            // CRIAR TOKEN DA SESSAO
+            $key = $env->getPasswordSecret();
+            $payload = [
+                'sub' => $u->getEmail(),
+            ];
+            $net->setIdSession(JWT::encode($payload, $key ,'HS256'));
+
+            // PEGAR IP E MAC ADDRESS
+            $net->setIp($_SERVER['REMOTE_ADDR']);
+
+            $ipAddress=$_SERVER['REMOTE_ADDR'];
+            $macAddr=false;
+            
+            $arp=`arp -a $ipAddress`;
+            $lines=explode("\n", $arp);
+            
+            foreach($lines as $line)
+            {
+                $cols=preg_split('/\s+/', trim($line));
+                if ($cols[0]==$ipAddress)
+                {
+                    $macAddr=$cols[1];
+                }
+            }
+
+            $net->setMacAddress($macAddr);
+
+            // PEGAR DATA E HORA ATUAIS DA CRIACAO
+            $date = new DateTime(null, new DateTimeZone('America/Sao_Paulo'));
+            $net->setCreatedAt($date->format('Y-m-d H:i:s'));
+
+            try {
+                $sql2 = "INSERT INTO user_session_data (idSession, userName, ip, macAddress, created_at) VALUES (?, ?, ?, ?, ?)";
+                $tmp2 = conexao::getConexao()->prepare($sql2);
+                $tmp2->bindValue(1, $net->getIdSession());
+                $tmp2->bindValue(2, $user['name']);
+                $tmp2->bindValue(3, $net->getIp());
+                $tmp2->bindValue(4, $net->getMacAddress());
+                $tmp2->bindValue(5, $net->getCreatedAt());
+                $tmp2->execute();                
+            } catch (\Throwable $error) {
+                $_SESSION['errorSystem'] = ($error);
+                return false;
+            }
+
+            header("Location: https://linktr.ee/unimedsjc");
         }
 
         public function register(){

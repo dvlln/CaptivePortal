@@ -10,8 +10,12 @@
   <body style="background-color: #f2f2f2">
 
     <?php
+        // REDIRECIONAMENTO CRIADO, POIS A OPÇÃO DE EXCLUIR OS DADOS FOI REVOGADA ATE SEGUNDA ORDEM. 14/12/2023
+        return header("Location: /CaptivePortal/Views/login.php");
+        
         include '../Controller/mailController.php';
         session_unset();
+
 
         $controller = new mailController();
         if (isset($_POST['email'])) {
@@ -41,10 +45,6 @@
                         <div class="card-body pb-0 pt-4 px-md-5 px-4">
                             <form method="POST">
                                 <div class="row">
-                                    <!-- CODIGO COMENTADO PARA USO FUTURO - TITULO DA TELA DE EXCLUSÃO DE CADASTRO -->
-                                    <!-- <div class="col-md-12 mb-4 text-center"> 
-                                        <h3 class="m-0 text-center font-family-calibri">Excluir cadastro</h3>
-                                    </div> -->
                                     <!-- Email input -->
                                     <div class="col-md-12 mb-4">
                                         <div class="form-floating">
