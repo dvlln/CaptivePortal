@@ -126,7 +126,7 @@
                                                     data-bs-toggle="tooltip" 
                                                     data-bs-placement="top" 
                                                     data-bs-html="true"
-                                                    data-bs-title="A senha precisa possuir os seguintes requisitos: <br/> <ul><li>Letras</li><li>Números</li><li>Mínimo 8 caracteres</li></ul>"
+                                                    data-bs-title="A senha deve conter no mínimo 6 caracteres</li></ul>"
                                                 />
                                                 <label for="floatingPassword">Senha</label>
                                             <?php } ?>
@@ -187,8 +187,6 @@
 
         <!-- Footer -->
         <div class="mt-auto text-center">
-            <a href="unsubscribe.php" style="font-size:14px">Caso deseja excluir o cadastro, clique aqui.</a>
-            <br>
             <p class="border-top mb-0 mt-1 py-3 px-2 color-green bg-success text-light" style="font-size:13px">Desenvolvido por <a href="https://www.unimedsjc.com.br/" target=”_blank” class="text-light">www.unimedsjc.com.br</a> © 2023 - todos os direitos reservados</p>
         </div>
     </div>

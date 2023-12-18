@@ -7,7 +7,10 @@
     <link href="Imagens/logoUnimed.png" rel="icon"/>
     <link href="../Extensions/Bootstrap 5.3.0/CSS/bootstrap.min.css" rel="stylesheet">
   </head>
-  <body style="background-color: #f2f2f2">
+  <body style="background-color: #f2f2f2">  
+  <?php
+    
+  ?>
     <!-- Wrapper -->
     <div class="d-flex flex-column vh-100">
 
@@ -42,6 +45,6 @@
         </div>
     </div>
 
-    <script src="../../Extensions/Bootstrap 5.3.0/JS/bootstrap.bundle.min.js"></script>
+    <script src="../Extensions/Bootstrap 5.3.0/JS/bootstrap.bundle.min.js"></script>
   </body>
 </html>

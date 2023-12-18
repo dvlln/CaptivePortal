@@ -39,8 +39,9 @@
                             <div class="w-100 d-flex mb-3 p-2 rounded bg-danger-subtle text-danger fs-5 align-items-center">
                                 <img src="../icons/error.png" style="width:17px;height:17px;margin-left:15px"></img>
                                 <?php if(isset($_SESSION['errorSystem'])){ ?>
-                                    <p class="m-0 px-2 fs-6">Erro: tente novamente mais tarde!</p>
-                                <?php } ?>
+                                    <!-- <p class="m-0 px-2 fs-6">Erro: tente novamente mais tarde!</p> -->
+                                    <p class="m-0 px-2 fs-6"><?php echo $_SESSION['errorSystem'] ?></p>
+                                    <?php } ?>
                                 <?php if(isset($_SESSION['errorGeneral'])){ ?>
                                     <p class="m-0 px-2 fs-6"><?php echo $_SESSION['errorGeneral']; ?></p>
                                 <?php } ?>
@@ -77,13 +78,13 @@
                                         </div>
                                     </div>
     
-                                    <!-- Submit button -->
+                                    <!-- Submit/Forgot Password button -->
                                     <div class="row mb-3">
-                                        <div class="d-grid mb-4">
+                                        <div class="d-grid mb-2">
                                             <button type="submit" class="btn btn-success">Entrar</button>
                                         </div>
                                         
-                                        <div class="d-grid mb-4">
+                                        <div class="d-grid mb-2">
                                             <a href="forgotPassword.php" class="btn btn-outline-success">Esqueci minha senha</a>
                                         </div>
                                     </div>
@@ -102,8 +103,6 @@
 
             <!-- Footer -->
             <div class="mt-auto text-center">
-                <a href="unsubscribe.php" style="font-size:14px">Caso deseje excluir o cadastro, clique aqui.</a>
-                <br>
                 <p class="border-top mb-0 mt-1 py-3 px-2 color-green bg-success text-light" style="font-size:13px">Desenvolvido por <a href="https://www.unimedsjc.com.br/" target=”_blank” class="text-light">www.unimedsjc.com.br</a> © 2023 - todos os direitos reservados</p>
             </div>
         </div>
