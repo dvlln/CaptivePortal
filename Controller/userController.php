@@ -16,26 +16,33 @@
     session_start();
 
     class userController{
-        
-
         public function login(){
             session_unset();
             $u = new user();
 
-            $u->setEmail($_POST['email']);
-            $u->setPassword($_POST['password']);
+            // FUNCAO DE RETORNO DE DADOS CASO SQL FALHE
+            $_SESSION['getLogin'] = $_POST['login'];
 
-            $_SESSION['getEmail'] = $u->getEmail();            
+            // VALIDACAO SE INPUT É CPF OU E-MAIL
+            if(strstr($_POST['login'], "@") == false){
+                $cpf = preg_replace( '/[\.\-]/is', '', $_POST['login']);
+                $u->setCPF($cpf);
+            }else{
+                $u->setEmail($_POST['login']);
+            }
+            $u->setPassword($_POST['password']);
             
+            // PROCURA DADOS INSERIDOS
             try{
-                $sql = "SELECT * FROM user WHERE email=?";
+                $sql = "SELECT * FROM user WHERE email=? OR CPF=?";
                 $tmp = conexao::getConexao()->prepare($sql);
                 $tmp->bindValue(1, $u->getEmail());
+                $tmp->bindValue(2, $u->getCPF());
                 $tmp->execute();
 
                 $user = $tmp->fetch(\PDO::FETCH_ASSOC);
 
-                if(!isset($user['email'])){
+                if(!isset($user['email']) || !isset($user['cpf'])){
                     $_SESSION['errorGeneral'] = "Usuário ou senha inválidos";
                     return false;
                 }elseif(!(password_verify($u->getPassword(),$user['password']))){

@@ -14,14 +14,13 @@
             require_once "../vendor/autoload.php";
 
             unset($_SESSION['errorSystem']);
-            unset($_SESSION['getEmail']);
+            unset($_SESSION['getLogin']);
 
             $controller = new userController();
-            if (isset($_POST['email']) && isset($_POST['password'])) {
+            if (isset($_POST['login']) && isset($_POST['password'])) {
                 $controller->login();
             }
         ?>
-
         <!-- Wrapper -->
         <div class="d-flex flex-column vh-100">
             <!-- Content -->
@@ -64,8 +63,8 @@
                                         <!-- Email input -->
                                         <div class="col-md-12 mb-4">
                                             <div class="form-floating">
-                                                <input type="email" id="floatingEmail" class="form-control" name="email" value="<?php if(isset($_SESSION['getEmail'])){echo $_SESSION['getEmail'];} ?>" required />
-                                                <label for="floatingEmail">E-mail</label>
+                                                <input type="text" id="floatingLogin" class="form-control" name="login" value="<?php if(isset($_SESSION['getLogin'])){echo $_SESSION['getLogin'];} ?>" required />
+                                                <label for="floatingLogin">E-mail ou CPF</label>
                                             </div>
                                         </div>
     
