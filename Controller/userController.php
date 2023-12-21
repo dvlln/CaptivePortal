@@ -23,7 +23,7 @@
             // FUNCAO DE RETORNO DE DADOS CASO SQL FALHE
             $_SESSION['getLogin'] = $_POST['login'];
 
-            // VALIDACAO SE INPUT É CPF OU E-MAIL
+            // VALIDA SE INPUT É CPF OU E-MAIL
             if(strstr($_POST['login'], "@") == false){
                 $cpf = preg_replace( '/[\.\-]/is', '', $_POST['login']);
                 $u->setCPF($cpf);
@@ -92,7 +92,7 @@
 
             $net->setMacAddress($macAddr);
 
-            // PEGAR DATA E HORA ATUAIS DA CRIACAO
+            // PEGAR DATA E HORA ATUAIS DA CRIAÇÃO
             $date = new DateTime(null, new DateTimeZone('America/Sao_Paulo'));
             $net->setCreatedAt($date->format('Y-m-d H:i:s'));
 
@@ -130,7 +130,7 @@
             $_SESSION['getCPF'] = $u->getCPF();
             $_SESSION['getPhone'] = $u->getPhone();
 
-            // Valida se CPF e E-mail já existem
+            // VALIDA SE O CPF E E-MAIL JA EXISTEM
             $sql = "SELECT * FROM user WHERE email=? || cpf=?";
             $tmp = conexao::getConexao()->prepare($sql);
             $tmp->bindValue(1, $u->getEmail());
@@ -151,33 +151,33 @@
                 }
             }
 
-            // Validação CPF
+            // VALIDAÇÃO CPF
             if(!validaCPF($u->getCPF())){
                 $_SESSION['cpfError'] = 'CPF inválido!';
                 $errorValidation = true;
             }
 
-            // Validação Telefone
+            // VALIDAÇÃO TELEFONE
             if(!validaPhone($u->getPhone())){
                 $_SESSION['phoneError'] = 'Telefone inválido!';
                 $errorValidation = true;
             }
 
-            // Validação senha
+            // VALIDAÇÃO SENHA
             if(!validaSenha($u->getPassword())){
                 $_SESSION['passError'] = 'Senha não atende os requisitos!';
                 $errorValidation = true;
             }
 
-            // Verifica se existe algum erro
+            // VERIFICA SE EXISTE ALGUM ERRO
             if($errorValidation == true){
                 return ;
             }
 
-
-            // Converte para hash
+            // CONVERTE SENHA PARA HASH
             $u->setPassword(PASSWORD_HASH($u->getPassword(), PASSWORD_BCRYPT));
 
+            // INSERÇÃO DOS DADOS NO BANCO
             try{
                 $sql = "INSERT INTO user (name, email, cpf, phone, password) VALUES (?,?,?,?,?)";
                 $tmp = conexao::getConexao()->prepare($sql);
@@ -201,7 +201,7 @@
             $u = new user();
             $env = new env();
 
-            // E-mail descriptografado
+            // E-MAIL DESCRIPTOGRAFADO
             try {
                 $key = $env->getPasswordSecret();
                 $decoded = JWT::decode($_GET['email'], new Key($key, 'HS256'));
@@ -219,9 +219,10 @@
                 return false;
             }
 
-            // Converte para hash
+            // CONVERTE SENHA PARA HASH
             $u->setPassword(PASSWORD_HASH($u->getPassword(), PASSWORD_BCRYPT));
 
+            // INSERÇÃO DOS DADOS NO BANCO
             try{
                 $sql = "UPDATE user SET password=? WHERE email=?";
                 $tmp = conexao::getConexao()->prepare($sql);
@@ -237,6 +238,7 @@
             }
         }
 
+        /* FUNCAO COMENTADA, POIS NÃO SERÁ MAIS UTILIZADA. CONTUDO, MANTEREMOS COMENTADA PARA POSSIVEL UTILIZAÇÃO FUTURA E EVITAR RETRABALHO
         public function unsubscribeUser(){
             session_unset();
             $u = new user();
@@ -268,7 +270,7 @@
                 return false;
             }
             
-        }
+        }*/
     }
 
 ?>

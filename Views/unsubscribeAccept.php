@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Unimed SJC Wi-Fi</title>
     <link href="Imagens/logoTitle.png" rel="icon"/>
-    <link href="../Extensions/Bootstrap 5.3.0/CSS/bootstrap.min.css" rel="stylesheet">
+    <link href="../vendor/twbs/Bootstrap/dist/CSS/bootstrap.min.css" rel="stylesheet">
   </head>
   <body style="background-color: #f2f2f2">
     <?php
@@ -23,9 +23,9 @@
         }
     ?>
 
-    <!-- Wrapper -->
+    <!-- WRAPPER -->
     <div class="d-flex flex-column vh-100">
-        <!-- Content -->
+        <!-- CONTENT -->
         <div class="container mt-auto px-md-5 px-3 text-lg-start">
             <div class="row gx-lg-5 align-items-center justify-content-center">
                 <div class="col-lg-12 mb-4 text-center">
@@ -44,7 +44,7 @@
                                     </div>
                                 </div>
 
-                                <!-- Return button -->
+                                <!-- RETURN BUTTON -->
                                 <div class="d-grid mb-4">
                                     <a href="login.php" class="btn btn-secondary">Voltar a tela de login</a>
                                 </div>
@@ -54,12 +54,13 @@
             </div>
         </div>
 
-        <!-- Footer -->
+        <!-- FOOTER -->
         <div class="mt-auto text-center">
             <p class="border-top mb-0 mt-3 py-3 px-2 color-green bg-success text-light" style="font-size:13px">Desenvolvido por <a href="https://www.unimedsjc.com.br/" target=”_blank” class="text-light">www.unimedsjc.com.br</a> © 2023 - todos os direitos reservados</p>
         </div>
     </div>
 
-    <script src="../Extensions/Bootstrap 5.3.0/JS/bootstrap.bundle.min.js"></script>
+    <!-- BOOTSTRAP -->
+    <script src="../vendor/twbs/Bootstrap/dist/JS/bootstrap.bundle.min.js"></script>
   </body>
 </html>

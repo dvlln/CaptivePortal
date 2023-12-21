@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Unimed SJC Wi-Fi</title>
     <link href="Imagens/logoTitle.png" rel="icon"/>
-    <link href="../Extensions/Bootstrap 5.3.0/CSS/bootstrap.min.css" rel="stylesheet">
+    <link href="../vendor/twbs/Bootstrap/dist/CSS/bootstrap.min.css" rel="stylesheet">
     <link href="CSS/style.css" rel="stylesheet">
   </head>
   <body style="background-color: #f2f2f2">
@@ -19,23 +19,23 @@
         }
     ?>
 
-    <!-- Wrapper -->
+    <!-- WRAPPER -->
     <div class="d-flex flex-column vh-100">
-        <!-- Content -->
+        <!-- CONTENT -->
         <div class="container mt-auto pt-3 pb-5 px-md-5 px-3 text-lg-start">
             <div class="row gx-lg-5 align-items-center justify-content-center">
                 <div class="col-lg-12 mb-4 text-center">
                     <img src="Imagens/logoUnimed.png" alt="logo" style="width: 300px">
                 </div>
                 <div class="col-lg-6 mb-5 mb-lg-0">
-                    <!-- Error message -->
+                    <!-- ERROR MESSAGE -->
                     <?php if(isset($_SESSION['error'])){ ?>
                         <div class="w-100 d-flex mb-3 p-2 rounded bg-danger-subtle text-danger fs-5 align-items-center">
                             <img src="../icons/error.png" style="width:17px;height:17px"></img>
                             <p class="m-0 px-2 fs-6">Erro: Tente novamente mais tarde!</p>
                         </div>
                     <?php } ?>
-                    <!-- Forms -->
+                    <!-- FORMS -->
                     <div class="card shadow">
                         <div class="card-body pb-0 pt-4 px-md-5 px-4">
                             <form action="" method="POST">
@@ -43,7 +43,7 @@
                                     <div class="col-md-12 mb-4 text-center">
                                         <h3 class="m-0 text-center font-family-calibri">Cadastre-se</h3>
                                     </div>
-                                    <!-- Name input -->
+                                    <!-- NAME INPUT -->
                                     <div class="col-md-12 mb-4">
                                         <div class="form-floating">
                                             <input type="text" id="floatingName" name="name" class="form-control" value="<?php if(isset($_SESSION['getName'])){echo $_SESSION['getName'];} ?>" required />
@@ -51,7 +51,7 @@
                                         </div>
                                     </div>
 
-                                    <!-- Email input -->
+                                    <!-- E-MAIL INPUT -->
                                     <div class="col-md-12 mb-4">
                                         <div class="form-floating">
                                             <?php if(isset($_SESSION['emailError'])){ ?>
@@ -65,7 +65,7 @@
                                         </div>
                                     </div>
 
-                                    <!-- CPF input -->
+                                    <!-- CPF INPUT -->
                                     <div class="col-md-6 mb-4">
                                         <div class="form-floating">
                                             <?php if(isset($_SESSION['cpfError'])){ ?>
@@ -87,7 +87,7 @@
                                         </div>
                                     </div>
 
-                                    <!-- Phone input -->
+                                    <!-- PHONE INPUT -->
                                     <div class="col-md-6 mb-4">
                                         <div class="form-floating">
                                             <?php if(isset($_SESSION['phoneError'])){ ?>
@@ -109,7 +109,7 @@
                                         </div>
                                     </div>
 
-                                    <!-- Password input -->
+                                    <!-- PASSWORD INPUT -->
                                     <div class="col-md-12 mb-4">
                                         <div class="form-floating">
                                             <?php if(isset($_SESSION['passError'])){ ?>
@@ -133,7 +133,7 @@
                                         </div>
                                     </div>
 
-                                    <!-- User agreement -->
+                                    <!-- USER AGREEMENT -->
                                     <div class="col-md-12 mb-4">
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" id="userAgreement" required>
@@ -141,7 +141,7 @@
                                         </div>
                                     </div>
 
-                                    <!-- User agreement modal -->
+                                    <!-- USER AGREEMENT MODAL -->
                                     <div class="modal fade" id="userAgreementModal" tabindex="-1" aria-labelledby="userAgreementModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                                             <div class="modal-content">
@@ -169,13 +169,13 @@
                                     </div>
                                 </div>
 
-                                <!-- Submit button -->
+                                <!-- SUBMIT BUTTON -->
                                 <div class="d-grid mb-4">
                                     <button type="submit" class="btn btn-success">Cadastrar</button>
                                 </div>
 
                             </form>
-                            <!-- Login button -->
+                            <!-- LOGIN BUTTON -->
                             <div class="text-center">
                             <p>Já possui uma conta? <a href="login.php">Faça login</a></p>
                             </div>
@@ -185,19 +185,19 @@
             </div>
         </div>
 
-        <!-- Footer -->
+        <!-- FOOTER -->
         <div class="mt-auto text-center">
             <p class="border-top mb-0 mt-1 py-3 px-2 color-green bg-success text-light" style="font-size:13px">Desenvolvido por <a href="https://www.unimedsjc.com.br/" target=”_blank” class="text-light">www.unimedsjc.com.br</a> © 2023 - todos os direitos reservados</p>
         </div>
     </div>
 
-    <!-- BOOTSTRAP GENERAL -->
-    <script src="../Extensions/Bootstrap 5.3.0/JS/bootstrap.bundle.min.js"></script>
+    <!-- BOOTSTRAP -->
+    <script src="../vendor/twbs/Bootstrap/dist/JS/bootstrap.bundle.min.js"></script>
     
     <!-- TOOLTIP -->
     <script src="JS/tooltipInitialize.js"></script>
 
-    <!-- MASK -->
+    <!-- INPUT MASK -->
     <script src="../vendor/components/jquery/jquery.min.js"></script>
     <script src="../vendor/igorescobar/jquery-mask-plugin/dist/jquery.mask.min.js"></script>
     <script src="JS/inputMask.js"></script>

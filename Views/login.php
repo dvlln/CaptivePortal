@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Unimed SJC Wi-Fi</title>
     <link href="Imagens/logoTitle.png" rel="icon"/>
-    <link href="../Extensions/Bootstrap 5.3.0/CSS/bootstrap.min.css" rel="stylesheet">
+    <link href="../vendor/twbs/Bootstrap/dist/CSS/bootstrap.min.css" rel="stylesheet">
   </head>
   <body style="background-color: #f2f2f2">
         <?php
@@ -21,9 +21,9 @@
                 $controller->login();
             }
         ?>
-        <!-- Wrapper -->
+        <!-- WRAPPER -->
         <div class="d-flex flex-column vh-100">
-            <!-- Content -->
+            <!-- CONTENT -->
             <div class="container mt-auto pt-3 pb-5 px-md-5 px-3 text-center text-lg-start">
                 <div class="row gx-lg-5 align-items-center justify-content-center">
                     <div class="col-lg-12 mb-3 text-center">
@@ -33,7 +33,7 @@
                     </div>
                     <div class="col-lg-5 mb-5 mb-lg-0">
 
-                        <!-- Error message -->
+                        <!-- ERROR MESSAGE -->
                         <?php if(isset($_SESSION['errorSystem']) || isset($_SESSION['errorGeneral'])){ ?>
                             <div class="w-100 d-flex mb-3 p-2 rounded bg-danger-subtle text-danger fs-5 align-items-center">
                                 <img src="../icons/error.png" style="width:17px;height:17px;margin-left:15px"></img>
@@ -47,20 +47,20 @@
                             </div>
                         <?php } ?>
 
-                        <!-- Status message -->
+                        <!-- STATUS MESSAGE -->
                         <?php if(isset($_SESSION['status'])){ ?>
                             <div class="w-100 d-flex mb-3 p-2 rounded bg-success-subtle text-success fs-5 align-items-center">
-                                <img src="../icons/teste.png" style="width:17px;height:17px;margin-left:15px"></img>
+                                <img src="../icons/success.png" style="width:17px;height:17px;margin-left:15px"></img>
                                 <p class="m-0 px-2 fs-6"><?php echo $_SESSION['status']; ?></p>
                             </div>
                         <?php } ?>
 
-                        <!-- Forms -->
+                        <!-- FORMS -->
                         <div class="card shadow">
                             <div class="card-body pt-4 pb-0 pt-md-5 px-md-5 px-4">
                                 <form action="" method="POST">
                                     <div class="row">
-                                        <!-- Email input -->
+                                        <!-- E-MAIL INPUT -->
                                         <div class="col-md-12 mb-4">
                                             <div class="form-floating">
                                                 <input type="text" id="floatingLogin" class="form-control" name="login" value="<?php if(isset($_SESSION['getLogin'])){echo $_SESSION['getLogin'];} ?>" required />
@@ -68,7 +68,7 @@
                                             </div>
                                         </div>
     
-                                        <!-- Password input -->
+                                        <!-- PASSWORD INPUT -->
                                         <div class="col-md-12 mb-4">
                                             <div class="form-floating">
                                                 <input type="password" id="floatingPassword" class="form-control" name="password" required />
@@ -77,7 +77,7 @@
                                         </div>
                                     </div>
     
-                                    <!-- Submit/Forgot Password button -->
+                                    <!-- SUBMIT/FORGOT PASSWORD BUTTON -->
                                     <div class="row mb-3">
                                         <div class="d-grid mb-2">
                                             <button type="submit" class="btn btn-success">Entrar</button>
@@ -89,7 +89,7 @@
                                     </div>
     
                                 </form>
-                                <!-- Register buttons -->
+                                <!-- REGISTER BUTTON -->
                                 <div class="text-center">
                                     <p>Não tem uma conta? <a href="register.php">Cadastre-se</a></p>
                                 </div>
@@ -100,11 +100,14 @@
                 </div>
             </div>
 
-            <!-- Footer -->
+            <!-- FOOTER -->
             <div class="mt-auto text-center">
                 <p class="border-top mb-0 mt-1 py-3 px-2 color-green bg-success text-light" style="font-size:13px">Desenvolvido por <a href="https://www.unimedsjc.com.br/" target=”_blank” class="text-light">www.unimedsjc.com.br</a> © 2023 - todos os direitos reservados</p>
             </div>
         </div>
-    <script src="../Extensions/Bootstrap 5.3.0/JS/bootstrap.bundle.min.js"></script>
+
+    <!-- BOOTSTRAP -->    
+    <script src="../vendor/twbs/Bootstrap/dist/JS/bootstrap.bundle.min.js"></script>
+    
   </body>
 </html>

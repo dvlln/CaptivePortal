@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Unimed SJC Wi-Fi</title>
     <link href="Imagens/logoTitle.png" rel="icon"/>
-    <link href="../Extensions/Bootstrap 5.3.0/CSS/bootstrap.min.css" rel="stylesheet">
+    <link href="../vendor/twbs/Bootstrap/dist/CSS/bootstrap.min.css" rel="stylesheet">
     <link href="CSS/style.css" rel="stylesheet">
   </head>
   <body style="background-color: #f2f2f2">
@@ -38,7 +38,7 @@
                     <img src="Imagens/logoUnimed.png" alt="logo" style="width: 300px">
                 </div>
                 <div class="col-lg-5">
-                    <!-- Error message -->
+                    <!-- ERROR MESSAGE -->
                     <?php if(isset($_SESSION['error'])){ ?>
                         <div class="w-100 d-flex mb-3 p-2 rounded bg-danger-subtle text-danger fs-5 align-items-center">
                             <img src="../icons/error.png" style="width:17px;height:17px"></img>
@@ -46,7 +46,7 @@
                         </div>
                     <?php } ?>
                     
-                    <!-- Forms -->
+                    <!-- FORMS -->
                     <div class="card shadow">
                         <div class="card-body pb-0 pt-4 px-md-5 px-4">
                             <form method="POST">
@@ -55,7 +55,7 @@
                                         <h3 class="m-0 text-center font-family-calibri">Redefinir senha</h3>
                                     </div>
 
-                                    <!-- Password input -->
+                                    <!-- PASSWORD INPUT -->
                                     <div class="col-md-12 mb-4">
                                         <div class="form-floating">
                                             <?php if(isset($_SESSION['passError'])){ ?>
@@ -79,7 +79,7 @@
                                         </div>
                                     </div>
 
-                                    <!-- Password confirmation input -->
+                                    <!-- PASSWORD CONFIRMATION INPUT -->
                                     <div class="col-md-12 mb-4">
                                         <div class="form-floating">
                                             <?php if(isset($_SESSION['passErrorConfirm'])){ ?>
@@ -94,7 +94,7 @@
                                     </div>
                                 </div>
 
-                                <!-- Submit button -->
+                                <!-- SUBMIT BUTTON -->
                                 <div class="d-grid mb-4">
                                     <button type="submit" class="btn btn-success">Enviar</button>
                                 </div>
@@ -114,10 +114,8 @@
         </div>
     </div>
 
-    
-
-    <!-- BOOTSTRAP GENERAL -->
-    <script src="../Extensions/Bootstrap 5.3.0/JS/bootstrap.bundle.min.js"></script>
+    <!-- BOOTSTRAP -->
+    <script src="../vendor/twbs/Bootstrap/dist/JS/bootstrap.bundle.min.js"></script>
     
     <!-- TOOLTIP -->
     <script src="JS/tooltipInitialize.js"></script>

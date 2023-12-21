@@ -16,26 +16,26 @@ use Firebase\JWT\JWT;
 class mailController{
     public function sendPasswordResetInvitation(){
         session_unset();
-        // CONEXAO EMAIL
+        // CONEXÃO COM O E-MAIL
         $phpmailer = new PHPMailer();
         $phpmailer->isSMTP();
 
-        // DADOS DA CONEXAO
+        // DADOS DA CONEXÃO
         $phpmailer->Host = 'mail.unimedsjc.com.br';
         $phpmailer->Port = 587;
         $phpmailer->SMTPAuth = false;
 
-        // PLUS
+        // DEFINICAO DA CODIFICACAO DE CARACTERES
         $phpmailer->CharSet = "UTF-8";
 
-        // CONEXAO BANCO
+        // CONEXÃO COM O BANCO
         $u = new user();
         $u->setEmail($_POST['email']);
 
         // PUXAR OS DADOS DO ENV
         $env = new env();
 
-        // E-mail criptografado
+        // E-MAIL CRIPTOGRAFADO
         $key = $env->getPasswordSecret();
         $payload = [
             'sub' => $u->getEmail(),
@@ -55,7 +55,7 @@ class mailController{
             return false;
         }
 
-        // PRESET
+        // PRÉ DEFINIÇÃO DO E-MAIL (ASSUNTO, CONTEUDO, REMETENTE E DESTINATARIO)
         $mail = new mail();
         $mail->setSender('ti.forgot-password@unimedsjc.coop.br');
         $mail->setReceiver($u->getEmail());
@@ -87,6 +87,7 @@ class mailController{
         }
     }
 
+    /* FUNCAO COMENTADA, POIS NÃO SERÁ MAIS UTILIZADA. CONTUDO, MANTEREMOS COMENTADA PARA POSSIVEL UTILIZAÇÃO FUTURA E EVITAR RETRABALHO
     public function sendUnsubscribeInvitation(){
         session_unset();
         // CONEXAO EMAIL
@@ -157,7 +158,7 @@ class mailController{
             header("Location: /CaptivePortal/Views/login.php");
             return true;
         }
-    }
+    }*/
 }
 
 ?>
