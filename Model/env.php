@@ -3,7 +3,7 @@
 class env{
 		private $dbUser = 'root';
 		private $dbPassword;
-		private $passwordSecret = 'lkjsand!@)U)WJDAKsdasd123';
+		private $passwordSecret = '';
 
 
         public function getDbUser(){
